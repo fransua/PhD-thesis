@@ -1,0 +1,11 @@
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End: 
+%%% introduction.tex --- 
+
+%% Author: garamonfok@gros
+%% Version: $Id: introduction.tex,v 0.0 2011/10/09 18:39:32 garamonfok Exp$
+
+\part{Conclusion}
+\label{intro}

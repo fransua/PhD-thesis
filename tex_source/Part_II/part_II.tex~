@@ -1,0 +1,15 @@
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End: 
+%%% introduction.tex --- 
+
+%% Author: garamonfok@gros
+%% Version: $Id: introduction.tex,v 0.0 2011/10/09 18:39:32 garamonfok Exp$
+
+\part{Structure and dynamics of genomes}
+\label{part2}
+
+
+\include{./Chapter_3/chapter_three}
+\include{./Chapter_4/chapter_four}

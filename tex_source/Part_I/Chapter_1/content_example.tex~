@@ -1,0 +1,59 @@
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End: 
+
+\chapter{Chapter One}
+\label{chap:one}
+
+% latex-mode
+\cite{Serra2011}
+
+hola
+
+
+
+\section{Primer sec}
+For the second aspect of the functional genomics evaluation (see Figure~\ref{fig:jws}) a data
+subset of the AMT study was. 
+This study revealed by means of a transcriptome analysis of root transporters the 
+participation of
+multiple gene families in the     response to cation stress. Also comented in Capter
+\ref{cap:primero} (p.\pageref{cap:primero}).
+
+This study revealed by means of a transcriptome analysis of root transporters the 
+participation of
+multiple gene families in the     response to cation stress. Also comented in Capter
+\ref{cap:primero} (p.~\pageref{cap:primero}).
+
+
+\begin{figure}[htpb] 
+\centering 
+\includegraphics[width=\textwidth]{../pictures/DNA.jpg}
+\caption{JAva Web START}
+\label{fig:jws}
+\end{figure}
+
+
+\begin{table}
+\centering
+{
+\begin{tabular}{c|c}
+\hline
+Sistemas&220\\	
+\hline
+SGE&39\\
+Condor&9\\
+PVS&6\\
+Others&126\\
+\hline
+\end{tabular}
+\caption{asdfasdf}
+\label{tab:asdfasdf}
+}\end{table}
+
+\subsection{Primer sub sec}
+yeahh
+voila?
+
+
