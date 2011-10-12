@@ -1,7 +1,46 @@
-(TeX-add-style-hook "content_example"
- (lambda ()
-    (LaTeX-add-labels
-     "chap:one"
-     "fig:jws"
-     "tab:asdfasdf")))
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../../../main"
+%%% End: 
+%%% introduction.tex --- 
+
+%% Author: garamonfok@gros
+%% Version: $Id: introduction.tex,v 0.0 2011/10/09 18:39:32 garamonfok Exp$
+
+\chapter{Searching for evolutionary patterns in funcionally
+  linked group of genes}
+
+\section{Introduction}
+
+\section{Material and Methods}
+
+\subsection{Five mammals}
+
+Complete genomes of 5 mammals species (\textit{Homo sapiens},
+\textit{Pan troglodytes}, \textit{Mus musculus}, \textit{Rattus norvegicus} and
+\textit{Canis familiaris}) where retrieved from \textit{Ensembl}
+\cite{Flicek2011}. Also orthology prediction between each pair of species
+possibly done between human and the others was retrieved from
+\textit{Ensembl Compara} \cite{Vilella2009} using biomart \cite{Kinsella2011}.
+Only groups of orthologs \textit{one-to-one} with one representative of each
+species where kept in the final dataset.
+\ref{fig:phylogeny}
+NUMBERS
+
+\subsection{Alignments}
+Each of the group of orthologous sequences were aligned with Muscle
+\cite{Edgar2004}, and, once aligned sequences were cleaned with trimal
+\cite{Capella-Gutierrez2009} keeping all sequences but trimming aligment columns
+with the euristic1 method.
+
+
+\begin{figure}[htpb] 
+\centering 
+\includegraphics[width=\textwidth]{Part_I/Chapter_1/pictures/phylogenies.png}
+\caption[Mammals and \textit{Drosophila} phylogeny]{Mammals and
+  \textit{Drosophila} phylogeny. blabli blob lu dkfnlskjdf}
+\label{fig:phylogeny}
+\end{figure}
+
+
 

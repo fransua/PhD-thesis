@@ -1,9 +1,9 @@
-\documentclass[spanish,a4paper,11pt, openany]{book}
+\documentclass[spanish,a4paper,11pt, openany]{scrbook}
 
 % for images     
 \usepackage{graphicx} 
  % Less detailed TOC
-\setcounter{tocdepth}{2}   
+\setcounter{tocdepth}{3}   
 % link outs in PDF
 \usepackage{hyperref}
 % for all characters
@@ -24,7 +24,6 @@
 \usepackage{geometry}
 \geometry{tmargin=2.2cm,bmargin=2.4cm}
 
-
 \begin{document}
 \pagestyle{empty}
 \author{François Serra}
@@ -36,14 +35,72 @@
 \tableofcontents
 
 \newpage
-\include{./Introduction/introduction}
-\include{./Part_I/part_I}
-\include{./Part_II/part_II}
-\include{./Conclusion/conclusion}
-\newpage{}
+\tocloftpagestyle{fancy}
 
-% \bibliographystyle{../biblio/these_fs}
-\bibliographystyle{plain}
+\chapter{Introduction}
+\section{intro1}
+\section{intro2}
+\section{intro3}
+\chapter{On structure of genomes}
+\section{Introduction}
+\section{Results and Discussion}
+\section{Material and methods}
+\chapter{Adaptation in genes, duplicated (and families)}
+\section{Introduction}
+\section{Results and Discussion}
+\section{Material and methods}
+\chapter{Gene set Selection analysis}
+\section{Introduction}
+\section{Results and Discussion}
+\section{Material and methods}
+\subsection{Dataset}
+\subsubsection{5 mammals}
+\subsubsection{6 \textit{Drosophila}}
+\chapter{Genome neutrality}
+\section{Introduction}
+\section{Results and Discussion}
+\section{Material and methods}
+\section{open on colocalization \rightarrow not random}
+\chapter{Tools, programs, methods}
+\section{ETE-evol plugin}
+\section{Phylemon}
+\section{Ecolopy}
+\section{Isoform selection?}
+\chapter{Conclusions}
+
+\cite{Kosiol2008a}
+
+% \include{./Introduction/introduction}
+% \include{./Part_I/part_I}
+% \include{./Part_II/part_II}
+% \include{./Conclusion/conclusion}
+% \newpage{}
+
+\bibliographystyle{cc} % serra et al 2011
+%  [Serra et al.2011] Francois Serra, Leonardo Arbiza, Joaqu´ Dopazo, and Hernan
+%  Dopazo, Natural selection on functional modules, a genome-wide analysis. PLoS computa-
+%  tional biology 7(3) (2011), p. e1001093.
+
+% \bibliographystyle{apalike} % [serra et al 2011]
+%  [Serra et al., 2011] Serra, F., Arbiza, L., Dopazo, J., and Dopazo, H. (2011). Natural
+%  selection on functional modules, a genome-wide analysis. PLoS computational biology,
+%  7(3):e1001093.
+
+% \bibliographystyle{dcbib}  %[serra 2011]
+%  [Serra2011] Fran¸ois Serra, Leonardo Arbiza, Joaqu´ Dopazo, and Hern´n Dopazo.
+%  Natural selection on functional modules, a genome-wide analysis. PLoS com-
+%  putational biology, 7(3):e1001093, Natural selection on functional modules,
+%  a genome-wide analysis. ISSN 1553-7358. doi:10.1371/journal.pcbi.1001093
+
+
+% \bibliographystyle{achicago}
+%  [Serra et al.2011] Serra, Fran¸ois, Leonardo Arbiza, Joaqu´ Dopazo, and Hern´n
+%  Dopazo. 2011. Natural selection on functional modules, a genome-wide analysis.
+%  PLoS computational biology 7 (3): e1001093 (March).
+
+
+
+
 \bibliography{../biblio/bibliography}
 
 \newpage{}
