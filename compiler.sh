@@ -1,6 +1,6 @@
 #/bin/bash
 
-cd /home/garamonfok/Documents/these/tex_source
+cd ~/Documents/these/tex_source
 
 pdflatex -draftmode -interaction=nonstopmode --src-specials main > /dev/null 2>&1
 
@@ -15,8 +15,8 @@ pdflatex -interaction=nonstopmode --src-specials main
 
 cd ..
 
-rm -f */*.aux */*.bbl */*.ilg */*.lot */*.nlo */*.nls */*.toc */*.out */*.lof */*.blg */*.log 
-rm -f */*/*.aux */*/*/*.aux
+rm -f tex_source/*.aux tex_source/*.bbl tex_source/*.ilg tex_source/*.lot tex_source/*.nlo tex_source/*.nls tex_source/*.toc tex_source/*.out tex_source/*.lof tex_source/*.blg tex_source/*.log tex_source/*.mtc* tex_source/*.idx tex_source/*.maf
+rm -f tex_source/*/*.aux tex_source/*/*/*.aux
 
 mv tex_source/main.pdf .
 

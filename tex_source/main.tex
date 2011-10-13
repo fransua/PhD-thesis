@@ -1,3 +1,7 @@
+
+
+%%%%%%%%%   Style  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \documentclass[spanish,a4paper,11pt, openany]{scrbook}
 
 % for images     
@@ -24,6 +28,12 @@
 \usepackage{geometry}
 \geometry{tmargin=2.2cm,bmargin=2.4cm}
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%   Thesis starts here  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 \pagestyle{empty}
 \author{François Serra}
@@ -38,43 +48,41 @@
 \tocloftpagestyle{fancy}
 
 \chapter{Introduction}
-\section{intro1}
-\section{intro2}
-\section{intro3}
-\chapter{On structure of genomes}
-\section{Introduction}
-\section{Results and Discussion}
-\section{Material and methods}
+\label{intro}
+\include{./Introduction/introduction}
+
+\chapter{Random-like structure of DNA}
+\label{chap:dna_struct}
+\include{Chapters/dna_struct}
+
 \chapter{Adaptation in genes, duplicated (and families)}
-\section{Introduction}
-\section{Results and Discussion}
-\section{Material and methods}
-\chapter{Gene set Selection analysis}
-\section{Introduction}
-\section{Results and Discussion}
-\section{Material and methods}
-\subsection{Dataset}
-\subsubsection{5 mammals}
-\subsubsection{6 \textit{Drosophila}}
-\chapter{Genome neutrality}
-\section{Introduction}
-\section{Results and Discussion}
-\section{Material and methods}
-\section{open on colocalization \rightarrow not random}
+\label{chap:gene2fam}
+\include{Chapters/gene2fam}
+
+
+\chapter{Searching for evolutionary patterns in funcionally
+  linked group of genes}
+\label{chap:gssa}
+\include{Chapters/gssa}
+
+\chapter{Life inside genomes, dynamics and predictions}
+\label{chap:untb_genomes}
+\include{Chapters/untb_genomes}
+
 \chapter{Tools, programs, methods}
-\section{ETE-evol plugin}
-\section{Phylemon}
-\section{Ecolopy}
-\section{Isoform selection?}
+\label{chap:tools}
+\include{Chapters/tools}
+
+
 \chapter{Conclusions}
+\label{conclusion}
+\include{./Conclusion/conclusion}
 
-\cite{Kosiol2008a}
 
-% \include{./Introduction/introduction}
-% \include{./Part_I/part_I}
-% \include{./Part_II/part_II}
-% \include{./Conclusion/conclusion}
-% \newpage{}
+\newpage{}
+
+
+%%%%%%%%%   Bibliography  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \bibliographystyle{cc} % serra et al 2011
 %  [Serra et al.2011] Francois Serra, Leonardo Arbiza, Joaqu´ Dopazo, and Hernan
@@ -98,15 +106,12 @@
 %  Dopazo. 2011. Natural selection on functional modules, a genome-wide analysis.
 %  PLoS computational biology 7 (3): e1001093 (March).
 
-
-
-
 \bibliography{../biblio/bibliography}
 
-\newpage{}
+%%%%%%%%%   Figs & Tables  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \listoffigures
 \listoftables
+
 \end{document}
-
-
 
