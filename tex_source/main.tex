@@ -2,9 +2,14 @@
 
 %%%%%%%%%   Style  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[spanish,a4paper,11pt, openany]{scrbook}
+% \documentclass[spanish,a4paper,11pt, openany]{scrbook}
+% \documentclass[spanish,a4paper,11pt, openany]{afthesis}
+% \documentclass[spanish]{hepthesis}
+% \documentclass[spanish]{muthesis}
+\documentclass[spanish]{usthesis}
 
-% for images     
+
+% for images
 \usepackage{graphicx} 
  % Less detailed TOC
 \setcounter{tocdepth}{3}   
@@ -16,18 +21,18 @@
 %% Control the fonts and formatting used in the table of contents.
 \usepackage[titles]{tocloft}
 %% Aesthetic spacing redefines that look nicer to me than the defaults.
-\setlength{\cftbeforepartskip}{1.5ex}
-\setlength{\cftbeforechapskip}{2.5ex}
-\setlength{\cftbeforesecskip}{0.5ex}
+% \setlength{\cftbeforepartskip}{1.5ex}
+% \setlength{\cftbeforechapskip}{2.5ex}
+% \setlength{\cftbeforesecskip}{0.5ex}
 
 % German style of paragraph formatting, i.e. no indents.
-\setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
-\setlength{\parindent}{0pt}
+% \setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
+% \setlength{\parindent}{0pt}
+
 
 % some layout    
-\usepackage{geometry}
-\geometry{tmargin=2.2cm,bmargin=2.4cm}
-
+%\usepackage{geometry}
+%\geometry{tmargin=2.2cm,bmargin=2.4cm}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,33 +46,30 @@
   modules and genomes}
 \date{October 2011}
 \maketitle
+\pagestyle{empty}
 \newpage
 \tableofcontents
 
 \newpage
 \tocloftpagestyle{fancy}
-
 \chapter{Introduction}
 \label{intro}
 \include{./Introduction/introduction}
 
+\part{Structure and dynamics of genomes}
 \chapter{Random-like structure of DNA}
 \label{chap:dna_struct}
 \include{Chapters/dna_struct}
 
-\chapter{Adaptation in genes, duplicated (and families)}
-\label{chap:gene2fam}
-\include{Chapters/gene2fam}
+\chapter{Life inside genomes, dynamics and predictions}
+\label{chap:untb_genomes}
+\include{Chapters/untb_genomes}
 
-
+\part{Detection of selective pressures in genomes}
 \chapter{Searching for evolutionary patterns in funcionally
   linked group of genes}
 \label{chap:gssa}
 \include{Chapters/gssa}
-
-\chapter{Life inside genomes, dynamics and predictions}
-\label{chap:untb_genomes}
-\include{Chapters/untb_genomes}
 
 \chapter{Tools, programs, methods}
 \label{chap:tools}
@@ -84,6 +86,8 @@
 
 %%%%%%%%%   Bibliography  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\clearpage
+\pagenumbering{roman}
 \bibliographystyle{cc} % serra et al 2011
 %  [Serra et al.2011] Francois Serra, Leonardo Arbiza, Joaqu´ Dopazo, and Hernan
 %  Dopazo, Natural selection on functional modules, a genome-wide analysis. PLoS computa-
