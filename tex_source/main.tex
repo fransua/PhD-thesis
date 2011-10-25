@@ -2,11 +2,11 @@
 
 %%%%%%%%%   Style  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \documentclass[spanish,a4paper,11pt, openany]{scrbook}
+\documentclass[spanish,a4paper,11pt, openany]{scrbook}
 % \documentclass[spanish,a4paper,11pt, openany]{afthesis}
 % \documentclass[spanish]{hepthesis}
 % \documentclass[spanish]{muthesis}
-\documentclass[spanish]{usthesis}
+% \documentclass[spanish]{usthesis}
 
 
 % for images
@@ -17,6 +17,9 @@
 \usepackage{hyperref}
 % for all characters
 \usepackage[latin1]{inputenc}
+
+%inline enumeration
+\usepackage{paralist}
 
 %% Control the fonts and formatting used in the table of contents.
 \usepackage[titles]{tocloft}
@@ -40,18 +43,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\pagestyle{empty}
+% \pagestyle{empty}
 \author{François Serra}
 \title{Adaptation in genes, duplicates, families, functional
   modules and genomes}
 \date{October 2011}
+\pagenumbering{alph} % needed to avoid warning message
 \maketitle
-\pagestyle{empty}
+
+
 \newpage
+
+\pagenumbering{roman}
+
 \tableofcontents
 
 \newpage
 \tocloftpagestyle{fancy}
+
+\pagenumbering{arabic}
+
 \chapter{Introduction}
 \label{intro}
 \include{./Introduction/introduction}
@@ -87,8 +98,9 @@
 %%%%%%%%%   Bibliography  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\pagenumbering{roman}
-\bibliographystyle{cc} % serra et al 2011
+\pagenumbering{Roman}
+\bibliographystyle{../biblio/fransua} % serra et al 2011
+% \bibliographystyle{cc} % serra et al 2011
 %  [Serra et al.2011] Francois Serra, Leonardo Arbiza, Joaqu´ Dopazo, and Hernan
 %  Dopazo, Natural selection on functional modules, a genome-wide analysis. PLoS computa-
 %  tional biology 7(3) (2011), p. e1001093.
