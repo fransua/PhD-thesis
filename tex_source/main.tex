@@ -21,8 +21,10 @@
 %inline enumeration
 \usepackage{paralist}
 
-%% Control the fonts and formatting used in the table of contents.
-\usepackage[titles]{tocloft}
+% list of abbreviations
+\usepackage{nomencl}
+\makenomenclature
+
 %% Aesthetic spacing redefines that look nicer to me than the defaults.
 % \setlength{\cftbeforepartskip}{1.5ex}
 % \setlength{\cftbeforechapskip}{2.5ex}
@@ -58,8 +60,11 @@
 
 \tableofcontents
 
-\newpage
-\tocloftpagestyle{fancy}
+\newpage{}
+
+\printnomenclature[3]
+\nomenclature{CR}{Complexity Ratio}
+\nomenclature{BWT}{Burros-Wheeler transform}
 
 \pagenumbering{arabic}
 

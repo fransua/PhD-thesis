@@ -37,19 +37,19 @@ bibtex main | egrep -i --color "(.*Warning|Underfull|Overfull|.*error.*|)"
 
 echo ""
 echo "-----------------------"
-echo "------ PDFLATEX2 ------"
-echo "-----------------------"
-echo ""
-
-pdflatex -draftmode -interaction=nonstopmode --src-specials main > /dev/null 2>&1
-
-echo ""
-echo "-----------------------"
 echo "------ MAKEINDEX ------"
 echo "-----------------------"
 echo ""
 
 makeindex main.nlo -s nomencl.ist -o main.nls
+
+echo ""
+echo "-----------------------"
+echo "------ PDFLATEX2 ------"
+echo "-----------------------"
+echo ""
+
+pdflatex -draftmode -interaction=nonstopmode --src-specials main > /dev/null 2>&1
 
 echo ""
 echo "-----------------------"
