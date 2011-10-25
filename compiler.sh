@@ -18,14 +18,12 @@ exit
 fi
 
 
-cd ~/Documents/these/tex_source
-
 echo "-----------------------"
 echo "------ PDFLATEX1 ------"
 echo "-----------------------"
 echo ""
 
-pdflatex -draftmode -interaction=nonstopmode --src-specials main > /dev/null 2>&1
+pdflatex -draftmode -interaction=nonstopmode --src-specials tex_source/main > /dev/null 2>&1
 
 echo ""
 echo "-----------------------"
@@ -49,7 +47,7 @@ echo "------ PDFLATEX2 ------"
 echo "-----------------------"
 echo ""
 
-pdflatex -draftmode -interaction=nonstopmode --src-specials main > /dev/null 2>&1
+pdflatex -draftmode -interaction=nonstopmode --src-specials tex_source/main > /dev/null 2>&1
 
 echo ""
 echo "-----------------------"
@@ -57,9 +55,8 @@ echo "------ PDFLATEX3 ------"
 echo "-----------------------"
 echo ""
 
-pdflatex -interaction=nonstopmode --src-specials main | egrep -i --color "(.*warning|underfull|overfull|.*error.*|)"
+pdflatex -interaction=nonstopmode --src-specials tex_source/main | egrep -i --color "(.*warning|underfull|overfull|.*error.*|)"
 
-cd ..
 
 if [ $1 = 'clean' ];
 then
@@ -68,16 +65,14 @@ echo "-----------------------"
 echo "----- CLEANNING.. -----"
 echo "-----------------------"
 echo ""
-rm -f tex_source/*.aux tex_source/*.bbl tex_source/*.ilg tex_source/*.lot 
-rm -f tex_source/*.nlo tex_source/*.nls tex_source/*.toc tex_source/*.out 
-rm -f tex_source/*.lof tex_source/*.blg tex_source/*.log tex_source/*.mtc* 
-rm -f tex_source/*.idx tex_source/*.maf tex_source/*.plf tex_source/*.plt
-rm -f tex_source/*.plc tex_source/*.ptc
-
-rm -f tex_source/*/*.aux tex_source/*/*/*.aux
+rm -f *.aux *.bbl *.ilg *.lot 
+rm -f *.nlo *.nls *.toc *.out 
+rm -f *.lof *.blg *.log *.mtc* 
+rm -f *.idx *.maf *.plf *.plt
+rm -f *.plc *.ptc
+rm -f */*.aux */*/*.aux
 fi
 
-mv tex_source/main.pdf .
 
 echo ""
 echo "-----------------------"
