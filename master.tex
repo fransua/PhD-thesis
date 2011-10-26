@@ -1,0 +1,116 @@
+%%% Local Variables:
+%%% TeX-master: t
+%%% End:
+
+%%%%%%%%%   Style  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[spanish,a4paper,11pt, openany]{scrbook}
+% \documentclass[spanish,a4paper,11pt, openany]{afthesis}
+% \documentclass[spanish]{hepthesis}
+% \documentclass[spanish]{muthesis}
+% \documentclass[spanish]{usthesis}
+
+
+% for images
+\usepackage{graphicx} 
+ % Less detailed TOC
+\setcounter{tocdepth}{3}   
+% for all characters
+\usepackage[latin1]{inputenc}
+
+%inline enumeration
+\usepackage{paralist}
+
+% to get rid of Underfull \hbox (badness ...) Error message
+\usepackage{etoolbox}
+%\apptocmd{\thebibliography}{\raggedright}{}{} % this also works but not perfet squared
+\apptocmd{\thebibliography}{\hbadness 3503\relax}{}{}
+
+% link outs in PDF
+\usepackage{cite} % allows line breaking inside citations
+\usepackage{hyperref}
+
+% list of abbreviations
+\usepackage{nomencl}
+\makenomenclature
+
+%% Aesthetic spacing redefines that look nicer to me than the defaults.
+% \setlength{\cftbeforepartskip}{1.5ex}
+% \setlength{\cftbeforechapskip}{2.5ex}
+% \setlength{\cftbeforesecskip}{0.5ex}
+
+% German style of paragraph formatting, i.e. no indents.
+% \setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
+% \setlength{\parindent}{0pt}
+
+
+% some layout    
+%\usepackage{geometry}
+%\geometry{tmargin=2.2cm,bmargin=2.4cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%   Thesis starts here  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\author{François Serra}
+\title{Adaptation in genes, duplicates, families, functional
+  modules and genomes}
+\date{October 2011}
+\pagenumbering{alph} % needed to avoid warning message
+\maketitle
+
+\newpage
+
+\pagenumbering{roman}
+
+\tableofcontents
+
+\newpage{}
+
+\printnomenclature[3pt]
+\nomenclature{CR}{Complexity Ratio}
+\nomenclature{BWT}{Burros-Wheeler transform}
+\nomenclature{MTF}{Move To Front}
+\newpage{}
+
+\include{tex_source/main}
+
+%%%%%%%%%   Bibliography  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\pagenumbering{Roman}
+\bibliographystyle{biblio/fransua} % serra et al 2011
+%\bibliographystyle{cc} % serra et al 2011
+%  [Serra et al.2011] Francois Serra, Leonardo Arbiza, Joaqu´ Dopazo, and Hernan
+%  Dopazo, Natural selection on functional modules, a genome-wide analysis. PLoS computa-
+%  tional biology 7(3) (2011), p. e1001093.
+
+% \bibliographystyle{apalike} % [serra et al 2011]
+%  [Serra et al., 2011] Serra, F., Arbiza, L., Dopazo, J., and Dopazo, H. (2011). Natural
+%  selection on functional modules, a genome-wide analysis. PLoS computational biology,
+%  7(3):e1001093.
+
+% \bibliographystyle{dcbib}  %[serra 2011]
+%  [Serra2011] Fran¸ois Serra, Leonardo Arbiza, Joaqu´ Dopazo, and Hern´n Dopazo.
+%  Natural selection on functional modules, a genome-wide analysis. PLoS com-
+%  putational biology, 7(3):e1001093, Natural selection on functional modules,
+%  a genome-wide analysis. ISSN 1553-7358. doi:10.1371/journal.pcbi.1001093
+
+
+% \bibliographystyle{achicago}
+%  [Serra et al.2011] Serra, Fran¸ois, Leonardo Arbiza, Joaqu´ Dopazo, and Hern´n
+%  Dopazo. 2011. Natural selection on functional modules, a genome-wide analysis.
+%  PLoS computational biology 7 (3): e1001093 (March).
+
+\bibliography{biblio/bibliography}
+
+%%%%%%%%%   Figs & Tables  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\listoffigures
+\listoftables
+
+\end{document}
+
