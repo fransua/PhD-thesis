@@ -3,6 +3,7 @@
 help=0
 verbose=0
 clean=0
+pdf=0
 
 # option parser
 for opt in $*;
@@ -16,22 +17,36 @@ do
   elif [ $opt = 'clean' ];
   then
   clean=1
+  elif [[ $opt = pdf_* ]];
+  then
+  pdf=1;
+  viewer=`echo $opt | cut -d'_' -f2`
   fi
 done
 
 if [ $help = 1 ];
 then
-echo "-----------------------"
-echo "-- CONGRATULATIONS!! --"
-echo "-----------------------"
-echo "- YOU FOUND THE HELP! -"
-echo "-----------------------"
+echo ""
+echo "       _______________________"
+echo "      |                       |"
+echo "      |   CONGRATULATIONS!!   |"
+echo "      |                       |"
+echo "      |  YOU FOUND THE HELP!  |"
+echo "      |_______________________|"
+echo "                  ||"
+echo "             s    ||"
+echo "            sos   ||"
+echo "              \&  ||"
+echo "               \  ||"
+echo "             mm|mmmmmmmmm"
 echo ""
 echo "Options that could be provided:"
-echo "clean   : compile and clean all extra latex files."
-echo "verbose : display more details about compilation."
-echo "clean   : compile and clean all extra latex files."
-echo "help    : displays this help"
+echo ""
+echo "  clean      : compile and clean all extra latex files."
+echo "  verbose    : display more details about compilation."
+echo "  clean      : compile and clean all extra latex files."
+echo "  pdf_VIEWER : open generated pdf with VIEWER (eg: pdf_xpdf)"
+echo "  help       : displays this help"
 echo ""
 echo ""
 exit
@@ -64,6 +79,7 @@ else
 pdflatex -interaction=nonstopmode --src-specials master | egrep -v "^[a-z()<>0-9,/]" | egrep -i --color "(.*warning|underfull|illegal|overfull|undefined|.*error.*|)"
 fi
 
+# clean build files
 if [ $clean = 1 ];
 then
 echo ""
@@ -76,10 +92,17 @@ rm -f *.plc *.ptc
 rm -f */*.aux */*/*.aux
 fi
 
+# open pdf
+if [ $pdf = 1 ];
+then
+echo ""
+echo "  --- OPENNING PDF.. ---"
+$viewer master.pdf &
+fi
 
+# the end...
 echo ""
 echo "  ------ THE END.. ------"
 echo ""
 
 
-#okular master.pdf
