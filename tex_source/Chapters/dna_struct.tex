@@ -1,50 +1,26 @@
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../../master"
-%%% End: 
+%%% dna_struct.tex --- 
+
 
 \section{Introduction}
+\label{sec:dna_struct-intro}
 
 From a biological perspective it seems obvious that DNA is something else than random mix of A, T, G or C nucleotides. Genomes are composed of functional elements as can be genes or promoters but also repetitive elements that by definition can not be random when taken together. However to what extent can we state that genomes are not a random soup of 4 letters? 
 
 This question could be solved in some sense by measuring genomes entropy. This measure presents the disadvantage that extreme cases of high entropy could correspond to \begin{inparaenum}[\itshape a\upshape)] \item {\bf a specially high content of information}, entropy-based algorithms are actually used to predict or confirm automatic detection of genes \cite{Du2006,Gerstein2007}, \item {\bf an exact random structure}, some work in the sense of testing the random structure of DNA have been done using entropy \cite{Loewenstern1999}. \end{inparaenum} However this characteristic of entropy could be only a semantic problem if we use it as a measure of relative variation in DNA complexity in genomes, and try to discern statistical patterns in the DNA sequences of different genomic element such as interspersed repeats or functional element (like protein-coding genes). This kind of description of DNA sequence complexity was already done by \cite{Holste2001}, but only in human chromosome 22.
 
-
-
 \section{Results and Discussion}
+\label{sec:dna_struct-result}
+
+yeah
+
 \section{Material and methods}
+\label{sec:dna_struct-matmet}
 
 \subsection{The complexity ratio and complexity value}
+\label{sec:compl-ratio-compl}
 
-Complexity Ratio (CR) is defined by a classical formula used in data
-compression \cite{Adjeroh2008}, the Burros-Wheeler transform BWT
-\cite{Burrows1994}, followed by the Move To Front (MTF)
-\cite{Ryabko1980} and finally resume this to one value using Shannon's
-entropy \cite{Shannon1948}. Thus the CR is Shannon's entropy of a
-transformation or digestion of the sequence. The purpose of this
-transformation is to reveal the regularities in a sequence. In case
-the original sequence has no significant regularities, all numbers
-will be at the same rate; else, some numbers will be in excess and
-others in shortage (compression algorithms use this to obtain a short
-output). Shannon's entropy is zero -this is the minimum- only when all
-numbers are zero. This occurs when a sequence consists just of a
-single repeated symbol, which is the simplest possible combinatorial
-structure. When, at the other edge, entropy is equal to one (the
-maximum entropy), then all numbers have exactly the same frequency,
-and it indicates that the sequence has a random-like combinatorial
-structure.
-
-Algorithmically, the BWT of a given sequence is a permutation of the
-symbols in the sequence that represents the lexicographic order of all
-possible rotations of the sequence. The MTF transforms a given
-sequence into a sequence of numbers, operating from left to right, and
-maintaining a stack of recently used symbols. Each number is an index
-in the stack and denotes an alphabet symbol. Shannon's entropy maps a
-sequence into a real number between zero and one. It weights the
-frequency of the alphabet symbols in a given sequence. For each symbol
-$i$ in the alphabet, let $p_{(i)}$ be the probability of finding $i$
-in the sequence $s$; $N_i$ the number occurrences of $i$ in $s$ and
-$length(s)$ the total length of the sequence $s$:
+Complexity Ratio (CR) is defined by a classical formula used in data compression \cite{Adjeroh2008}, the Burros-Wheeler transform BWT \cite{Burrows1994}, followed by the Move To Front (MTF) \cite{Ryabko1980} and finally resume this to one value using Shannon's entropy \cite{Shannon1948}. Thus the CR is Shannon's entropy of a transformation or digestion of the sequence. The purpose of this transformation is to reveal the regularities in a sequence. In case the original sequence has no significant regularities, all numbers will be at the same rate; else, some numbers will be in excess and others in shortage (compression algorithms use this to obtain a short output). Shannon's entropy is zero -this is the minimum- only when all numbers are zero. This occurs when a sequence consists just of a single repeated symbol, which is the simplest possible combinatorial structure. When, at the other edge, entropy is equal to one (the maximum entropy), then all numbers have exactly the same frequency, and it indicates that the sequence has a random-like combinatorial structure. 
+Algorithmically, the BWT of a given sequence is a permutation of the symbols in the sequence that represents the lexicographic order of all possible rotations of the sequence. The MTF transforms a given sequence into a sequence of numbers, operating from left to right, and maintaining a stack of recently used symbols. Each number is an index in the stack and denotes an alphabet symbol. Shannon's entropy maps a sequence into a real number between zero and one. It weights the frequency of the alphabet symbols in a given sequence. For each symbol $i$ in the alphabet, let $p_{(i)}$ be the probability of finding $i$ in the sequence $s$; $N_i$ the number occurrences of $i$ in $s$ and $length(s)$ the total length of the sequence $s$: 
 
 \begin{equation} \label{eq:prob_seq}
 p_{(i)} = \frac {N_i}{length(s)}
@@ -69,107 +45,103 @@ characters in this sequence (here $s$):
 CV(s) = E(MTF(BWT(s))) \times length(s)
 \end{equation}
 
-As the CV of a sequence depends on the transformation of the MTF
-applied to the whole sequence, its computation impede the use of parts
-of the sequence independently.
+As the CV of a sequence depends on the transformation of the MTF applied to the whole sequence, its computation impede the use of parts of the sequence independently.
 
 \subsection{Complexity in strings}
+\label{sec:complexity-strings}
 
-Complete genomes of 54 species were download from NCBI and Ensembl
-Genome Project \cite{Flicek2011}. Fourteen major groups of taxa were
-selected: virus, phages, bacteria, archaea, fungi, amplicomplexa, heterokonta, amebozoa, urochordates, invertebrates, plants, fishes, birds,
-and mammals. Species among taxa were chosen to the interest as model
-species and the presence of particular biological features such as:
-variation in genome size, ancestral and recent polyploidy, living in extreme environments, living as intracellular parasites, gene
-expansion, genome reduction, RNA or single-strand DNA genomes, and
-synthetic genomes Table \ref{table:genome}. Eukaryote genomes with coverage greater than 6X or greather were chosen.
-Sexual chromosomes were excluded from the analyses, and ambiguous "N" characters were
-removed from sequences. Eukaryote chromosomes were concatenated in genomes to
-estimate genome complexity. Interspersed repeats and low complexity DNA sequences were
-screened and mapped in chromosomes of thirty different eukaryotes using RepeatMasker (4).
-Complexity of major families of repetitive elements such as DNA transposons, LTR, LINE,
-SINE, satellites and exons, introns, and complete genes (considering unstranslated 3' regions)
-was computed after concatenation of all elements in chromosomes excluding other sequences.
-Random sequences with different ploidy levels were generated in python. Complexity value
-of biological sequences and random sequences was computed with the DNA alphabet of four
-letters. Complexity in biological sequences was computed in the +1 strand. Analyses of -1
-strand provided no differences in results. Short stories, books and complete works in its
-original languages were downloaded from Project Gutember (http://www.gutenberg.org/). To
-automatically detect the alphabet size in texts (including mathematical and punctuation
-symbols) we run COMPL package with "auto" option.
-To study complexity along chromosomes, a sliding window method shifting along
-chromosomes in overlapping units of 1.0 Kb to 100 Mb was performed. Linear models, and
-4 / 18
-linear models with interactions were run in R language [22].
-
+Complete genomes of 54 species were download from NCBI and Ensembl Genome Project \cite{Flicek2011}. Fourteen major groups of taxa were selected: virus, phages, bacteria, archaea, fungi, amplicomplexa, heterokonta, amebozoa, urochordates, invertebrates, plants, fishes, birds, and mammals. Species among taxa were chosen to the interest as model species and the presence of particular biological features such as: variation in genome size, ancestral and recent polyploidy, living in extreme environments, living as intracellular parasites, gene expansion, genome reduction, RNA or single-strand DNA genomes, and synthetic genomes \tref{tab:genome}. Eukaryote genomes with coverage of 6X or greater were chosen. Sexual chromosomes were excluded from the analysis, and ambiguous "N" characters were removed from sequences, and not taken into account when computing chromosome length. Eukaryote chromosomes were concatenated in genomes to estimate genome complexity. Interspersed repeats and low complexity DNA sequences were screened and mapped in chromosomes of thirty different eukaryotes using RepeatMasker \cite{Smit2010}. Complexity of major families of repetitive elements such as DNA transposons, LTR, LINE, SINE, satellites and exons, introns, and complete genes (considering unstranslated regions) was computed after concatenation of all elements in chromosomes excluding. Random sequences with different ploidy levels were generated in python. Complexity value of biological sequences and random sequences was computed with the DNA alphabet of four letters. Complexity in biological sequences was computed in the +1 strand. Analyses of -1 strand provided no differences in results. Short stories, books and complete works in its original languages were downloaded from Project Gutember (\myurl{http://www.gutenberg.org/}). To automatically detect the alphabet size in texts (including mathematical and punctuation symbols) we run COMPL program with "auto" option. To study complexity along chromosomes, a sliding window method shifting along chromosomes in overlapping units of 1.0 Kb to 100 Mb was performed. Linear models, and linear models with interactions were run in R language \cite{Team2008}.
 
 \begin{table}[htbp]
-\caption[all genomes]{54 genomes}
-\resizebox{418.5pt}{!}{%
-  \begin{tabular}{ l l l l r r r r }
+\raggedright
+\resizebox{418pt}{!}{%
+  \begin{tabular}{ l l p{62pt} l r r r r }
   \hline
-  \textbf{Features} & \textbf{Species} & \textbf{ACCN - EDB} & \textbf{Clade} & \multicolumn{1}{l|}{\textbf{GS}} & \multicolumn{1}{l|}{\textbf{GC}} & \multicolumn{1}{l|}{\textbf{GCR}} & \multicolumn{1}{l|}{\textbf{Dmax}} \\ \hline
-  RNA & Hepatitis B & NC 3977.1 & Virus & 1682 & 1671 & 1 & 0 \\
-  SGS-RNA & Hepatitis D & D01075.1 & Virus & 3215 & 3210 & 0.9984 & 0.0016 \\
-  SSD & Tomato mosaic & NC 010836, NC 10835.1 & Virus & 5058 & 5040 & 0.9964 & 0.0036 \\
-  SSD & Enterobacteria phage m13 & V00604 & Phage & 6407 & 6367 & 0.9938 & 0.0062 \\
-  RNA & HIV 1 & NC 001802 & Virus & 9181 & 9105 & 0.9917 & 0.0083 \\
-  RNA & Sudan ebolavirus & NC 006432 & Virus & 18875 & 18842 & 0.9983 & 0.0017 \\
-  DSD & Enterobacteria phage lambda & NC 001416 & Phage & 48502 & 48381 & 0.9975 & 0.0025 \\
-  DSD & Human herpesvirus1 & NC 001806 & Virus & 152261 & 150036 & 0.9854 & 0.0146 \\
-  SBG IBP RG & Carsonella ruddii & NC 008512  & Bacteria & 159662 & 146930 & 0.9203 & 0.0797 \\
-  IBP RG & Buchnera aphidicola & AE013218.1 & Bacteria & 642122 & 626533 & 0.9757 & 0.0243 \\
-  IBP RG & Ureaplasma urealyticum & CP001184 & Bacteria & 873755 & 840812 & 0.9623 & 0.0377 \\
-  SL & Synthetic mycoplasma mycoides & CP002027.1 & Bacteria & 1078809 & 1026444 & 0.9515 & 0.0485 \\
-  EE & Thermococcus sibiricus & CP001463.1 & Archaea & 1242891 & 1237320 & 0.9955 & 0.0045 \\
-  EE & Methanocaldococcus vulcanius & CP001787.1 & Archaea & 1746040 & 1708968 & 0.9788 & 0.0212 \\
-  EE & Sulfolobus islandicus & CP001731.1 & Archaea & 2722004 & 2692455 & 0.9891 & 0.0109 \\
-   & Bacillus subtilis & Ensembl Bacteria & Bacteria & 4215606 & 4198057 & 0.9958 & 0.0042 \\
-   & Mycobacterium tuberculosis & Ensembl Bacteria9 & Bacteria & 4411532 & 4348606 & 0.9857 & 0.0143 \\
-   & Escherichia coli & CP001396.1 & Bacteria & 4578159 & 4551258 & 0.9941 & 0.0059 \\
-  LBG & Burkholderia xenovorans & NC 007951-3 & Bacteria & 9731138 & 9593486 & 0.9859 & 0.0141 \\
-  AP & Saccharomyces cerevisiae & Ensembl Fungi 3 & Fungi & 12070898 & 11974342 & 0.992 & 0.008 \\
-  UE & Plasmodium falciparum & Ensembl Protists 9 & Ampicomplexa & 23263332 & 21070640 & 0.9057 & 0.0943 \\
-  UE & Phaeodactylum tricornutum & Ensembl Protists 9 & Heterokonta & 25805651 & 25667448 & 0.9946 & 0.0054 \\
-  UE & Dictyostelium discoideum & Ensembl Protists 9 & Amebozoa & 31199234 & 31023020 & 0.9944 & 0.0056 \\
-  UE & Thalassiosira pseudonana & Ensembl Protists 9 & Heterokonta & 33919934 & 30877496 & 0.9103 & 0.0897 \\
-   & Ciona intestinalis & Ensembl Vertebrates 62 & Urochordate & 87649861 & 84674396 & 0.9661 & 0.0339 \\
-   & Caenorhabditis elegans & Ensembl Metazoa 9 & Invertebrates & 100272217 & 97720472 & 0.9746 & 0.0254 \\
-   & Tribolium castaneum & -1- & Invertebrates & 112129668 & 109424212 & 0.9759 & 0.0241 \\
-  AP RG & Arabidopsis thaliana & Ensembl Plants 9 & Plants & 118960082 & 116563556 & 0.9799 & 0.0201 \\
-   & Drosophila melanogaster & Ensembl Metazoa 9 & Invertebrates & 120290887 & 118973632 & 0.989 & 0.011 \\
-  GE & Daphnia pulex & Ensembl Metazoa 9 & Invertebrates & 158632523 & 150111316 & 0.9463 & 0.0537 \\
-  AP & Arabidopsis lyrata & Ensembl Plants 9 & Plants & 173245910 & 161798504 & 0.9339 & 0.0661 \\
-  AP & Tetraodon nigroviridis & Ensembl Vertebrates 62 & Fishes & 208708313 & 207067712 & 0.9921 & 0.0079 \\
-   & Apis mellifera & Ensembl Metazoa 9 & Invertebrates & 224750524 & 219278732 & 0.9757 & 0.0243 \\
-   & Anopheles gambiae & Ensembl Metazoa 9 & Invertebrates & 225028531 & 221180624 & 0.9829 & 0.0171 \\
-  AP & Brachypodium distachyon & Ensembl Plants 9 & Plants & 270058956 & 257893524 & 0.955 & 0.045 \\
-  AP & Oryza sativa & Ensembl Plants 9 & Plants & 293104375 & 271137108 & 0.9251 & 0.0749 \\
-  AP & Populus trichocarpa & Ensembl Plants 9 & Plants & 370421283 & 352063876 & 0.9504 & 0.0496 \\
-  AP & Physcomitrella patens & Ensembl Plants 9 & Bryophyta & 453927385 & 399508556 & 0.8801 & 0.1199 \\
-  AP & Sorghum bicolor & Ensembl Plants 9 & Plants & 625636188 & 491993216 & 0.7864 & 0.2136 \\
-  AP & Oryzias latipes & Ensembl Vertebrates 62 & Fishes & 582126393 & 562662192 & 0.9666 & 0.0334 \\
-   & Gallus gallus & Ensembl Vertebrates 62 & Birds & 984855151 & 971359304 & 0.9863 & 0.0137 \\
-   & Taeniopygia guttata & Ensembl Vertebrates 62 & Birds & 1013982659 & 996918996 & 0.9832 & 0.0168 \\
-  AP & Danio rerio & Ensembl Vertebrates 62 & Fishes & 1354636069 & 1191452752 & 0.8795 & 0.1205 \\
-  AP RP & Zea mays & Ensembl Plants 9 & Plants & 2045697632 & 1197255904 & 0.5853 & 0.4147 \\
-   & Canis familiaris & Ensembl Vertebrates 62 & Mammals & 2309875279 & 2272374188 & 0.9838 & 0.0162 \\
-   & Equus caballus & Ensembl Vertebrates 62 & Mammals & 2335454424 & 2307202104 & 0.9879 & 0.0121 \\
-   & Bos taurus & Ensembl Vertebrates 62 & Mammals & 2466956401 & 2406743280 & 0.9756 & 0.0244 \\
-   & Rattus norvegicus & Ensembl Vertebrates 62 & Mammals & 2477053718 & 2430894052 & 0.9814 & 0.0186 \\
-   & Mus musculus & Ensembl Vertebrates 62 & Mammals & 2558509481 & 2521038616 & 0.9854 & 0.0146 \\
-   & Pan troglodytes & Ensembl Vertebrates 62 & Mammals & 2598733311 & 2566544200 & 0.9876 & 0.0124 \\
-   & Macaca mulatta & Ensembl Vertebrates 62 & Mammals & 2646263164 & 2621196144 & 0.9905 & 0.0095 \\
-   & Pongo abelii & Ensembl Vertebrates 62 & Mammals & 2722968487 & 2697592876 & 0.9907 & 0.0093 \\
-   & Homo sapiens & Ensembl Vertebrates 62 & Mammals & 2858658095 & 2841049052 & 0.9938 & 0.0062 \\
-  LGS & Monodelphis domestica & Ensembl Vertebrates 62 & Mammals & 3412593369 & 3402944248 & 0.9972 & 0.0028 \\ \hline
+  \textbf{Features} & \textbf{Species} & \textbf{ACN-EV} &
+  \textbf{Clade} & \multicolumn{1}{l}{\textbf{GS}} &
+  \multicolumn{1}{l}{\textbf{GC}} & \multicolumn{1}{l}{\textbf{GCR}} &
+  \multicolumn{1}{l}{\textbf{Dmax}} \\ \hline
+RNA & Hepatitis B & NC3977.1 & Virus & 1,682 & 1,671 & 1 & 0 \\
+SGS-RNA & Hepatitis D & D01075.1 & Virus & 3,215 & 3,210 & 0.9984 & 0.0016 \\
+SSD & Tomato mosaic & NC010836 NC10835.1 & Virus & 5,058 & 5,040 & 0.9964 & 0.0036 \\
+SSD & Enterobacteria phage m13 & V00604 & Phage & 6,407 & 6,367 & 0.9938 & 0.0062 \\
+RNA & HIV 1 & NC001802 & Virus & 9,181 & 9,105 & 0.9917 & 0.0083 \\
+RNA & Sudan ebolavirus & NC006432 & Virus & 18,875 & 18,842 & 0.9983 & 0.0017 \\
+DSD & Enterobacteria phage lambda & NC001416 & Phage & 48,502 & 48,381 & 0.9975 & 0.0025 \\
+DSD & Human herpesvirus1 & NC001806 & Virus & 152,261 & 150,036 & 0.9854 & 0.0146 \\
+SBG-IP-RG & Carsonella ruddii & NC008512  & Bacteria & 159,662 & 146,930 & 0.9203 & 0.0797 \\
+IP-RG & Buchnera aphidicola & AE013218.1 & Bacteria & 642,122 & 626,533 & 0.9757 & 0.0243 \\
+IP-RG & Ureaplasma urealyticum & CP001184 & Bacteria & 873,755 & 840,812 & 0.9623 & 0.0377 \\
+SL & Synthetic mycoplasma mycoides & CP002027.1 & Bacteria & 1,078,809 & 1,026,444 & 0.9515 & 0.0485 \\
+EE & Thermococcus sibiricus & CP001463.1 & Archaea & 1,242,891 & 1,237,320 & 0.9955 & 0.0045 \\
+EE & Methanocaldococcus vulcanius & CP001787.1 & Archaea & 1,746,040 & 1,708,968 & 0.9788 & 0.0212 \\
+EE & Sulfolobus islandicus & CP001731.1 & Archaea & 2,722,004 & 2,692,455 & 0.9891 & 0.0109 \\
+ & Bacillus subtilis & {\it E!} Bacteria 9 & Bacteria & 4,215,606 & 4,198,057 & 0.9958 & 0.0042 \\
+ & Mycobacterium tuberculosis & {\it E!} Bacteria 9 & Bacteria & 4,411,532 & 4,348,606 & 0.9857 & 0.0143 \\
+ & Escherichia coli & CP001396.1 & Bacteria & 4,578,159 & 4,551,258 & 0.9941 & 0.0059 \\
+LBG & Burkholderia xenovorans & NC007951-3 & Bacteria & 9,731,138 & 9,593,486 & 0.9859 & 0.0141 \\
+AP & Saccharomyces cerevisiae & {\it E!} Fungi 3 & Fungi & 12,070,898 & 11,974,342 & 0.992 & 0.008 \\
+UE & Plasmodium falciparum & {\it E!} Protists 9 & Ampicomplexa & 23,263,332 & 21,070,640 & 0.9057 & 0.0943 \\
+UE & Phaeodactylum tricornutum & {\it E!} Protists 9 & Heterokonta & 25,805,651 & 25,667,448 & 0.9946 & 0.0054 \\
+UE & Dictyostelium discoideum & {\it E!} Protists 9 & Amebozoa & 31,199,234 & 31,023,020 & 0.9944 & 0.0056 \\
+UE & Thalassiosira pseudonana & {\it E!} Protists 9 & Heterokonta & 33,919,934 & 30,877,496 & 0.9103 & 0.0897 \\
+ & Ciona intestinalis & {\it E!} 62 & Urochordate & 87,649,861 & 84,674,396 & 0.9661 & 0.0339 \\
+ & Caenorhabditis elegans & {\it E!} Metazoa 9 & Invertebrates & 100,272,217 & 97,720,472 & 0.9746 & 0.0254 \\
+ & Tribolium castaneum & -1- & Invertebrates & 112,129,668 & 109,424,212 & 0.9759 & 0.0241 \\
+AP-RG & Arabidopsis thaliana & {\it E!} Plants 9 & Plants & 118,960,082 & 116,563,556 & 0.9799 & 0.0201 \\
+ & Drosophila melanogaster & {\it E!} Metazoa 9 & Invertebrates & 120,290,887 & 118,973,632 & 0.989 & 0.011 \\
+GE & Daphnia pulex & {\it E!} Metazoa 9 & Invertebrates & 158,632,523 & 150,111,316 & 0.9463 & 0.0537 \\
+AP & Arabidopsis lyrata & {\it E!} Plants 9 & Plants & 173,245,910 & 161,798,504 & 0.9339 & 0.0661 \\
+AP & Tetraodon nigroviridis & {\it E!} 62 & Fishes & 208,708,313 & 207,067,712 & 0.9921 & 0.0079 \\
+ & Apis mellifera & {\it E!} Metazoa 9 & Invertebrates & 224,750,524 & 219,278,732 & 0.9757 & 0.0243 \\
+ & Anopheles gambiae & {\it E!} Metazoa 9 & Invertebrates & 225,028,531 & 221,180,624 & 0.9829 & 0.0171 \\
+AP & Brachypodium distachyon & {\it E!} Plants 9 & Plants & 270,058,956 & 257,893,524 & 0.955 & 0.045 \\
+AP & Oryza sativa & {\it E!} Plants 9 & Plants & 293,104,375 & 271,137,108 & 0.9251 & 0.0749 \\
+AP & Populus trichocarpa & {\it E!} Plants 9 & Plants & 370,421,283 & 352,063,876 & 0.9504 & 0.0496 \\
+AP & Physcomitrella patens & {\it E!} Plants 9 & Bryophyta & 453,927,385 & 399,508,556 & 0.8801 & 0.1199 \\
+AP & Sorghum bicolor & {\it E!} Plants 9 & Plants & 625,636,188 & 491,993,216 & 0.7864 & 0.2136 \\
+AP & Oryzias latipes & {\it E!} 62 & Fishes & 582,126,393 & 562,662,192 & 0.9666 & 0.0334 \\
+ & Gallus gallus & {\it E!} 62 & Birds & 984,855,151 & 971,359,304 & 0.9863 & 0.0137 \\
+ & Taeniopygia guttata & {\it E!} 62 & Birds & 1,013,982,659 & 996,918,996 & 0.9832 & 0.0168 \\
+AP & Danio rerio & {\it E!} 62 & Fishes & 1,354,636,069 & 1,191,452,752 & 0.8795 & 0.1205 \\
+AP-RP & Zea mays & {\it E!} Plants 9 & Plants & 2,045,697,632 & 1,197,255,904 & 0.5853 & 0.4147 \\
+ & Canis familiaris & {\it E!} 62 & Mammals & 2,309,875,279 & 2,272,374,188 & 0.9838 & 0.0162 \\
+ & Equus caballus & {\it E!} 62 & Mammals & 2,335,454,424 & 2,307,202,104 & 0.9879 & 0.0121 \\
+ & Bos taurus & {\it E!} 62 & Mammals & 2,466,956,401 & 2,406,743,280 & 0.9756 & 0.0244 \\
+ & Rattus norvegicus & {\it E!} 62 & Mammals & 2,477,053,718 & 2,430,894,052 & 0.9814 & 0.0186 \\
+ & Mus musculus & {\it E!} 62 & Mammals & 2,558,509,481 & 2,521,038,616 & 0.9854 & 0.0146 \\
+ & Pan troglodytes & {\it E!} 62 & Mammals & 2,598,733,311 & 2,566,544,200 & 0.9876 & 0.0124 \\
+ & Macaca mulatta & {\it E!} 62 & Mammals & 2,646,263,164 & 2,621,196,144 & 0.9905 & 0.0095 \\
+ & Pongo abelii & {\it E!} 62 & Mammals & 2,722,968,487 & 2,697,592,876 & 0.9907 & 0.0093 \\
+ & Homo sapiens & {\it E!} 62 & Mammals & 2,858,658,095 &
+ 2,841,049,052 & 0.9938 & 0.0062 \\
+LGS & Monodelphis domestica & {\it E!} 62 & Mammals & 3,412,593,369 & 3,402,944,248 & 0.9972 & 0.0028 \\ \hline
   \end{tabular}
 }
-\label{table:genome}
+\caption[Genomes Complexity.]%
+{{\bf Genomes Complexity.} \\Genomes size (GS), genomes complexity
+  (GC), genome complexity ratio ($GCR=\frac{GC}{GS}$), and deviation
+from the maximum GCR (Dmax=1-GCV) for 54 species of different
+taxa. NCBI accession number or Ensembl ({\it E!}) version
+(ACN-EV). {\bf \em Features}: {\bf AP}: Ancient Polyploid; {\bf DSD}: Double-Strand
+DNA; {\bf EE}: Extreme Environment; {\bf GE}: Gene Expansion; {\bf IP}: Intracellular
+Parasite; {\bf LBG}: Largest Bacterial Genome; {\bf LGS}: Largest Genome
+Sequenced; {\bf RG}: Reduced Genome; {\bf RNA}: RNA Virus; {\bf RP}: Recent Polyploid;
+{\bf SBG}: Shortest Bacterial Genome; {\bf SGS}: Shortest Genome Sequenced; {\bf SL}:
+Synthetic Life; {\bf SSD}: Single-Strand DNA; {\bf UE}: Unicellular
+Eukaryote. {\bf \em Notes}: -1-: \myurl{http://www.hgsc.bcm.tmc.edu/ftp-archive/Tcastaneum/Tcas3.0/}
+}
+\label{tab:genome}
 \end{table}
-
-
 
 
 \subsection{Simulations}
 
+We performed four kinds of experiments where complexity value and ratio were computed. First: random polyploid construction of sequences of various sizes and ploidy levels (one to ten). Second: the evolution along 40 million generations by constant neutral mutation rate of 1.0e-08 mutations per site per generation (this value is in between the mutation rate estimated for {\it Homo sapiens}: 2.5e-08 \cite{Nachman2000} , and \textit{Arabidopsis thaliana}: 7.1e-09 \cite{Ossowski2010}) on random sequence, and on chromosomes of \textit{Zea mays} and \textit{Sorghum bicolor}. Third: the evolution along 50,000 generations of random polyploid genomes of different sizes (100Kb, 1Mb, 10Mb) by transpositions of a fixed length (1.0 Kb) between chromosomes. The number of transposition per generation was set as a constant function of genome size (genome size/1,000). Last: the concatenation and shuffling (computed with the python base function: “shuffle”) of all repetition instances in chromosomes for main repetitive families, and genes were considered. Complexity value and ratio were computed every 100 generations. 
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../../master"
+%%% End: 

@@ -74,9 +74,9 @@ pdflatex -draftmode -interaction=nonstopmode --src-specials master > /dev/null 2
 # compilation #3
 if [ $verbose = 1 ];
 then
-pdflatex -interaction=nonstopmode --src-specials master | egrep -i --color "(.*warning|underfull|illegal|overfull|undefined|.*error.*|)"
+pdflatex -interaction=nonstopmode --src-specials master | egrep -i --color "(.*warning|underfull|illegal|overfull|undefined|.*error.*|^! .{9}|)"
 else
-pdflatex -interaction=nonstopmode --src-specials master | egrep -v "^[a-z()<>0-9,/]" | egrep -i --color "(.*warning|underfull|illegal|overfull|undefined|.*error.*|)"
+pdflatex -interaction=nonstopmode --src-specials master | egrep -v "^[a-z()<>0-9,/]" | egrep -i --color "(.*warning|underfull|illegal|overfull|undefined|.*error.*|^! .{9}|)"
 fi
 
 # clean build files
