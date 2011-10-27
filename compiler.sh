@@ -1,70 +1,89 @@
 #/bin/bash
 
+help=0
+verbose=0
+clean=0
+pdf=0
 
-if [ $1 = 'help' -o $1 = '-h' -o $1 = '--help'  -o $1 = '-help' ];
+# option parser
+for opt in $*;
+do
+  if [ $opt = 'help' -o $opt = '-h' -o $opt = '--help'  -o $opt = '-help' ];
+  then
+  help=1
+  elif [ $opt = 'verbose' ];
+  then
+  verbose=1
+  elif [ $opt = 'clean' ];
+  then
+  clean=1
+  elif [[ $opt = pdf_* ]];
+  then
+  pdf=1;
+  viewer=`echo $opt | cut -d'_' -f2`
+  fi
+done
+
+if [ $help = 1 ];
 then
-echo "-----------------------"
-echo "-- CONGRATULATIONS!! --"
-echo "-----------------------"
-echo "- YOU FOUND THE HELP! -"
-echo "-----------------------"
+echo ""
+echo "       _______________________"
+echo "      |                       |"
+echo "      |   CONGRATULATIONS!!   |"
+echo "      |                       |"
+echo "      |  YOU FOUND THE HELP!  |"
+echo "      |_______________________|"
+echo "                  ||"
+echo "             s    ||"
+echo "            sos   ||"
+echo "              \&  ||"
+echo "               \  ||"
+echo "             mm|mmmmmmmmm"
 echo ""
 echo "Options that could be provided:"
-echo "clean : compile and clean all extra latex files."
-echo "help  : displays this help"
+echo ""
+echo "  clean      : compile and clean all extra latex files."
+echo "  verbose    : display more details about compilation."
+echo "  clean      : compile and clean all extra latex files."
+echo "  pdf_VIEWER : open generated pdf with VIEWER (eg: pdf_xpdf)"
+echo "  help       : displays this help"
 echo ""
 echo ""
 exit
 fi
 
 
-echo "-----------------------"
-echo "------ PDFLATEX1 ------"
-echo "-----------------------"
+# compilation #1
+pdflatex -draftmode -interaction=nonstopmode --src-specials master > /dev/null 2>&1
+
+echo "  ------- BIBTEX --------"
+
+bibtex master | egrep -i --color "(.*Warning|Underfull|Overfull|.*error.*|)"
 echo ""
 
-pdflatex -draftmode -interaction=nonstopmode --src-specials tex_source/main > /dev/null 2>&1
+echo "  ------ MAKEINDEX ------"
 
-echo ""
-echo "-----------------------"
-echo "------- BIBTEX --------"
-echo "-----------------------"
+makeindex master.nlo -s nomencl.ist -o master.nls
 echo ""
 
-bibtex main | egrep -i --color "(.*Warning|Underfull|Overfull|.*error.*|)"
+echo "  ------ PDFLATEX -------"
 
-echo ""
-echo "-----------------------"
-echo "------ MAKEINDEX ------"
-echo "-----------------------"
-echo ""
+# compilation #2
+pdflatex -draftmode -interaction=nonstopmode --src-specials master > /dev/null 2>&1
 
-makeindex main.nlo -s nomencl.ist -o main.nls
+# compilation #3
+if [ $verbose = 1 ];
+then
+pdflatex -interaction=nonstopmode --src-specials master | egrep -i --color "(.*warning|underfull|illegal|overfull|undefined|.*error.*|)"
+else
+pdflatex -interaction=nonstopmode --src-specials master | egrep -v "^[a-z()<>0-9,/]" | egrep -i --color "(.*warning|underfull|illegal|overfull|undefined|.*error.*|)"
+fi
 
-echo ""
-echo "-----------------------"
-echo "------ PDFLATEX2 ------"
-echo "-----------------------"
-echo ""
-
-pdflatex -draftmode -interaction=nonstopmode --src-specials tex_source/main > /dev/null 2>&1
-
-echo ""
-echo "-----------------------"
-echo "------ PDFLATEX3 ------"
-echo "-----------------------"
-echo ""
-
-pdflatex -interaction=nonstopmode --src-specials tex_source/main | egrep -i --color "(.*warning|underfull|overfull|.*error.*|)"
-
-
-if [ $1 = 'clean' ];
+# clean build files
+if [ $clean = 1 ];
 then
 echo ""
-echo "-----------------------"
-echo "----- CLEANNING.. -----"
-echo "-----------------------"
-echo ""
+echo "  ----- CLEANNING.. -----"
 rm -f *.aux *.bbl *.ilg *.lot 
 rm -f *.nlo *.nls *.toc *.out 
 rm -f *.lof *.blg *.log *.mtc* 
@@ -73,13 +92,17 @@ rm -f *.plc *.ptc
 rm -f */*.aux */*/*.aux
 fi
 
-
+# open pdf
+if [ $pdf = 1 ];
+then
 echo ""
-echo "-----------------------"
-echo "------ THE END.. ------"
-echo "-----------------------"
+echo "  --- OPENNING PDF.. ---"
+$viewer master.pdf &
+fi
+
+# the end...
+echo ""
+echo "  ------ THE END.. ------"
 echo ""
 
-
-#okular main.pdf
 
