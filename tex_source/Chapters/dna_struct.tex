@@ -172,133 +172,37 @@ chromosomes.}
 \subsection{Complexity in chromosome segments}
 \label{sec:compl-chrom-segm}
 
-Chromosomes were split in overlapping windows of various sizes (from 1 Kb to 100 Mb) and complexity ratio in these windows was computed. Figure 3 shows boxplots of six selected chromosomes, at different scales, all having extreme CR. Median values of CR over all windows of H sapiens Chr1 (Fig 3A), A. thaliana Chr1 (Fig 3C), C. elegans Chr1 (Fig 3D), and D. melanogaster Chr2L (Fig 3E) were above 0.97. Lower values were obtained in Z. mays Chr 1 (Fig 3D) and in H sapiens Chr19 (Fig 3B) for large windows sizes; in particular, for windows larger than 1Mb, CR noticeably fell down. The reasons for this fall are different in the two cases: while maize Chr1 is tetraploid, human Chr19 contains the highest number of
-Alu sequences reported in human chromosomes [31].
+Chromosomes were split in overlapping windows of various sizes (from 1 Kb to 100 Mb) and complexity ratio in these windows was computed. \fref{fig:box_compl}{} shows boxplots of six selected chromosomes, at different scales, all having extreme CR. Median values of CR over all windows of \textit{H. sapiens} Chr1 \fref{fig:box_compl}{-A}, \textit{A. thaliana} Chr1 \fref{fig:box_compl}{-C}, \textit{C. elegans} Chr1 \fref{fig:box_compl}{-D}, and \textit{D. melanogaster} Chr2L \fref{fig:box_compl}{-E} were above 0.97. Lower values were obtained in \textit{Z. mays} Chr 1 \fref{fig:box_compl}{-F} and in \textit{H sapiens} Chr19 \fref{fig:box_compl}{-B} for large windows sizes; in particular, for windows larger than 1Mb, CR noticeably fell down. The reasons for this fall are different in the two cases: while maize Chr1 is tetraploid, human Chr19 contains the highest number of Alu sequences reported in human chromosomes \cite{Venter2001}.
 
 \begin{figure}[htpb] 
 \centering 
 \includegraphics[width=\textwidth]{tex_source/figures/dna_struct/box_complexity_windows.png}
-\caption[Chromosome complexity ratio]{{\bf Chromosome complexity ratio.} \\\textbf{(A)} Complexity ratio and chromosome size of 31 eukaryote species (567 chromosomes). Notice how far chromosomes of Z. mays, and in minor degree S. bicolor (both recent polyploid species) depart for the general trend. \textbf{(-B)} Most chromosomes (96.2\%) have complexity ratios ranging 0.9 to 1.0, as observed for complete genomes \fref{fig:gen_compl}{B}. Boxplot inside shows the distribution of CR of all
-chromosomes.}
+\caption[Sliding window analysis in chromosomes]{{\bf Sliding window analysis in chromosomes.} \\Boxplots show results of sliding window analyses in six selected chromosomes (A-F). Most chromosomes have median CR higher than 0.975 independently of window size. White dot in the 100Kb window size chart of D. melanogaster Chr 2L (E) corresponds to the ``deep spike'' displayed in Figure 4. Scales were selected to enlarged differences in CR.
+}
 \label{fig:box_compl}
 \end{figure}
 
 
-In general, for all chromosomes, the larger the window size, the lower the median CR value.
-This pattern can be explained by existence of repeats, which can only be detected when the
-window size is large enough. In addition, CR dispersion decreases when window size
-increases, a fact that is explained by the substantial DNA combinatorial variation in large
-chromosome windows. This effect is shown in Figure 4 for window sizes of 1Kb and 100 Kb
-in D. melanogaster Chr 2L, with a rugged versus smooth CR profiles. The outstanding
-minimum CR ~ 0.31 was for 100 Kb-window size. This sudden decrement in CR occurred at
-21,400 - 21,550 Mb where the histone cluster with more than 100 genes of the family locates.
-The right picture shows Ensembl annotation for the histone genes cluster. The complexity
-values correspondind to an exhaustive sliding-window scan of chromosomes of fifteen
-different species is available in a DAS server at \myurl{http://bioinfo.cipf.es/das/}
-Complexity in repetitive elements and genes
-Eukaryote genome structure is generally sketched out by the massive presence of non-
-functional repetitive elements (RE-s) spread out all over the genome, and a tiny portion of
-singular functional elements covering the rest. To get insights into the statistical structure of
-these contrasting regions of genomes we computed the complexity ratio of genes and of each
-of the main families of RE's (as DNA-T, LTR, LINE, SINE and satellite). To do this, for
-each family, all units were concatenated in their original order in chromosomes, after
-scanning them with RepeatMasker (see details of RepeatMasker output for individual species
-in Document S1).
-Genes showed, as expected, the highest CR among all classes analyzed, independently of the
-species. When genes were split in their two main components, exons showed even a
-higher CR. Unexpectedly, high values of CR were also obtained in LINE, LTR and DNA-T
-(Table 2). In constrast, SINE and satellites showed the lowest CR. The low complexity ratio
-observed in SINE and satellites is mainly due to their repetitive structure, in the form of
-orderly arranged short sized repetitions. The high CR associated to LINE, LTR and DNA-T
-(DNA-T) is explained by their larger length and their high internal variability in units of the
-families. In mammals DNA-T and LTR elements exhibited higher CR than LINE elements.
-This is not the case for fishes, some invertebrates and plants. In plants, LINE has the highest
-CR after genes (Table 2 and see Figure S1 for comparison among all eukaryote species
-analyzed).
-For each family, we used the complexity ratio to describe the disposition of the elements
-inside a chromosome. CR of linearly arranged elements was compared to the CR of shuffled
-elements. Table 3 shows these values for eight selected chromosomes of different species. CR
-in the linear arrangement was much lower in SINE and satellites than in the rest of the
-classes. This reveals a structure of identical or very similar repeats along neighborchromosome segments. This pattern did not showed up in the other families. The notable
-exception was LTR of the maize chromosome, known to have expanded dramatically in
-recent evolutionary times [32]. All shuffled classes (including SINE and satellites) had a CR
-equal to one, or very close to one. This entails an almost uniform statistical distribution of
-DNA sequences in that class. This result point outs that genomes are plenty of genetic
-variation, even in regions where the expected pattern is the homogeneous repetition of almost
-indistinguishable units of RE's.
-Polyploidy and return to maximum complexity
-Evolution erodes ancient footprints of genome polyploidy and diploidization (the process by
-which a polyploid genome turns into a diploid one) proceeds during time [30]. As shown in
-previous sections, CR of recent polyploids is much lower than in non-polyploid, or in ancient
-polyploid species. Diploidization can be achieved by multiple mechanisms [30], being the
-gradual disintegration of the duplicated genetic material by random mutation. This is the
-simplest form. However, more dramatic mechanisms such as massive deletion, and
-transpositions of genetic material was reported in A. thaliana [33]. We tested the hypothesis
-that the complexity ratio of polyploid genomes increases along the diploidization process.
-Polyploid origin and posterior decay of genetic redundancy was simulated by means of
-mutations and transpositions in random sequences of different lengths and ploidy levels, and
-in Z. mays Chr1 and S. bicolor Chr1 (Figure 5). In all cases, sequences under random
-mutation and transposition reached maximum CR=1 after a number of generations large
-enough. Larger sequences representing genomes or chromosomes increased their CR faster
-than shorter sequences. This is as expected in probability theory since each sigle choice
-(introduced by a random mutation or a transposition) in a large set is more informative than
-in a smaller set, because it makes a selection in a bigger space of possibilities. The dynamics
-of CR increase was identical for the maize and sorghum chromosomes and the simulated
-random sequences (Figure 5A). Figure 5B shows that genomes and chromosomes reached
-maximum CR=1 after many cycles of transpositions. Using a simulated genome with
-tetraploid structure, transposition preserved the relation that chromosome CR is higher than
-genome CR, along all generations up to convergence to maximum CR=1. This feature was
-reported above for maize and sorghum (see discussion on chromosome complexity ratio).
-Once CR reached almost maximum complexity any signal of polyploidy is finally lost, and
-DNA structure is indistinguishable from diploid genomes.
-High complexity and random-like structure of DNA
-Excluding recent polyploids, high CR (almost maximum) was observed in complete genomes
-of organisms sampled in all diversity of life, in their chromosomes and along large enough
-chromosomes segments, and in shuffled arrangements of elements in individual genetic
-classes. We conjecture this is a universal feature of all genomic sequences.
-Polyploids were the only DNA sequences on which we obtained low complexity ratios,
-hence, they are the only DNA sequences with the distinguishing feature low CR:
-Low CR corresponds to a simple combinatorial structure of the sequence. The
-combinatorial structure of a sequence is a description of the observed arrangement of the
-symbols among all possible permutations of the same length. Sequences with many long
-repeats have low CR. Sequences with the minimum CR=0 consist of a single symbol (as
-AAAAAAAAAA) -this is the simplest combinatorial structure- so they are plainly
-compressible. Polyploid genomes of maize and sorghum have CR=0.585, and CR=0.786,
-respectively. Values that were close to the simulated tetraploid genomes (Fig 5B). It is also
-possible to achieve low CR in sequences without any long repeats, but with an orderly
-arrangement of the symbols. Although we have not found this phenomena in natural DNA,
-we constructed de Bruijn sequences (these are the mathematically defined sequences with
-perfect equifrequency of subsequences: every possible sequence of logarithmic length
-appears exactly once as a sequence of consecutive symbols) [34,35] with low CR. The
-regularity in the combinatorial structure of these particular de Bruijn sequences is captured by
-the MTF algorithm. See Appendix I for examples on short sequences.
-High complexity ratio implies the following properties on the combinatorial structure of DNA
-sequences:
-High CR corresponds to high diversity and balanced abundance of short repeats.
-Maximum CR=1 is reached by sequences a sequence of length n if it contains full diversity of
-length k, for k ! log4 n, and each these short sequences occur about n*4-k times. As CR
-decreases, diversity and balanced abundance deteriorates. In particular, maximum CR is holds
-for some de Bruijn sequences [34,35]. Also maximum CR=1 occurs in randomly generated
-sequences with uniform distribution of A, C, G, T. For genomic sequences Liu et al. [16]
-reported that more than 98\% of 12 bp oligomers appear in vertebrate genomes while less than
-2\% of 19 bp oligomers are present. For the human genome we computed all maximal exact
-repeats over 30 bp, and counted their diversity and quantity [36]. We observed that the largest
-correlations in the human genome are intrachromosomal, the actual largest exact repeat is
-67,632bp long and it occurs just twice inside Chr 1, while the largest interchromosomal
-perfect correlation is 21,865 bp occurring just once Chr 1 and once in Chr 5.
-High CR corresponds to random-like sequences. Intuitively, a non random sequence will
-exhibit some significant regularity that can be used to compress the sequence. The
-mathematical underpinning relies on the theory of pure randomness [37,38], which states that
-an infinite sequence is random when its initial segments are incompressible. Up to some
-deviations, for finite sequences and particular compression methods, the identification
-between statistical randomness and incompressibility holds. The complexity ratio (CR)
-expresses incompressibility by the BWT-MTF scheme and further encoding as determined by
-Shannon's entropy. High complexity ratios correspond to highly incompressible sequences,
-which are sequences with a random-like structure. As in statistical randomness, the number of
-sequences with high CR grows exponentially with the sequence length. Thus, each genome is
-a singular instance out of the extraordinary many combinatorial variants of the same length
-with the same high complexity rate. A lower bound of the number of sequences with high CR
-(CR `` 1 - !, for any real value ! between 0 and 1) is proved Appendix II.
+In general, for all chromosomes, the larger the window size, the lower the median CR value. This pattern can be explained by existence of repeats, which can only be detected when the window size is large enough. In addition, CR dispersion decreases when window size increases, a fact that is explained by the substantial DNA combinatorial variation in large chromosome windows. This effect is shown in Figure 4 for window sizes of 1Kb and 100 Kb in \textit{D. melanogaster} Chr 2L, with a rugged versus smooth CR profiles. The outstanding
+minimum CR ~ 0.31 was for 100 Kb-window size. This sudden decrement in CR occurred at 21,400 - 21,550 Mb where the histone cluster with more than 100 genes of the family locates.
+
+The right picture shows Ensembl annotation for the histone genes cluster. The complexity values correspondind to an exhaustive sliding-window scan of chromosomes of fifteen different species is available in a DAS server at \myurl{http://bioinfo.cipf.es/das/} Complexity in repetitive elements and genes
+Eukaryote genome structure is generally sketched out by the massive presence of non-functional repetitive elements (RE-s) spread out all over the genome, and a tiny portion of singular functional elements covering the rest. To get insights into the statistical structure of these contrasting regions of genomes we computed the complexity ratio of genes and of each of the main families of RE's (as DNA-T, LTR, LINE, SINE and satellite). To do this, for each family, all units were concatenated in their original order in chromosomes, after
+scanning them with RepeatMasker (see details of RepeatMasker output for individual species in Document S1).
+
+Genes showed, as expected, the highest CR among all classes analyzed, independently of the species. When genes were split in their two main components, exons showed even a higher CR. Unexpectedly, high values of CR were also obtained in LINE, LTR and DNA-T (Table 2). In constrast, SINE and satellites showed the lowest CR. The low complexity ratio observed in SINE and satellites is mainly due to their repetitive structure, in the form of
+orderly arranged short sized repetitions. The high CR associated to LINE, LTR and DNA-T (DNA-T) is explained by their larger length and their high internal variability in units of the families. In mammals DNA-T and LTR elements exhibited higher CR than LINE elements. This is not the case for fishes, some invertebrates and plants. In plants, LINE has the highest CR after genes (Table 2 and see Figure S1 for comparison among all eukaryote species analyzed).
+For each family, we used the complexity ratio to describe the disposition of the elements inside a chromosome. CR of linearly arranged elements was compared to the CR of shuffled elements. Table 3 shows these values for eight selected chromosomes of different species. CR in the linear arrangement was much lower in SINE and satellites than in the rest of the classes. This reveals a structure of identical or very similar repeats along neighbor chromosome segments. This pattern did not showed up in the other families. The notable exception was LTR of the maize chromosome, known to have expanded dramatically in recent evolutionary times \cite{Blanc2004}. All shuffled classes (including SINE and satellites) had a CR equal to one, or very close to one. This entails an almost uniform statistical distribution of DNA sequences in that class. This result point outs that genomes are plenty of genetic variation, even in regions where the expected pattern is the homogeneous repetition of almost indistinguishable units of RE's.
+
+Polyploidy and return to maximum complexity Evolution erodes ancient footprints of genome polyploidy and diploidization (the process by which a polyploid genome turns into a diploid one) proceeds during time \cite{Wolfe2001}. As shown in previous sections, CR of recent polyploids is much lower than in non-polyploid, or in ancient polyploid species. Diploidization can be achieved by multiple mechanisms \cite{Wolfe2001}, being the gradual disintegration of the duplicated genetic material by random mutation. This is the simplest form. However, more dramatic mechanisms such as massive deletion, and transpositions of genetic material was reported in \textit{A. thaliana} \cite{Hu2011}. We tested the hypothesis that the complexity ratio of polyploid genomes increases along the diploidization process.
+
+Polyploid origin and posterior decay of genetic redundancy was simulated by means of mutations and transpositions in random sequences of different lengths and ploidy levels, and in \textit{Z. mays} Chr1 and \textit{S. bicolor} Chr1 (Figure 5). In all cases, sequences under random mutation and transposition reached maximum CR=1 after a number of generations large enough. Larger sequences representing genomes or chromosomes increased their CR faster than shorter sequences. This is as expected in probability theory since each sigle choice (introduced by a random mutation or a transposition) in a large set is more informative than in a smaller set, because it makes a selection in a bigger space of possibilities. The dynamics of CR increase was identical for the maize and sorghum chromosomes and the simulated random sequences (Figure 5A). Figure 5B shows that genomes and chromosomes reached maximum CR=1 after many cycles of transpositions. Using a simulated genome with tetraploid structure, transposition preserved the relation that chromosome CR is higher than genome CR, along all generations up to convergence to maximum CR=1. This feature was reported above for maize and sorghum (see discussion on chromosome complexity ratio).
+
+Once CR reached almost maximum complexity any signal of polyploidy is finally lost, and DNA structure is indistinguishable from diploid genomes. High complexity and random-like structure of DNA Excluding recent polyploids, high CR (almost maximum) was observed in complete genomes of organisms sampled in all diversity of life, in their chromosomes and along large enough chromosomes segments, and in shuffled arrangements of elements in individual genetic classes. We conjecture this is a universal feature of all genomic sequences. Polyploids were the only DNA sequences on which we obtained low complexity ratios, hence, they are the only DNA sequences with the distinguishing feature low CR: Low CR corresponds to a simple combinatorial structure of the sequence. 
+
+The combinatorial structure of a sequence is a description of the observed arrangement of the symbols among all possible permutations of the same length. Sequences with many long repeats have low CR. Sequences with the minimum CR=0 consist of a single symbol (as $AAAAAAAAAA$) -this is the simplest combinatorial structure- so they are plainly compressible. Polyploid genomes of maize and sorghum have CR=0.585, and CR=0.786, respectively. Values that were close to the simulated tetraploid genomes (Fig 5B). It is also possible to achieve low CR in sequences without any long repeats, but with an orderly arrangement of the symbols. Although we have not found this phenomena in natural DNA, we constructed de Bruijn sequences (these are the mathematically defined sequences with perfect equifrequency of subsequences: every possible sequence of logarithmic length appears exactly once as a sequence of consecutive symbols) \cite{DeBruijn1946,Becher2011} with low CR. The regularity in the combinatorial structure of these particular de Bruijn sequences is captured by the MTF algorithm. See Appendix I for examples on short sequences. High complexity ratio implies the following properties on the combinatorial structure of DNA sequences: High CR corresponds to high diversity and balanced abundance of short repeats. Maximum CR=1 is reached by sequences a sequence of length n if it contains full diversity of length k, for k ! log4 n, and each these short sequences occur about n*4-k times. As CR decreases, diversity and balanced abundance deteriorates. In particular, maximum CR is holds for some de Bruijn sequences \cite{DeBruijn1946,Becher2011}. Also maximum CR=1 occurs in randomly generated sequences with uniform distribution of A, C, G, T. For genomic sequences \cite{Liu2008} reported that more than 98\% of 12 bp oligomers appear in vertebrate genomes while less than 2\% of 19 bp oligomers are present. For the human genome we computed all maximal exact repeats over 30 bp, and counted their diversity and quantity \cite{Nies2009}. We observed that the largest correlations in the human genome are intrachromosomal, the actual largest exact repeat is 67,632bp long and it occurs just twice inside Chr 1, while the largest inter-chromosomal perfect correlation is 21,865 bp occurring just once Chr 1 and once in Chr 5.
+
+High CR corresponds to random-like sequences. Intuitively, a non random sequence will exhibit some significant regularity that can be used to compress the sequence. The mathematical underpinning relies on the theory of pure randomness \cite{Chaitin1975,Nies2009}, which states that an infinite sequence is random when its initial segments are incompressible. Up to some deviations, for finite sequences and particular compression methods, the identification between statistical randomness and incompressibility holds. The complexity ratio (CR) expresses incompressibility by the BWT-MTF scheme and further encoding as determined by Shannon's entropy. High complexity ratios correspond to highly incompressible sequences, which are sequences with a random-like structure. As in statistical randomness, the number of sequences with high CR grows exponentially with the sequence length. Thus, each genome is a singular instance out of the extraordinary many combinatorial variants of the same length with the same high complexity rate. A lower bound of the number of sequences with high CR (CR `` 1 - !, for any real value ! between 0 and 1) is proved Appendix II.
 
 
 \section{Material and methods}
