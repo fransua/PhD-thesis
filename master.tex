@@ -30,10 +30,14 @@
 \usepackage[small, bf]{caption}
 \setcapindent{10pt}
 
+\usepackage[final]{pdfpages}
+
 %% SPECIAL FUNCTIONS
 \newcommand{\myurl}[1] {{\scriptsize \url{#1}}}
-\newcommand{\tref}[1] {\hyperref[#1]{Table \ref*{#1} on page \pageref*{#1}}}
-\newcommand{\fref}[1] {\hyperref[#1]{Figure \ref*{#1} on page \pageref*{#1}}}
+\newcommand{\tref}[1] {\hyperref[#1]{Table \ref*{#1}}}
+\newcommand{\fref}[2] {\hyperref[#1]{Figure \ref*{#1}#2}}
+%\newcommand{\tref}[1] {\hyperref[#1]{Table \ref*{#1} on page \pageref*{#1}}}
+%\newcommand{\fref}[2] {\hyperref[#1]{Figure \ref*{#1}#2 on page \pageref*{#1}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%   Thesis starts here  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -71,6 +75,9 @@
 
 \listoffigures
 \listoftables
+
+\input{tex_source/Appendix/appendix}
+
 
 \end{document}
 
