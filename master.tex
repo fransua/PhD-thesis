@@ -1,62 +1,48 @@
-%%% Local Variables:
-%%% TeX-master: t
-%%% End:
+%%% master.tex --- 
 
 %%%%%%%%%   Style  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[spanish,a4paper,11pt, openany]{scrbook}
-% \documentclass[spanish,a4paper,11pt, openany]{afthesis}
-% \documentclass[spanish]{hepthesis}
-% \documentclass[spanish]{muthesis}
-% \documentclass[spanish]{usthesis}
-
 
 % for images
 \usepackage{graphicx} 
- % Less detailed TOC
-\setcounter{tocdepth}{3}   
+% Less detailed TOC
+\setcounter{tocdepth}{2}
 % for all characters
 \usepackage[latin1]{inputenc}
-
 %inline enumeration
 \usepackage{paralist}
-
 % to get rid of Underfull \hbox (badness ...) Error message
 \usepackage{etoolbox}
 %\apptocmd{\thebibliography}{\raggedright}{}{} % this also works but not perfet squared
 \apptocmd{\thebibliography}{\hbadness 3503\relax}{}{}
-
 % link outs in PDF
 \usepackage{cite} % allows line breaking inside citations
+% for url href...
 \usepackage{hyperref}
-
 % table color
 \usepackage[table]{xcolor}
 \rowcolors{1}{white}{lightgray}
-
 % list of abbreviations
 \usepackage{nomencl}
 \makenomenclature
+% make caption font tinier
+\usepackage[small, bf]{caption}
+\setcapindent{10pt}
 
-%% Aesthetic spacing redefines that look nicer to me than the defaults.
-% \setlength{\cftbeforepartskip}{1.5ex}
-% \setlength{\cftbeforechapskip}{2.5ex}
-% \setlength{\cftbeforesecskip}{0.5ex}
+\usepackage[final]{pdfpages}
 
-% German style of paragraph formatting, i.e. no indents.
-% \setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
-% \setlength{\parindent}{0pt}
-
-
-% some layout    
-%\usepackage{geometry}
-%\geometry{tmargin=2.2cm,bmargin=2.4cm}
-
+%% SPECIAL FUNCTIONS
+\newcommand{\myurl}[1] {{\scriptsize \url{#1}}}
+\newcommand{\tref}[1] {\hyperref[#1]{Table \ref*{#1}}}
+\newcommand{\fref}[2] {\hyperref[#1]{Figure \ref*{#1}#2}}
+%\newcommand{\tref}[1] {\hyperref[#1]{Table \ref*{#1} on page \pageref*{#1}}}
+%\newcommand{\fref}[2] {\hyperref[#1]{Figure \ref*{#1}#2 on page \pageref*{#1}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%   Thesis starts here  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+ 
 \begin{document}
 
 \author{François Serra}
@@ -73,12 +59,7 @@
 \tableofcontents
 
 \newpage{}
-
-\printnomenclature[3pt]
-\nomenclature{CR}{Complexity Ratio}
-\nomenclature{CV}{Complexity Value}
-\nomenclature{BWT}{Burros-Wheeler transform}
-\nomenclature{MTF}{Move To Front}
+\include{tex_source/nomenclature}
 \newpage{}
 
 \include{tex_source/main}
@@ -88,6 +69,36 @@
 \clearpage
 \pagenumbering{Roman}
 \bibliographystyle{biblio/fransua} % serra et al 2011
+\bibliography{biblio/bibliography}
+
+%%%%%%%%%   Figs & Tables  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\listoffigures
+\listoftables
+
+\input{tex_source/Appendix/appendix}
+
+
+\end{document}
+
+
+% \documentclass[spanish,a4paper,11pt, openany]{afthesis}
+% \documentclass[spanish]{hepthesis}
+% \documentclass[spanish]{muthesis}
+% \documentclass[spanish]{usthesis}
+
+%% Aesthetic spacing redefines that look nicer to me than the defaults.
+% \setlength{\cftbeforepartskip}{1.5ex}
+% \setlength{\cftbeforechapskip}{2.5ex}
+% \setlength{\cftbeforesecskip}{0.5ex}
+% German style of paragraph formatting, i.e. no indents.
+% \setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
+% \setlength{\parindent}{0pt}
+% some layout    
+%\usepackage{geometry}
+%\geometry{tmargin=2.2cm,bmargin=2.4cm}
+
+
 %\bibliographystyle{cc} % serra et al 2011
 %  [Serra et al.2011] Francois Serra, Leonardo Arbiza, Joaqu´ Dopazo, and Hernan
 %  Dopazo, Natural selection on functional modules, a genome-wide analysis. PLoS computa-
@@ -104,18 +115,16 @@
 %  putational biology, 7(3):e1001093, Natural selection on functional modules,
 %  a genome-wide analysis. ISSN 1553-7358. doi:10.1371/journal.pcbi.1001093
 
-
 % \bibliographystyle{achicago}
 %  [Serra et al.2011] Serra, Fran¸ois, Leonardo Arbiza, Joaqu´ Dopazo, and Hern´n
 %  Dopazo. 2011. Natural selection on functional modules, a genome-wide analysis.
 %  PLoS computational biology 7 (3): e1001093 (March).
 
-\bibliography{biblio/bibliography}
 
-%%%%%%%%%   Figs & Tables  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\listoffigures
-\listoftables
 
-\end{document}
 
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
