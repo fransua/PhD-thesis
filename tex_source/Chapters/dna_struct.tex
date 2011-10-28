@@ -4,7 +4,19 @@
 \section{Introduction}
 \label{sec:dna_struct-intro}
 
-From a biological perspective it seems obvious that DNA is something else than random mix of A, T, G or C nucleotides. Genomes are composed of functional elements as can be genes or promoters but also repetitive elements that by definition can not be random when taken together. However to what extent can we state that genomes are not a random soup of 4 letters? 
+From a biological perspective it seems obvious that DNA is something else than random mix of A, T, G and C nucleotides. Genomes are composed of functional elements as can be protein-coding genes, or promoters but also by non-functional elements like repetitive elements that by definition can not be random when taken together. However to what extent can we state that genomes are not a random soup of 4 letters? From the first analysis of the human genome \cite{Lander2001} we have some idea of the proportion of each of the \textit{families} of elements \fref{fig:prop_rep}{}. Intuitively we could assume that the structure of DNA is different in those families of genomic elements (GE). The sequence of a protein-coding gene would represent a specific selection of nucleotides with surely the highest informational content, while introns would tend more to random assembly and finally we can easily imagine that simple repeats present some biases towards 2 or 3 nucleotides (e.g.: CpG islands).
+
+\begin{figure}[htpb] 
+\centering 
+\includegraphics[trim=0cm 3cm 0cm 3cm, width=\textwidth]{tex_source/figures/dna_struct/prop_rep.pdf}
+\caption[Genomic components of human genome]{{\bf Genomic components of human genome.}\\
+Proportion of the major families of different genomic elements (GE) in the human genome according to \cite{Lander2001}}
+\label{fig:prop_rep}
+\end{figure}
+
+
+
+\cite{Gregory2005}
 
 This question could be solved in some sense by measuring genomes entropy. This measure presents the disadvantage that extreme cases of high entropy could correspond to \begin{inparaenum}[\itshape a\upshape)] \item {\bf a specially high content of information}, entropy-based algorithms are actually used to predict or confirm automatic detection of genes \cite{Du2006,Gerstein2007}, \item {\bf an exact random structure}, some work in the sense of testing the random structure of DNA have been done using entropy \cite{Loewenstern1999}. \end{inparaenum} However this characteristic of entropy could be only a semantic problem if we use it as a measure of relative variation in DNA complexity in genomes, and try to discern statistical patterns in the DNA sequences of different genomic element such as interspersed repeats or functional element (like protein-coding genes). This kind of description of DNA sequence complexity was already done by \cite{Holste2001}, but only in human chromosome 22.
 
@@ -41,7 +53,7 @@ Complexity value (CV) of complete genomes of 54 species of twelve major systemat
   \multicolumn{1}{l}{\textbf{Dmax}} \\ \hline
 RNA & Hepatitis B & NC3977.1 & Virus & 1,682 & 1,671 & 1 & 0 \\
 SGS-RNA & Hepatitis D & D01075.1 & Virus & 3,215 & 3,210 & 0.9984 & 0.0016 \\
-SSD & Tomato mosaic & NC010836 NC10835.1 & Virus & 5,058 & 5,040 & 0.9964 & 0.0036 \\
+SSD & Tomato mosaic & NC010836 \& NC10835.1 & Virus & 5,058 & 5,040 & 0.9964 & 0.0036 \\
 SSD & Enterobacteria phage m13 & V00604 & Phage & 6,407 & 6,367 & 0.9938 & 0.0062 \\
 RNA & HIV 1 & NC001802 & Virus & 9,181 & 9,105 & 0.9917 & 0.0083 \\
 RNA & Sudan ebolavirus & NC006432 & Virus & 18,875 & 18,842 & 0.9983 & 0.0017 \\
@@ -59,7 +71,7 @@ EE & Sulfolobus islandicus & CP001731.1 & Archaea & 2,722,004 & 2,692,455 & 0.98
  & Escherichia coli & CP001396.1 & Bacteria & 4,578,159 & 4,551,258 & 0.9941 & 0.0059 \\
 LBG & Burkholderia xenovorans & NC007951-3 & Bacteria & 9,731,138 & 9,593,486 & 0.9859 & 0.0141 \\
 AP & Saccharomyces cerevisiae & {\it E!} Fungi 3 & Fungi & 12,070,898 & 11,974,342 & 0.992 & 0.008 \\
-UE & Plasmodium falciparum & {\it E!} Protists 9 & Ampicomplexa & 23,263,332 & 21,070,640 & 0.9057 & 0.0943 \\
+UE & Plasmodium falciparum & {\it E!} Protists 9 & Apicomplexa & 23,263,332 & 21,070,640 & 0.9057 & 0.0943 \\
 UE & Phaeodactylum tricornutum & {\it E!} Protists 9 & Heterokonta & 25,805,651 & 25,667,448 & 0.9946 & 0.0054 \\
 UE & Dictyostelium discoideum & {\it E!} Protists 9 & Amebozoa & 31,199,234 & 31,023,020 & 0.9944 & 0.0056 \\
 UE & Thalassiosira pseudonana & {\it E!} Protists 9 & Heterokonta & 33,919,934 & 30,877,496 & 0.9103 & 0.0897 \\
@@ -97,17 +109,7 @@ LGS & Monodelphis domestica & {\it E!} 62 & Mammals & 3,412,593,369 & 3,402,944,
   \end{tabular}
 }
 \caption[Genomes Complexity.]%
-{{\bf Genomes Complexity.} \\Genomes size (GS), genomes complexity
-  (GC), genome complexity ratio ($GCR=\frac{GC}{GS}$), and deviation
-from the maximum GCR (Dmax=1-GCV) for 54 species of different
-taxa. NCBI accession number or Ensembl ({\it E!}) version
-(ACN-EV). {\bf \em Features}: {\bf AP}: Ancient Polyploid; {\bf DSD}: Double-Strand
-DNA; {\bf EE}: Extreme Environment; {\bf GE}: Gene Expansion; {\bf IP}: Intracellular
-Parasite; {\bf LBG}: Largest Bacterial Genome; {\bf LGS}: Largest Genome
-Sequenced; {\bf RG}: Reduced Genome; {\bf RNA}: RNA Virus; {\bf RP}: Recent Polyploid;
-{\bf SBG}: Shortest Bacterial Genome; {\bf SGS}: Shortest Genome Sequenced; {\bf SL}:
-Synthetic Life; {\bf SSD}: Single-Strand DNA; {\bf UE}: Unicellular
-Eukaryote. {\bf \em Notes}: -1-: \myurl{http://www.hgsc.bcm.tmc.edu/ftp-archive/Tcastaneum/Tcas3.0/}
+{{\bf Genomes Complexity.} \\Genomes size (GS), genomes complexity (GC), genome complexity ratio ($GCR=\frac{GC}{GS}$), and deviation from the maximum GCR (Dmax=1-GCV) for 54 species of different taxa. NCBI accession number or Ensembl ({\it E!}) version (ACN-EV). {\bf \em Features}: {\bf AP}: Ancient Polyploid; {\bf DSD}: Double-Strand DNA; {\bf EE}: Extreme Environment; {\bf GE}: Gene Expansion; {\bf IP}: Intracellular Parasite; {\bf LBG}: Largest Bacterial Genome; {\bf LGS}: Largest Genome Sequenced; {\bf RG}: Reduced Genome; {\bf RNA}: RNA Virus; {\bf RP}: Recent Polyploid; {\bf SBG}: Shortest Bacterial Genome; {\bf SGS}: Shortest Genome Sequenced; {\bf SL}: Synthetic Life; {\bf SSD}: Single-Strand DNA; {\bf UE}: Unicellular Eukaryote. {\bf \em Notes}: -1-: \myurl{http://www.hgsc.bcm.tmc.edu/ftp-archive/Tcastaneum/Tcas3.0/}
 }
 \label{tab:genome}
 \end{table}
@@ -141,7 +143,7 @@ Work length (L), complexity (C), complexity ratio (CR), and deviations from the 
 \label{tab:book_compl}
 \end{table}
 
-Complexity ratios of complete genomes, random sequences of different ploidy and human language texts are displayed in \fref{fig:gen_compl}{-B}. Maximum CR corresponds to random sequence of lengths ranging from 5 Kb to 2.5 Gb (a, b, c, d and e). Non-polyploid genomes showed CR $>$ 0.90. Within polyploids the lowest ratio corresponds to \textit{Z. mays} with CR=0.58, and the next to the lowest ratio, its closest relative \textit{S. bicolor} with CR=0.78. Overall strings analyzed, the lowest CR was obtained in human language texts. CR of 11 human texts of different sizes and languages, from short scientific abstract to the complete works of William Shakespeare, are also depicted \fref{fig:gen_compl}{-B} and \fref{fig:lang_compl}{}. CR diminishes as texts size increases, due to the limited lexicon and the fixed language grammar. Complexity reached the lowest ratio in Darwin's Origin of Species (~ 0.309), which is comparable to the CR of a random polyploid sequence of ~ 7$\times$. Observe that text sizes are contained in the range of phages, virus and bacteria genome sizes. Details of complexities of human writings are in shown \ref{tab:book_compl}.
+Complexity ratios of complete genomes, random sequences of different ploidy and human language texts are displayed in \fref{fig:gen_compl}{-B}. Maximum CR corresponds to random sequence of lengths ranging from 5 Kb to 2.5 Gb (a, b, c, d and e). Non-polyploid genomes showed CR $>$ 0.90. Within polyploids the lowest ratio corresponds to \textit{Z. mays} with CR=0.58, and the next to the lowest ratio, its closest relative \textit{S. bicolor} with CR=0.78. Overall strings analyzed, the lowest CR was obtained in human language texts. CR of 11 human texts of different sizes and languages, from short scientific abstract to the complete works of William Shakespeare, are also depicted \fref{fig:gen_compl}{-B} and \fref{fig:lang_compl}{}. CR diminishes as texts size increases, due to the limited lexicon and the fixed language grammar. Complexity reached the lowest ratio in Darwin's Origin of Species (~ 0.309), which is comparable to the CR of a random polyploid sequence of ~ 7$\times$. Observe that text sizes are contained in the range of phages, virus and bacteria genome sizes. Details of complexities of human writings are in shown \tref{tab:book_compl}.
 
 \begin{figure}[htpb] 
 \centering
@@ -177,22 +179,97 @@ Chromosomes were split in overlapping windows of various sizes (from 1 Kb to 100
 \begin{figure}[htpb] 
 \centering 
 \includegraphics[width=\textwidth]{tex_source/figures/dna_struct/box_complexity_windows.png}
-\caption[Sliding window analysis in chromosomes]{{\bf Sliding window analysis in chromosomes.} \\Boxplots show results of sliding window analyses in six selected chromosomes (A-F). Most chromosomes have median CR higher than 0.975 independently of window size. White dot in the 100Kb window size chart of D. melanogaster Chr 2L (E) corresponds to the ``deep spike'' displayed in Figure 4. Scales were selected to enlarged differences in CR.
+\caption[Sliding window analysis in chromosomes]{{\bf Sliding window analysis in chromosomes.} \\Boxplots show results of sliding window analyses in six selected chromosomes (A-F). Most chromosomes have median CR higher than 0.975 independently of window size. White dot in the 100Kb window size chart of D. melanogaster Chr 2L (E) corresponds to the ``deep spike'' displayed in \fref{fig:win_2L}{}. Scales were selected to enlarged differences in CR.
 }
 \label{fig:box_compl}
 \end{figure}
 
 
-In general, for all chromosomes, the larger the window size, the lower the median CR value. This pattern can be explained by existence of repeats, which can only be detected when the window size is large enough. In addition, CR dispersion decreases when window size increases, a fact that is explained by the substantial DNA combinatorial variation in large chromosome windows. This effect is shown in Figure 4 for window sizes of 1Kb and 100 Kb in \textit{D. melanogaster} Chr 2L, with a rugged versus smooth CR profiles. The outstanding
+In general, for all chromosomes, the larger the window size, the lower the median CR value. This pattern can be explained by existence of repeats, which can only be detected when the window size is large enough. In addition, CR dispersion decreases when window size increases, a fact that is explained by the substantial DNA combinatorial variation in large chromosome windows. This effect is shown in \fref{fig:win_2L}{} for window sizes of 1Kb and 100 Kb in \textit{D. melanogaster} Chr 2L, with a rugged versus smooth CR profiles. The outstanding
 minimum CR ~ 0.31 was for 100 Kb-window size. This sudden decrement in CR occurred at 21,400 - 21,550 Mb where the histone cluster with more than 100 genes of the family locates.
+
+\begin{figure}[htpb] 
+\centering 
+\includegraphics[width=\textwidth]{tex_source/figures/dna_struct/windows_2L.png}
+\caption[Sliding window in a full chromosome]{{\bf Sliding window in a full chromosome.} \\Complexity ratio along \textit{D. melanogaster} chromosome 2L is displayed at two window size scales. Ensembl annotation of the histone genes cluster is shown in the left box. See associated DAS server displaying CR along chromosomes for 15 eukaryote species.
+}
+\label{fig:win_2L}
+\end{figure}
+
 
 The right picture shows Ensembl annotation for the histone genes cluster. The complexity values correspondind to an exhaustive sliding-window scan of chromosomes of fifteen different species is available in a DAS server at \myurl{http://bioinfo.cipf.es/das/} Complexity in repetitive elements and genes
 Eukaryote genome structure is generally sketched out by the massive presence of non-functional repetitive elements (RE-s) spread out all over the genome, and a tiny portion of singular functional elements covering the rest. To get insights into the statistical structure of these contrasting regions of genomes we computed the complexity ratio of genes and of each of the main families of RE's (as DNA-T, LTR, LINE, SINE and satellite). To do this, for each family, all units were concatenated in their original order in chromosomes, after
 scanning them with RepeatMasker (see details of RepeatMasker output for individual species in Document S1).
 
-Genes showed, as expected, the highest CR among all classes analyzed, independently of the species. When genes were split in their two main components, exons showed even a higher CR. Unexpectedly, high values of CR were also obtained in LINE, LTR and DNA-T (Table 2). In constrast, SINE and satellites showed the lowest CR. The low complexity ratio observed in SINE and satellites is mainly due to their repetitive structure, in the form of
-orderly arranged short sized repetitions. The high CR associated to LINE, LTR and DNA-T (DNA-T) is explained by their larger length and their high internal variability in units of the families. In mammals DNA-T and LTR elements exhibited higher CR than LINE elements. This is not the case for fishes, some invertebrates and plants. In plants, LINE has the highest CR after genes (Table 2 and see Figure S1 for comparison among all eukaryote species analyzed).
-For each family, we used the complexity ratio to describe the disposition of the elements inside a chromosome. CR of linearly arranged elements was compared to the CR of shuffled elements. Table 3 shows these values for eight selected chromosomes of different species. CR in the linear arrangement was much lower in SINE and satellites than in the rest of the classes. This reveals a structure of identical or very similar repeats along neighbor chromosome segments. This pattern did not showed up in the other families. The notable exception was LTR of the maize chromosome, known to have expanded dramatically in recent evolutionary times \cite{Blanc2004}. All shuffled classes (including SINE and satellites) had a CR equal to one, or very close to one. This entails an almost uniform statistical distribution of DNA sequences in that class. This result point outs that genomes are plenty of genetic variation, even in regions where the expected pattern is the homogeneous repetition of almost indistinguishable units of RE's.
+Genes showed, as expected, the highest CR among all classes analyzed, independently of the species. When genes were split in their two main components, exons showed even a higher CR. Unexpectedly, high values of CR were also obtained in LINE, LTR and DNA-T (~\tref{tab:rep_compl}). In constrast, SINE and satellites showed the lowest CR. The low complexity ratio observed in SINE and satellites is mainly due to their repetitive structure, in the form of
+orderly arranged short sized repetitions. The high CR associated to LINE, LTR and DNA-T (DNA-T) is explained by their larger length and their high internal variability in units of the families. In mammals DNA-T and LTR elements exhibited higher CR than LINE elements. This is not the case for fishes, some invertebrates and plants. In plants, LINE has the highest CR after genes (~\tref{tab:rep_compl} and see \fref{fig:lang_compl}{} for comparison among all eukaryote species analyzed).
+
+\begin{table}[htbp]
+\caption[Mean complexity ratio of some genome components]{Mean complexity ratio of some genome components in different species.}
+\resizebox{418pt}{!}{%
+  \begin{tabular}{ l r r r r r r r r }
+  \hline
+  \multicolumn{1}{l}{\textbf{Species}} & \multicolumn{1}{l}{\textbf{Satellite}} & \multicolumn{1}{l}{\textbf{SINE}} & \multicolumn{1}{l}{\textbf{LINE}} & \multicolumn{1}{l}{\textbf{LTR}} & \multicolumn{1}{l}{\textbf{DNA-T}} & \multicolumn{1}{l}{\textbf{Genes}} & \multicolumn{1}{l}{\textbf{Introns}} & \multicolumn{1}{l}{\textbf{Exons}} \\ \hline
+  {\it H. sapiens} & 0.485 & 0.437 & 0.881 & 0.922 & 0.962 & 0.953 & 0.952 & 0.985 \\ 
+  {\it P. troglodytes} & 0.491 & 0.442 & 0.885 & 0.926 & 0.962 & 0.967 & 0.965 & 0.993 \\ 
+  {\it R. norvegicus} & 0.539 & 0.586 & 0.668 & 0.912 & 0.975 & 0.977 & 0.976 & 0.992 \\ 
+  {\it M. musculus} & 0.595 & 0.576 & 0.74 & 0.875 & 0.973 & 0.973 & 0.97 & 0.991 \\ 
+  {\it C. familiaris} & 0.6 & 0.487 & 0.911 & 0.974 & 0.982 & 0.982 & 0.98 & 0.993 \\ 
+  {\it T. nigroviridis} & --- & 0.585 & 0.903 & --- & --- & 0.994 & 0.993 & 0.993 \\ 
+  {\it D. rerio} & 0.628 & 0.43 & 0.796 & 0.791 & 0.824 & 0.942 & 0.936 & 0.988 \\ 
+  {\it C. intestinalis} & 0.644 & 0.537 & 0.836 & 0.937 & 0.801 & 0.968 & 0.957 & 0.994 \\ 
+  {\it C. elegans} & 0.52 & 0.401 & 0.93 & 0.94 & 0.827 & 0.978 & 0.957 & 0.99 \\ 
+  {\it A. gambiae} & 0.232 & 0.438 & 0.805 & 0.902 & 0.771 & 0.992 & 0.992 & 0.9 \\ 
+  {\it D. melanogaster} & 0.548 & --- & 0.81 & 0.744 & 0.81 & 0.985 & 0.982 & 0.99 \\ 
+  {\it Z. mays} & 0.337 & 0.531 & 0.906 & 0.495 & 0.7223 & 0.962 & 0.956 & 0.975 \\ 
+  {\it S. bicolor} & 0.345 & 0.619 & 0.966 & 0.602 & 0.757 & 0.99 & 0.991 & 0.988 \\ 
+  {\it A. thaliana} & 0.467 & 0.675 & 0.971 & 0.84 & 0.896 & 0.989 & 0.986 & 0.988 \\ 
+  {\it A. lyrata} & 0.417 & 0.457 & 0.928 & 0.772 & 0.826 & 0.994 & 0.988 & 0.996 \\ \hline
+  \end{tabular}
+}
+\label{tab:rep_compl}
+\end{table}
+
+
+For each family, we used the complexity ratio to describe the disposition of the elements inside a chromosome. CR of linearly arranged elements was compared to the CR of shuffled elements. \tref{tab:compl_rep} shows these values for eight selected chromosomes of different species. CR in the linear arrangement was much lower in SINE and satellites than in the rest of the classes. This reveals a structure of identical or very similar repeats along neighbor chromosome segments. This pattern did not showed up in the other families. The notable exception was LTR of the maize chromosome, known to have expanded dramatically in recent evolutionary times \cite{Blanc2004}. All shuffled classes (including SINE and satellites) had a CR equal to one, or very close to one. This entails an almost uniform statistical distribution of DNA sequences in that class. This result point outs that genomes are plenty of genetic variation, even in regions where the expected pattern is the homogeneous repetition of almost indistinguishable units of RE's.
+
+\rowcolors{1}{white}{white}
+\begin{table}[htbp]
+\caption[Complexity ratio of genome classes concatenated and shuffled]{Size and complexity ratio of different genome classes concatenated (CON), and shuffled (SHU) for selected chromosomes. Size in Mb.}
+\resizebox{418pt}{!}{%
+  \begin{tabular}{ l l r r r r r r r r }
+  \hline
+   &  & \multicolumn{ 2}{c}{\textbf{\em A. thaliana}} & \multicolumn{ 2}{c}{\textbf{\em C. elegans}} & \multicolumn{ 2}{c}{\textbf{\em H. sapiens}} & \multicolumn{ 2}{c}{\textbf{\em Z. mays}} \\ \hline
+   &  & Chr 1 & Chr 5 & Chr 1 & Chr 2 & Chr 1 & Chr 21 & Chr 1 & Chr 10 \\ \hline
+  \multicolumn{ 1}{c}{} & SIZE & 0.476 & 0.147 & 0.159 & 0.149 & 0.172 & 0.118 & 0.48 & 0.288 \\ 
+  \multicolumn{ 1}{c}{Satellite} & CON & 0.223 & 0.299 & 0.489 & 0.547 & 0.519 & 0.567 & 0.325 & 0.309 \\ 
+  \multicolumn{ 1}{l}{} & SHU & 0.889 & 0.968 & 0.962 & 0.975 & 0.972 & 0.987 & 0.961 & 0.948 \\ \hline
+  \multicolumn{ 1}{c}{} & SIZE & 0.023 & 0.023 & 0.009 & 0.007 & 35.782 & 3.979 & 0.051 & 0.023 \\ 
+  \multicolumn{ 1}{c}{SINE} & CON & 0.69 & 0.682 & 0.367 & 0.402 & 0.439 & 0.433 & 0.525 & 0.531 \\ 
+  \multicolumn{ 1}{l}{} & SHU & 0.976 & 0.975 & 0.956 & 0.943 & 0.925 & 0.942 & 0.945 & 0.951 \\ \hline
+  \multicolumn{ 1}{c}{} & SIZE & 0.121 & 0.146 & 0.039 & 0.026 & 26.321 & 3.778 & 1.454 & 0.739 \\ 
+  \multicolumn{ 1}{c}{LINE} & CON & 0.975 & 0.972 & 0.93 & 0.982 & 0.874 & 0.905 & 0.899 & 0.916 \\ 
+  \multicolumn{ 1}{l}{} & SHU & 1.000 & 1.000 & 0.999 & 1.000 & 0.999 & 1.000 & 1.000 & 1.000 \\ \hline
+  \multicolumn{ 1}{c}{} & SIZE & 0.914 & 0.944 & 0.022 & 0.013 & 10.474 & 2.11 & 115.466 & 57.56 \\ 
+  \multicolumn{ 1}{c}{LTR} & CON & 0.811 & 0.809 & 0.98 & 0.984 & 0.906 & 0.93 & 0.47 & 0.513 \\ 
+  \multicolumn{ 1}{l}{} & SHU & 0.998 & 0.998 & 1.000 & 1.000 & 0.999 & 1.000 & 0.993 & 0.995 \\ \hline
+  \multicolumn{ 1}{c}{} & SIZE & 0.68 & 0.541 & 0.704 & 0.518 & 3.734 & 0.552 & 6.066 & 3.109 \\ 
+  \multicolumn{ 1}{c}{DNA-T} & CON & 0.883 & 0.887 & 0.81 & 0.84 & 0.95 & 0.98 & 0.7 & 0.74 \\ 
+  \multicolumn{ 1}{l}{} & SHU & 0.999 & 0.999 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ \hline
+  \multicolumn{ 1}{c}{} & SIZE & 18.242 & 16.312 & 10.77 & 9.918 & 140.258 & 21.909 & 37.623 & 16.759 \\ 
+  \multicolumn{ 1}{c}{GENES} & CON & 0.988 & 0.989 & 0.975 & 0.981 & 0.951 & 0.964 & 0.956 & 0.967 \\ 
+  \multicolumn{ 1}{l}{} & SHU & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ \hline
+  \multicolumn{ 1}{c}{} & SIZE & 5.318 & 4.73 & 6.074 & 4.94 & 130.429 & 20.696 & 22.229 & 9.735 \\ 
+  \multicolumn{ 1}{l}{INTRON} & CON & 0.985 & 0.986 & 0.95 & 0.963 & 0.95 & 0.964 & 0.948 & 0.966 \\ 
+  \multicolumn{ 1}{l}{} & SHU & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ \hline
+  \multicolumn{ 1}{c}{} & SIZE & 12.925 & 11.582 & 4.694 & 4.979 & 9.829 & 1.213 & 15.394 & 7.024 \\ 
+  \multicolumn{ 1}{c}{EXON} & CON & 0.988 & 0.989 & 0.991 & 0.991 & 0.983 & 0.99 & 0.972 & 0.976 \\ 
+  \multicolumn{ 1}{l}{} & SHU & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ \hline
+  \end{tabular}
+}
+\label{tab:compl_rep}
+\end{table}
+
 
 Polyploidy and return to maximum complexity Evolution erodes ancient footprints of genome polyploidy and diploidization (the process by which a polyploid genome turns into a diploid one) proceeds during time \cite{Wolfe2001}. As shown in previous sections, CR of recent polyploids is much lower than in non-polyploid, or in ancient polyploid species. Diploidization can be achieved by multiple mechanisms \cite{Wolfe2001}, being the gradual disintegration of the duplicated genetic material by random mutation. This is the simplest form. However, more dramatic mechanisms such as massive deletion, and transpositions of genetic material was reported in \textit{A. thaliana} \cite{Hu2011}. We tested the hypothesis that the complexity ratio of polyploid genomes increases along the diploidization process.
 
