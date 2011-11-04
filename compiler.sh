@@ -66,6 +66,10 @@ echo "  ------ MAKEINDEX ------"
 makeindex master.nlo -s nomencl.ist -o master.nls
 echo ""
 
+echo "  --- MAKEGLOSSARIES ----"
+makeglossaries master.glo
+echo ""
+
 echo "  ------ PDFLATEX -------"
 
 # compilation #2
@@ -88,7 +92,8 @@ rm -f *.aux *.bbl *.ilg *.lot
 rm -f *.nlo *.nls *.toc *.out 
 rm -f *.lof *.blg *.log *.mtc* 
 rm -f *.idx *.maf *.plf *.plt
-rm -f *.plc *.ptc
+rm -f *.plc *.ptc *.gls *.glo
+rm -f *.glg *.ist *.acn
 rm -f */*.aux */*/*.aux
 fi
 

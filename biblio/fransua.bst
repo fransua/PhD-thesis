@@ -79,7 +79,8 @@ STRINGS { mode s t }
 %}
 
 FUNCTION {output.nonnull}
-{ 's :=
+%{ 's :=
+{ swap$
 %%%%  "output.nonnull" top$
 %%%%  output.state top$
   output.state mid.sentence =
@@ -99,7 +100,7 @@ FUNCTION {output.nonnull}
       mid.sentence 'output.state :=
     }
   if$
-  s
+%  s
 }
 
 FUNCTION {output}
@@ -258,9 +259,18 @@ FUNCTION {format.names}
     { namesleft #0 > }
 
     { s nameptr "{ff~}{vv~}{ll}{, jj}" format.name$ 't :=
-
+      %  { namesleft #1 >
       nameptr #1 >
-        { namesleft #1 >
+        {%
+          nameptr #5%
+          #1 + =%
+          numnames #30%
+          > and
+            { "others" 't :=
+              #1 'namesleft := }
+            'skip$
+          if$
+          namesleft #1 >
             { ", " * t * }
             { numnames #2 >
                 { "," * }
