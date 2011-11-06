@@ -24,13 +24,17 @@
 \usepackage[table]{xcolor}
 \rowcolors{1}{white}{lightgray}
 % list of abbreviations
-\usepackage{nomencl}
+\usepackage[intoc]{nomencl}
 \makenomenclature
 % make caption font tinier
 \usepackage[small, bf]{caption}
 \setcapindent{10pt}
 
 \usepackage[final]{pdfpages}
+
+%glossary
+\usepackage[toc,acronym]{glossaries}
+\makeglossaries
 
 %% SPECIAL FUNCTIONS
 \newcommand{\myurl}[1] {{\scriptsize \url{#1}}}
@@ -46,8 +50,8 @@
 \begin{document}
 
 \author{François Serra}
-\title{Adaptation in genes, duplicates, families, functional
-  modules and genomes}
+\title{Modularity and Neutrality in Genomes}
+\subtitle{DNA Structure, Components Dynamics and Functionally Related Proteins}
 \date{October 2011}
 \pagenumbering{alph} % needed to avoid warning message
 \maketitle
@@ -60,6 +64,7 @@
 
 \newpage{}
 \include{tex_source/nomenclature}
+\include{tex_source/glossary}
 \newpage{}
 
 \include{tex_source/main}
@@ -68,6 +73,7 @@
 
 \clearpage
 \pagenumbering{Roman}
+%\bibliographystyle{dcbib}
 \bibliographystyle{biblio/fransua} % serra et al 2011
 \bibliography{biblio/bibliography}
 
@@ -75,6 +81,8 @@
 
 \listoffigures
 \listoftables
+
+\printglossaries
 
 \input{tex_source/Appendix/appendix}
 

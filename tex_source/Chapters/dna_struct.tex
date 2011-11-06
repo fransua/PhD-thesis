@@ -1,7 +1,7 @@
 %%% dna_struct.tex --- 
 
 
-\section{Introduction}
+\section{Background}
 \label{sec:dna_struct-intro}
 
 From a biological perspective it seems obvious that DNA is something else than random mix of A, T, G and C nucleotides. Genomes are composed of functional elements as can be protein-coding genes, or promoters but also by non-functional elements like repetitive elements that by definition can not be random when taken together. However to what extent can we state that genomes are not a random soup of 4 letters? From the first analysis of the human genome \cite{Lander2001} we have some idea of the proportion of each of the \textit{families} of elements \fref{fig:prop_rep}{}. Intuitively we could assume that the structure of DNA is different in those families of genomic elements (GE). The sequence of a protein-coding gene would represent a specific selection of nucleotides with surely the highest informational content, while introns would tend more to random assembly and finally we can easily imagine that simple repeats present some biases towards 2 or 3 nucleotides (e.g.: CpG islands).
@@ -18,7 +18,7 @@ Proportion of the major families of different genomic elements (GE) in the human
 
 \cite{Gregory2005}
 
-This question could be solved in some sense by measuring genomes entropy. This measure presents the disadvantage that extreme cases of high entropy could correspond to \begin{inparaenum}[\itshape a\upshape)] \item {\bf a specially high content of information}, entropy-based algorithms are actually used to predict or confirm automatic detection of genes \cite{Du2006,Gerstein2007}, \item {\bf an exact random structure}, some work in the sense of testing the random structure of DNA have been done using entropy \cite{Loewenstern1999}. \end{inparaenum} However this characteristic of entropy could be only a semantic problem if we use it as a measure of relative variation in DNA complexity in genomes, and try to discern statistical patterns in the DNA sequences of different genomic element such as interspersed repeats or functional element (like protein-coding genes). This kind of description of DNA sequence complexity was already done by \cite{Holste2001}, but only in human chromosome 22.
+This question could be solved in some sense by measuring genomes entropy. This measure presents the disadvantage that extreme cases of high entropy could correspond to \begin{inparaenum}[\itshape a\upshape)] \item {\bf a specially high content of information}, entropy-based algorithms are actually used to predict or confirm automatic detection of genes \cite{Du2006,Gerstein2007}, \item {\bf an exact random structure}, some work in the sense of testing the random structure of DNA have been done using entropy \cite{Loewenstern1999}. \end{inparaenum} However this characteristic of entropy could be only a semantic problem if we use it as a measure of relative variation in DNA complexity in genomes, and try to discern statistical patterns in the DNA sequences of different genomic element such as interspersed repeats or functional element (like protein-coding genes). This kind of description of 1DNA sequence complexity was already done by \cite{Holste2001}, but only in human chromosome 22.
 
 \section{Results and Discussion}
 \label{sec:dna_struct-result}
@@ -324,7 +324,14 @@ Complete genomes of 54 species were download from NCBI and Ensembl Genome Projec
 
 We performed four kinds of experiments where complexity value and ratio were computed. First: random polyploid construction of sequences of various sizes and ploidy levels (one to ten). Second: the evolution along 40 million generations by constant neutral mutation rate of 1.0e-08 mutations per site per generation (this value is in between the mutation rate estimated for {\it Homo sapiens}: 2.5e-08 \cite{Nachman2000} , and \textit{Arabidopsis thaliana}: 7.1e-09 \cite{Ossowski2010}) on random sequence, and on chromosomes of \textit{Zea mays} and \textit{Sorghum bicolor}. Third: the evolution along 50,000 generations of random polyploid genomes of different sizes (100Kb, 1Mb, 10Mb) by transpositions of a fixed length (1.0 Kb) between chromosomes. The number of transposition per generation was set as a constant function of genome size (genome size/1,000). Last: the concatenation and shuffling (computed with the python base function: ``shuffle'') of all repetition instances in chromosomes for main repetitive families, and genes were considered. Complexity value and ratio were computed every 100 generations. 
 
+\section{Discussion}
 
+However it is striking that whatever subgroup of elements we selected (\textit{Simple repeats}, \textit{Satellites}...), no perfect random structure was found in any of the steps of life complexity. Sequences can be divided into modules of nucleotides as mentioned in \cite{Wagner2007} or defined by Herzel and collaborators \cite{Herzel1995} when it fulfill 3 requirements, concisely:
+\begin{itemize}
+\item \textbf{Requirement 1}: must occur more frequently than expectation by random.
+\item \textbf{Requirement 2}: must not be included into a larger module.
+\item \textbf{Requirement 3}: must be non-overlapping between them.
+\end{itemize}
 
 %%% Local Variables: 
 %%% mode: latex
