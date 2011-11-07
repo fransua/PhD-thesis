@@ -15,8 +15,60 @@ This approach circumvents the implicit assumption posed by the two-step analysis
 
 In the first part of this paper we extend the classical two-step approach previously reported by us for human and chimp \cite{Arbiza2006}, to rat and mouse now considering a set of XXXX orthologous genes of human, chimpanzee, mouse, rat and dog. The objective is to compare the classical two-step approach with the new system approach developed in the second part of the paper. In both cases we search for differences in evolutionary rates differentiating positive selection from relaxation along the branches of the phylogeny of the species.
 
-\section{Material and Methods}
+\section{Results}
 
+\subsection{Gene-set selection analysis on functional modules}
+
+Mammals, represented by human, chimpanzee, rat and mouse, and five Drosophila genomes were studied. For each species, genes were ranked into four lists according to the estimation of \begin{inparaenum}[i\upshape-] \item synonymous (dS), \item nonsynonymous (dN) rates of substitution, \item selective pressures ($\omega$ = dN/dS), and \item the change of selective pressures between (A) ancestor and (D) descendant species ($\Delta\omega$D = $\omega$D-$\omega$A) along the phylogeny \fref{fig:phylogeny}{}\end{inparaenum}. Maximum likelihood (ML) estimates of evolutionary variables were performed using a free-ratio branch model \cite{Yang2007}. As such, four lists containing 12,543 and 9,240 orthologous genes in mammals in Drosophila species were obtained for the analyses, respectively. GSSA was conducted using a total of 1,394/199 and 1,331/116 GO/KEGG terms in mammals and Drosophila species respectively. GSSA is performed in five different steps (S1 to S5 in \fref{fig:gssa_met}{} on page \pageref{fig:gssa_met} in Section \ref{sec:gssa_mat-met}). First, the method ranks all genes within a genome (G) according to one of the alternative evolutionary variables (dS, dN, $\omega$ and $\Delta\omega$). Second, genes are associated (dark dots) to different functional categories (GO or any other functional term). Note that a single gene can be associated with multiple functions (yellow bar in Figure 2). Third, for each functional category a total of 30 partitions are established along the list of ranked values \cite{Al-Shahrour2007}, \cite{Al-Shahrour2005a}. Fourth, for each partition GSSA computes a two-tailed Fisher's exact test and reports significant over or under represented functional classes comparing the upper side (A) and the lower side (B) of the list. Finally, p-values are corrected for multiple testing (FDR). Throughout the manuscript only p-values for partitions with the highest confidence were reported after FDR.
+
+The application of GSSA to lists of genes ranked by dS, dN, $\omega$ and the $\Delta\omega$ values yielded a large number of functional modules (defined by GO and KEGG annotations) with rates that were significantly skewed toward the extremes of the lists (\tref{tab:gssanum_perc}) in mammal and \textit{Drosophila} species. For instance, 11\% of GO terms, and 15\% of KEGG pathways contain genes with biased distribution of rates towards the top of the ranked list, and found statistically significant at high $\omega$ ratio (SH$\omega$, 5\% false-discovery rate, FDR) in mammals. Alternatively, 4.1\% and 2.6\% of GO terms and KEGG pathways were found with significantly high values of $\omega$ (SH$\omega$) in \textit{Drosophila}, respectively.
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{ l l l l l l }
+\hline
+ &  & \multicolumn{ 2}{c}{\textbf{SH*}} & \multicolumn{ 2}{c}{\textbf{SL*}} \\  \cline{ 3- 4} \cline{4-6}
+ &  & \multicolumn{1}{c}{\textbf{KEGG }} & \multicolumn{1}{c}{\textbf{GO }} & \multicolumn{1}{c}{\textbf{KEGG }} & \multicolumn{1}{c}{\textbf{GO}} \\ \hline
+\multicolumn{ 1}{l}{Mammals} &  dS  &  15 (1.9)    &  187 (3.3)   &  12 (2.1)    &  364 (6.5) \\
+\multicolumn{ 1}{l}{} &  dN  &  145 (18.2)  &  708 (12.6)  &  230 (28.9)  &  1,839 (32.9) \\
+\multicolumn{ 1}{l}{} & $\omega$ &  123 (15.5)  &  649 (11.6)  &  206 (25.9)  &  1,675 (30.0) \\
+\multicolumn{ 1}{l}{} & $\Delta\omega$ &  64 (8.0)    &  421 (7.5)   &  107 (13.4)  &  818 (14.7) \\ \hline
+\multicolumn{ 1}{l}{Drosophilas} &  dS  &  18 (3.1)    &  104 (1.5)   &  26 (4.5)    &  1,263 (18.9) \\
+\multicolumn{ 1}{l}{} &  dN  &  31 (5.3)    &  276 (4.1)   &  26 (4.5)    &  2,097 (31.5) \\
+\multicolumn{ 1}{l}{} & $\omega$ &  15 (2.6)    &  213 (4.1)   &  24 (4.1)    &  1,321 (19.8) \\
+\multicolumn{ 1}{l}{} & $\Delta\omega$ &  2 (0.3)     &  143 (2.1)   &  7 (1.2)     &  184 (2.8) \\ \hline
+\end{tabular}
+\end{center}
+\caption[Numbers and percentages of functional modules with significant results after GSSA.]{Numbers and percentages of functional modules with significant results after GSSA. For Significantly High (SH) and Significantly Low (SL) results.}
+\label{tab:gssanum_perc}
+\end{table}
+
+\tref{tab:gssanum_perc} also reveals that functional modules with genes changing at significantly low $\omega$ ratios (SL$\omega$), and therefore showing a distribution shifted towards the bottom of the ranked list (see Figure 2), were more frequent than modules under the significantly high $\omega$ (SH$\omega$). This observation is in agreement with the fact that purifying selection is the predominant form of selection in biological systems. Moreover, in support of the slightly neutral character of synonymous mutations, and the effects of population size in the final outcome of selection \cite{Lynch2007} GSSA results show a higher number of significant deviations of dS in \textit{Drosophila} rather than in mammals.
+
+Only a minor proportion of functional terms changed significantly at higher or lower rates relative to estimates of the corresponding ancestral lineages. Specifically, increased or decreased $\omega$ values on the external branches (recorded by positive and negative values of $\Delta\omega$) were observed for only half of the cases where a significant increase or decrease of $\omega$ was identified in mammals and Drosophilas. This observation points out the conservative character of the selective constraints in functional related groups of genes during evolution.
+
+A summary of the results of the GSSA for mammals and \textit{Drosophilas} is shown in \fref{fig:tab_gssa}{} (see Figures S1 to S4 for a complete description of results after GSSA in mammals and \textit{Drosophila} species). The figure shows that GSSA has the power to detect many functional changes in evolutionary rates within a substantial number of functional categories. Although the rough pattern shows similar evolutionary constraints in groups of genes between the two main clusters of species, important differences were also detected within them. For instance, functional terms associated to neurological process and sensory perception clearly contrasted between primates and rodents (\fref{fig:tab_gssa}{-A}). While most of these terms are associated to a significant relative increase in rates from the common ancestor of primates (+$\Delta\omega$), all the changes observed in rodents were due to the relative increase of the selective constraints (-$\Delta\omega$) probably due to the effects of purifying selection from the common ancestor. Alternatively, functional modules associated to Immunity and Defense response evolved at significantly higher rates than expected in rodents, but decreased significantly in relation to the ancestral rates in primates. Such functional differences between primates and rodents were previously observed when pooling groups of species \cite{Kosiol2008a}. Other functional modules such as \textit{Development}, and \textit{Transcription/Transduction} comparatively evolved at very low dN and $\omega$ ratio but experienced a higher relaxation of the ancestral constraints (+$\Delta\omega$) in primates than in rodents. Moreover, significant differences in rates can be detected between human and chimpanzee (Ha04360: \textit{Axon guidance}, Ha04610: \textit{Antigen processes and presentation}, GO0007268: \textit{synaptic transmission}, among others), and between mouse and rat (GO0007186: \textit{G-protein coupled receptor protein signaling pathway}, and Ha04310: \textit{Wnt signaling pathway}, among others).
+
+
+\begin{FPfigure}
+\centering 
+\includegraphics[width=\textwidth]{tex_source/figures/gssa/table_mammals.png}
+\caption[GSSA of evolutionary variables.]{{\bf GSSA of evolutionary variables.} \\The figure shows a selection of GO terms and KEGG pathways with significant and not significant deviations after GSSA of evolutionary rates in mammals (A) and Drosophila (B) species. Colored boxes represent functional modules with genes significantly accumulated at the corresponding extremes of the ranked list as explained in Figure 2. The number inside each box represents the percentage of the total number of genes of the functional module (in parenthesis) that contribute to its significance. Here we reported the numbers of the first significant partition after FET and FDR. Topologies represent the phylogenetic relationships of species.} 
+\label{fig:tab_gssa}
+\end{FPfigure}
+\begin{figure}
+\centering 
+\includegraphics[width=\textwidth]{tex_source/figures/gssa/table_flies.png}
+\end{figure}
+
+In addition, most of the GO terms significantly associated to high dN and ω in Drosophilas were unevenly distributed within the two clusters of the phylogeny (\fref{fig:tab_gssa}{-B}). GO terms such as sensory perception, defense response, immune response and metabolic process, among others, presented a remarkable divergence in the monophyletic groups of \textit{D. erecta} and \textit{D. yakuba} but they were not observed in \textit{D. sechellia}, \textit{D. melanogaster} and \textit{D. simulans}. Most of GO terms from \textit{Development}, \textit{Transcription} and \textit{Translation} (\fref{fig:tab_gssa}{-A and -B}) were significantly accumulated towards the extremes of the lists corresponding to the lowest rates of substitutions, suggesting they are significantly constrained by strong purifying selection (5\% FDR) in both taxa.
+
+The fact that most of the functional modules under selection (SH$\omega$ and SL$\omega$) correlate with changes in dN, suggests that selective pressures are mainly driven by nonsynonymous rather than by synonymous substitutions during evolution. Moreover, according to the expectation of the nearly neutral theory, a low but still considerable number of significant associations of functional modules to dS were found in \textit{Drosophila} (19.5\%) and rodents (11.3\%), while in primates (6.4\%), where population sizes are known to be smaller, the number of significant modules was smaller \cite{Petit2009}.
+
+The strategy presented here lead to detect significant patterns of increments and decrements modeled by natural selection in evolutionary rates of functional groups of genes. This pattern is consistent with the hypothesis that natural selection acts on phenotypes by the combined action of many functional related genes. Moreover, this functionally based approach identified with statistical significance, and on individual species, all the functional modules previously found significantly enriched by positively selected genes and therefore the main targets of adaptive biological functions in species (Table 2) (see Supplementary Table S3 for a complete list of terms). Although GSSA is not a test for positive selection, it is evident that functional modules containing PSGs can be significantly detected by this method on individual species. In the next section we will analyze the relative contribution of PSGs to the statistical differentiation of functional modules in genomes.
+
+\section{Material and Methods}
+\label{sec:gssa_mat-met}
 \subsection{Orthology prediction}
 
 Complete genomes of 5 mammals species (\textit{Homo sapiens}, \textit{Pan troglodytes}, \textit{Mus musculus}, \textit{Rattus norvegicus} and \textit{Canis familiaris}) where retrieved from \textit{Ensembl} \cite{Flicek2011}. Also orthology prediction between each pair of species possibly done between human and the others was retrieved from \textit{Ensembl Compara} \cite{Vilella2009} using biomart \cite{Kinsella2011} and taking human as \gls{seed} species. Only groups of orthologs \textit{one-to-one} with one representative of each species where kept in the final dataset \fref{fig:phylogeny}{-A}.
@@ -29,6 +81,7 @@ Complete genomes of 5 mammals species (\textit{Homo sapiens}, \textit{Pan troglo
 \label{fig:phylogeny}
 \end{figure}
 
+
 The same procedure was applied for \textit{melanogaster} group, including 6 species namely, \textit{Drosophila melanogaster} (as \gls{seed}-species), \textit{Drosophila sechelia}, \textit{Drosophila simulans}, \textit{Drosophila yakuba}, \textit{Drosophila erecta} and, as outgroup, \textit{Drosophila ananassae} (see \fref{fig:phylogeny}{-B}).
 
 \subsection{Alignments refinement and filters}
@@ -40,17 +93,74 @@ The number of orthologs kept for analysis after filtering steps, is 12,453 for m
 
 \subsection{Evolutionary analysis}
 
-Maximum likelihood estimation of dN, dS, and $\omega$ was computed using CodeML program from PAML \cite{Yang2007}. Evolutionary rates were computed in orthologous sequences according to the free-ratio branch model assuming independent $\omega$ ratio for each branch of the tree of mammals and Drosophila species (see raw values of rates in Table S1 and S2). Evolutionary rates (dN, dS), its ratio ($\omega$), and its difference between ancestral and descendant species ($\delta\omega$) were ranked along all genes of genomes and further analyzed by GSSA.
+Maximum likelihood estimation of dN, dS, and $\omega$ was computed using CodeML program from PAML \cite{Yang2007}. Evolutionary rates were computed in orthologous sequences according to the free-ratio branch model assuming independent $\omega$ ratio for each branch of the tree of mammals and Drosophila species (see raw values of rates in Table S1 and S2). Evolutionary rates (dN, dS), its ratio ($\omega$), and its difference between ancestral and descendant species ($\Delta\omega$) were ranked along all genes of genomes and further analyzed by GSSA.
 
 External branches of Figure 1 were labeled as foreground to test for positive selection using branch-site models in Test I and Test II \cite{Zhang2005}. Positive results of relaxation of selective constraints (or weak signals of positive selection) were discarded \cite{Arbiza2006}. To quantify the relative contribution of PSGs in functional modules showing SH$\omega$ and SL$\omega$ results in GSSA, a t-test (from R package \cite{Ihaka1996}) with the mean number of PSGs per functional modules was computed in primates, rodents, mammals and Drosophila species. An independent set of PSGs was collected to test the robustness of our results in mammals \cite{Kosiol2008a}, and Drosophila species \cite{Clark2007}.
 
 \subsection{GSSA, evolutionary and statistical simulations}
 
-Gene-set selection analysis across lists of genes ranked by different evolutionary rate parameters (dS, dN, $\omega$ and $\delta\omega$) was computed using the program Babelomics \cite{Al-Shahrour2008}. This program implements a version of GSA \cite{Al-Shahrour2005a} which can be applied to any list of ranked genes regardless of the initial experimental design \cite{Dopazo,Huang2009}. The aim of the test is to find functional classes, namely blocks of genes that share some functional property, showing a significant asymmetric distribution towards the extremes of a list of ranked genes. This is achieved by means of a segmentation test, which consists on the sequential application of a Fisher's exact test over the contingency tables formed with the two sides of different partitions (A and B in Figure 2) made on an ordered list of genes. The two-tailed Fisher's exact test finds significantly over or under represented functional classes when comparing the upper side to the lower side of the list, as defined by any partition (in Figure 2, four of the five partitions show significant differences). Similarly to other equivalent gene-set analyses, the outcomes are those modules (GO and KEGG) significantly associated to high or low values of the evolutionary parameter used to rank the genes. Previous results showed that a number between 20 and 50 partitions often gives optimal results in terms of sensitivity and results recovered [18]. Here we applied 30 partitions along all the GSSA performed. Given that multiple functional classes (C) are tested in multiple partitions (P), the unadjusted p-values for a total of C $\cdot$ P tests were corrected by the widely accepted FDR method \cite{Benjamini2001}.
+Gene-set selection analysis across lists of genes ranked by different evolutionary rate parameters (dS, dN, $\omega$ and $\Delta\omega$) was computed using the program Babelomics \cite{Al-Shahrour2008}. This program implements a version of GSA \cite{Al-Shahrour2005a} which can be applied to any list of ranked genes regardless of the initial experimental design \cite{Dopazo,Huang2009}. The aim of the test is to find functional classes, namely blocks of genes that share some functional property, showing a significant asymmetric distribution towards the extremes of a list of ranked genes. This is achieved by means of a segmentation test, which consists on the sequential application of a Fisher's exact test over the contingency tables formed with the two sides of different partitions (A and B in \fref{fig:gssa_met}) made on an ordered list of genes. The two-tailed Fisher's exact test finds significantly over or under represented functional classes when comparing the upper side to the lower side of the list, as defined by any partition (in \fref{fig:gssa_met}, four of the five partitions show significant differences). Similarly to other equivalent gene-set analyses, the outcomes are those modules (GO and KEGG) significantly associated to high or low values of the evolutionary parameter used to rank the genes. Previous results showed that a number between 20 and 50 partitions often gives optimal results in terms of sensitivity and results recovered \cite{Al-Shahrour2005a}. Here we applied 30 partitions along all the GSSA performed. Given that multiple functional classes (C) are tested in multiple partitions (P), the unadjusted p-values for a total of C $\cdot$ P tests were corrected by the widely accepted FDR method \cite{Benjamini2001}.
 
-Originally, 1,394/1,331 GO terms, and 199/116 KEGG pathways were analyzed in mammals and Drosophila species respectively. The global GO directed acyclic graph was processed with Blast2GO \cite{Conesa2005} to extend the annotation at missing parental nodes, discarding GO levels out of 2 to 8 for mammals, and 2 to 12 for Drosophilas. The final set of GO and KEGG terms used in the GSSA corresponds to those containing a minimum number of 15 genes. To test possible biases attributed to the size of the functional category, the magnitude of change in evolutionary rate or the proportion of genes experiencing a rate change we randomized the original assignation of ENSG's to the list of ranked values and functional annotation (see Figure S5A). For each evolutionary variable and species 10.000 randomizations and the corresponding GSSA were performed. The proportion of false positives (significant results after GSSA) was computed for each evolutionary variable and plotted along the size of functional categories (from 20 to 1,400 with intervals of 20). Because this proportion never reached values higher than 0.5\% (FDR) we rejected the possibility that either group size or rate distribution biased GSSA results in our data set (see Figure S5A and S5B-C).
+\begin{FPfigure}
+\centering 
+\includegraphics[width=\textwidth]{tex_source/figures/gssa/gssa_met.pdf}
+\caption[Summary of the steps developed by the GSSA.]{{\bf Summary of the steps developed by the GSSA.} \\GSSA can be roughly described in a series of five steps (S1 to S5). S1: rank genes of a genome according to an evolutionary variable, S2: assign functional classes to all the listed genes, S3: apply a fixed number of partitions on the ranked list, S4: proceeds with a Fisher exact test (FET) for each partition, S5: adjust p-values by FDR. See text for a full description. Colored boxes (red, orange, cyan and blue) represent functional modules with genes significantly accumulated (0.1\% FDR and 5\% FDR) at the corresponding extremes of a list (top and bottom), and therefore with significantly high (SH) and low (SL) values of the evolutionary variable ($\omega$) respectively. White represents a non-significant association (NS). Examples show five alternative GO categories with significant and non-significant distributions of the $\omega$ statistic. In parenthesis, the total number of genes corresponding to the GO term is shown. For GO1, the function seems to be uncorrelated with the arrangements of the genes. In the example (GO:0007517) partition 16 in human (not shown in the picture) reported the lowest p-value (p = 0.011) although it was not significant after FDR correction (FDR = 0.065). Upper (A) and lower (B) sides of the ranked list (S3) represent both sides of the specified partition number. Remainder GO categories (GO2 to GO5) show the association of dark dots with values located at the top (significant high $\omega$ values -SH$\omega$), and at the bottom (significant low $\omega$ values -SL$\omega$) of the list (for GO2-GO3 and GO4-GO5, respectively). In examples, FETs found the most significant p-value for partitions 8, 14, 22 and 27 for GO:0007517, GO:0007186, GO:0009566, GO:0050658 and GO:0022618 in chimpanzee, human, mouse and rat genome, respectively.}
+\label{fig:gssa_met}
+\end{FPfigure}
 
-Finally, in order to validate the independence of the GSSA from the effects of alternative evolutionary constraints we simulated selective regimes (purifying selection, positive selection and relaxation of selective constraints) using branch-site models. Here we addressed the possibility of a variation in the representation of significant results after GSSA (see Supplementary Figure S6). We found that when a massive enrichment of genes under each of the evolutionary scenarios described take place in the genome, none of them bias the results of GSSA (see Text S1).
+Originally, 1,394/1,331 GO terms, and 199/116 KEGG pathways were analyzed in mammals and Drosophila species respectively. The global GO directed acyclic graph was processed with Blast2GO \cite{Conesa2005} to extend the annotation at missing parental nodes, discarding GO levels out of 2 to 8 for mammals, and 2 to 12 for Drosophilas. The final set of GO and KEGG terms used in the GSSA corresponds to those containing a minimum number of 15 genes. To test possible biases attributed to the size of the functional category, the magnitude of change in evolutionary rate or the proportion of genes experiencing a rate change we randomized the original assignation of ENSG's to the list of ranked values and functional annotation (see \fref{fig:gssa_simul}{-A}). For each evolutionary variable and species 10.000 randomizations and the corresponding GSSA were performed. The proportion of false positives (significant results after GSSA) was computed for each evolutionary variable and plotted along the size of functional categories (from 20 to 1,400 with intervals of 20). Because this proportion never reached values higher than 0.5\% (FDR) we rejected the possibility that either group size or rate distribution biased GSSA results in our data set (see \fref{fig:gssa_simul}{-B} and \fref{fig:gssa_simul}{-C}).
+
+\begin{FPfigure}
+\centering 
+\includegraphics[width=\textwidth]{tex_source/figures/gssa/gssa_simulations.pdf}
+\caption[Randomisation experiment.]{{\bf Randomisation experiment.} \\(A) The pipeline shows the steps followed to tests possible biases attributed to the size of the functional category, the magnitude of change in evolutionary rate and the proportion of genes experiencing a rate change in the GSSA. The proportion of false positive results never reached 5\% (FDR) in mammals (B) and Drosophila (C).}
+\label{fig:gssa_simul}
+\end{FPfigure}
+
+Finally, in order to validate the independence of the GSSA from the effects of alternative evolutionary constraints we simulated selective regimes (purifying selection, positive selection and relaxation of selective constraints) using branch-site models. Here we addressed the possibility of a variation in the representation of significant results after GSSA (see \fref{fig:gssa_simul_pipe}{}). The pipeline described here, shows three different areas: 
+\begin{itemize}
+\item \textbf{Real Data}: the dark yellow area describes the steps used to reach to results described in the manuscript. The light yellow area describes the use of the CodeML program from PAML package (reference 15 in the ms) to extract -from the original set of sequences -the evolutionary parameters to simulate new sequences under purifying selection (PF), positive selection (PS) and relaxation of the selective constraints (RX) using branch-site models (see model description below). Human, mouse, \textit{D. erecta} and \textit{D. melanogaster} were used as foreground species in the corresponding models.
+\item \textbf{Simulated Data}: Evolver (PAML program) simulates sequences using parameters (codon frequencies and branch lengths) from the empirical data. We checked the desired characteristics of positive selection (PS) and relaxation of selective constraints (RX) on the set of the simulated sequences \tref{tab:psg_simul}. Evolutionary variables (dS, dN, $\omega$ and $\Delta\omega$) were estimated from simulated sequences by means of a free-ratio branch model (CodeML). The complete pipeline of the GSSA was applied in the simulated data.
+\item \textbf{Testing simulation}: The odd-ratio of the values observed on the contingency table of each significant functional term after GSSA was computed. Values higher and lower than one contribute to the total number of functional modules with significant high and low $\omega$ values. To test the statistical contribution of these functional modules to these extremes on the simulated regimes (PS, RX and PF) the log odd-ratios were compared using t-test.
+\end{itemize}
+
+\begin{figure}
+\centering 
+\includegraphics[width=\textwidth]{tex_source/figures/gssa/gssa_simulations_pipeline.pdf}
+\caption[Evolutionary and statistical simulation of GSSA.]{{\bf Evolutionary and statistical simulation of GSSA.} \\ The pipeline shows the steps taken along three different spaces of analysis, the real data, the simulated data and the testing block. See Supplementary Results for a complete explanation of methods and results.}
+\label{fig:gssa_simul_pipe}
+\end{figure}
+
+\rowcolors{1}{white}{white}
+\begin{table}[htbp]
+\begin{tabular}{l r r r r r r}
+\multicolumn{1}{l}{} & \multicolumn{ 2}{c}{PS} & \multicolumn{ 2}{c}{RX} & \multicolumn{ 2}{c}{PF} \\ \hline
+\multicolumn{1}{l}{} & \multicolumn{1}{c}{\# PSG} & \multicolumn{1}{c}{\# RXG} & \multicolumn{1}{c}{\# PSG} & \multicolumn{1}{c}{\# RXG} & \multicolumn{1}{c}{\# PSG} & \multicolumn{1}{c}{\# RXG} \\ \hline
+Homo sapiens & 658 & 1640 & 11 & 1939 & 0 & 1 \\
+Mus musculus & 1500 & 954 & 14 & 1565 & 1 & 0 \\
+D. melanogaster & 736 & 630 & 25 & 1104 & 0 & 0 \\
+D. erecta & 778 & 1292 & 26 & 1713 & 2 & 1 \\ \hline
+\end{tabular}
+\caption[Number of PSG and relaxed genes (RXG) in each of the simulated evolutionary scenarios]{Number of PSG and relaxed genes (RXG) in each of the simulated evolutionary scenarios.}
+\label{tab:psg_simul}
+\end{table}
+
+Our results showed that in spite of the alternative evolutionary scenarios no significant differences were observed between log odd-ratios distribution (p<0.05). This result is exactly what we expected. The average effect of PF, and RX-PS is the proportional decrease and increase of the mean value of $\omega$ on sequences, respectively. This change has minor effects (if any) in the relative position of genes in the ranked list of genes of a genome. Accordingly, since no net differences were produced after ranking genes, no significant differences are expected after the t-test (PS-RX: p= 0.99, PS-PF: p= 0.45, and RX-PF: p= 0.46). The fact that basically the same number of significant results was observed in each evolutionary scenario confirmed this prediction \tref{tab:prop_signif}. We conclude that neither of the selective regimes simulated produce significant differences or biases in the GSSA of $\omega$ values.
+
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{l c c c}
+\hline
+ & PS & RX & PF \\ \hline
+PS & --- & 92.50\% & 98.50\% \\
+RX & 91.10\% & --- & 99.00\% \\
+PF & 88.90\% & 90.60\% & --- \\ \hline
+\end{tabular}
+\end{center}
+\caption[Proportion of significant functional categories that are still significant.]{Proportion of significant functional categories that are still significant (identical signs of odd-ratios) under a different evolutionary scenario.}
+\label{tab:prop_signif}
+\end{table}
 
 \section{open on colocalization to not random}
 
