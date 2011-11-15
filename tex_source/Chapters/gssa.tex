@@ -3,16 +3,10 @@
 
 \section{Background}
 
-The result of selective pressures on DNA sequences are usually inferred by comparing the number of changes observed with expectations, or observed in regions escaping natural selection.
+In past years, with the development of genomic data in close related species, an effort was made in order to detect signals of selective pressure by applying methods that have been developed since \cite{Kimura1985} based on observations of significant deviation from neutrality for a given gene. These methodologies conceived for the study of a single gene were successfully able to detect genes escaping neutrality ($\omega \ne 1$ see Equation \ref{eq:omega} page \pageref{eq:omega}), and in particular positively selected genes (with $\omega > 1$)  \cite{Arbiza2006,Bakewell2007,Bustamante2005,Clark2003,Nielsen2005}. However none of those works were able to find, within the groups of genes detected to be under positive selection, a significant enrichment of a given functional trait. It is true that taking all those results together, assiduous readers could perceive functional patterns raising from all those studies. Functional terms related to \textit{Sensory perception}, \textit{Immune response} or \textit{Regulation of transcription} were present in almost all genomic studies of positive selection conducted in primates or rodents.
 
-In the specific context of coding regions of the genome, changes occurring at nucleotide level can be divided in two kinds depending on whether they will be reflected in translated protein sequences or not (respectively non-synonymous and synonymous changes). Even if several works outlined the footprint of natural selection in biases of synonymous changes through codon usage (see reviews \cite{Hershberg2008,Plotkin2011}), it is still assumed that its stranglehold on those silent sites is weak  \cite{Yang2008} and its usage as proxy for neutral mutation rate is widely used.
 
-Thus, assuming the proxy that silent mutations are neutral, the comparison of synonymous and non-synonymous mutation rates is a perfect scholar case
-makes protein coding regions of DNA a perfect 
-
-The analysis of adaptation at large or complete genome scale is currently based on concepts and methods developed for single genes analyzes~\cite{Arbiza2006,Bakewell2007,Bustamante2005,Clark2003,Nielsen2005}. 
-
-measured in coding regions using the  Statistical methods to test for neutrality~\cite{Nielsen2001}, are currently used without considering if genes works independently or associated to others to produce a single phenotypic response. In this sense we are applying pre-genomics concepts and methods to genomics data. The current paradigm for large scale analysis of adaptation consists in a two steps framework: first, the search for a list of genes (in a gene-by-gene framework analysis) with a statistical significant signal of positive selection ($\omega > 1$), and second, the search for over-represented functional classes of genes in this list. Although it is logically consistent, it has been noted that this kind of strategy causes an enormous loss of information due to the large number of false negatives that are accepted in order to preserve a low ratio of false positives necessary when genomics data is considered~\cite{Al-Shahrour2007,Al-Shahrour2005a,Al-Shahrour2006,Subramanian2005}.
+measured in coding regions using the  Statistical methods to test for neutrality \cite{Nielsen2001}, are currently used without considering if genes works independently or associated to others to produce a single phenotypic response. In this sense we are applying pre-genomics concepts and methods to genomics data. The current paradigm for large scale analysis of adaptation consists in a two steps framework: first, the search for a list of genes (in a gene-by-gene framework analysis) with a statistical significant signal of positive selection ($\omega > 1$), and second, the search for over-represented functional classes of genes in this list. Although it is logically consistent, it has been noted that this kind of strategy causes an enormous loss of information due to the large number of false negatives that are accepted in order to preserve a low ratio of false positives necessary when genomics data is considered~\cite{Al-Shahrour2007,Al-Shahrour2005a,Al-Shahrour2006,Subramanian2005}.
 
 Genes do not operate alone within the cell, but in a intricate network of interactions that we have only recently started to envisage~\cite{Stelzl2005}. It is a widely accepted fact that coexpressing genes tend to be fulfilling common roles in the cell~\cite{Lee2003}. Moreover, coexpression seems to occur, in many cases, in contiguous chromosomal regions~\cite{Caron2001} and furthermore, recent evidences suggest that functionally related genes map close in the genome, even in higher eukaryotes~\cite{Hurst2004}. Many higher-order levels of interaction are continuously being discovered and even complex traits, including diseases, have started to be considered from a systems biology perspective~\cite{Ideker2008,Vamathevan2008}.
 
@@ -61,13 +55,13 @@ A summary of the results of the GSSA for mammals and \textit{Drosophilas} is sho
 
 \begin{FPfigure}
 \centering 
-\includegraphics[width=\textwidth]{tex_source/figures/gssa/table_mammals.png}
+\includegraphics[width=\textwidth]{tex_source/figures/gssa/table_mammals_2.png}
 \caption[GSSA of evolutionary variables.]{{\bf GSSA of evolutionary variables.} \\The figure shows a selection of GO terms and KEGG pathways with significant and not significant deviations after GSSA of evolutionary rates in mammals (A) and Drosophila (B) species. Colored boxes represent functional modules with genes significantly accumulated at the corresponding extremes of the ranked list as explained in Figure 2. The number inside each box represents the percentage of the total number of genes of the functional module (in parenthesis) that contribute to its significance. Here we reported the numbers of the first significant partition after FET and FDR. Topologies represent the phylogenetic relationships of species.} 
 \label{fig:tab_gssa}
 \end{FPfigure}
 \begin{figure}
 \centering 
-\includegraphics[width=\textwidth]{tex_source/figures/gssa/table_flies.png}
+\includegraphics[width=\textwidth]{tex_source/figures/gssa/table_flies_2.png}
 \end{figure}
 
 In addition, most of the GO terms significantly associated to high dN and $\omega$ in Drosophilas were unevenly distributed within the two clusters of the phylogeny (\fref{fig:tab_gssa}{-B}). GO terms such as sensory perception, defense response, immune response and metabolic process, among others, presented a remarkable divergence in the monophyletic groups of \textit{D. erecta} and \textit{D. yakuba} but they were not observed in \textit{D. sechellia}, \textit{D. melanogaster} and \textit{D. simulans}. Most of GO terms from \textit{Development}, \textit{Transcription} and \textit{Translation} (\fref{fig:tab_gssa}{-A and -B}) were significantly accumulated towards the extremes of the lists corresponding to the lowest rates of substitutions, suggesting they are significantly constrained by strong purifying selection (5\% FDR) in both taxa.
@@ -223,7 +217,7 @@ Originally, 1,394/1,331 GO terms, and 199/116 KEGG pathways were analyzed in mam
 
 \begin{FPfigure}
 \centering 
-\includegraphics[width=\textwidth]{tex_source/figures/gssa/gssa_simulations.pdf}
+\includegraphics[height=\textheight]{tex_source/figures/gssa/gssa_simulations.png}
 \caption[Randomisation experiment.]{{\bf Randomisation experiment.} \\(A) The pipeline shows the steps followed to tests possible biases attributed to the size of the functional category, the magnitude of change in evolutionary rate and the proportion of genes experiencing a rate change in the GSSA. The proportion of false positive results never reached 5\% (FDR) in mammals (B) and Drosophila (C).}
 \label{fig:gssa_simul}
 \end{FPfigure}
