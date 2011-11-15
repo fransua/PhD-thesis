@@ -3,7 +3,7 @@
 
 \section{Background}
 
-The analysis of adaptation at large or complete genome scale is currently based on concepts and methods developed for single genes analyzes~\cite{Arbiza2006,Bakewell2007,Bustamante2005,Clark2003,Nielsen2005}. Statistical methods to test for neutrality~\cite{Nielsen2001}, are currently used without considering if genes works independently or associated to others to produce a single phenotypic response. In this sense we are applying pre-genomics concepts and methods to genomics data. The current paradigm for large scale analysis of adaptation consists in a two steps framework: first, the search for a list of genes (in a gene-by-gene framework analysis) with a statistical significant signal of positive selection ($\omega > 1$), and second, the search for over-represented functional classes of genes in this list. Although it is logically consistent, it has been noted that this kind of strategy causes an enormous loss of information due to the large number of false negatives that are accepted in order to preserve a low ratio of false positives necessary when genomics data is considered~\cite{Al-Shahrour2007,Al-Shahrour2005a,Al-Shahrour2006,Subramanian2005}.
+The analysis of adaptation at large or complete genome scale is currently based on concepts and methods developed for single genes analyzes~\cite{Arbiza2006,Bakewell2007,Bustamante2005,Clark2003,Nielsen2005}. Selective pressures Statistical methods to test for neutrality~\cite{Nielsen2001}, are currently used without considering if genes works independently or associated to others to produce a single phenotypic response. In this sense we are applying pre-genomics concepts and methods to genomics data. The current paradigm for large scale analysis of adaptation consists in a two steps framework: first, the search for a list of genes (in a gene-by-gene framework analysis) with a statistical significant signal of positive selection ($\omega > 1$), and second, the search for over-represented functional classes of genes in this list. Although it is logically consistent, it has been noted that this kind of strategy causes an enormous loss of information due to the large number of false negatives that are accepted in order to preserve a low ratio of false positives necessary when genomics data is considered~\cite{Al-Shahrour2007,Al-Shahrour2005a,Al-Shahrour2006,Subramanian2005}.
 
 Genes do not operate alone within the cell, but in a intricate network of interactions that we have only recently started to envisage~\cite{Stelzl2005}. It is a widely accepted fact that coexpressing genes tend to be fulfilling common roles in the cell~\cite{Lee2003}. Moreover, coexpression seems to occur, in many cases, in contiguous chromosomal regions~\cite{Caron2001} and furthermore, recent evidences suggest that functionally related genes map close in the genome, even in higher eukaryotes~\cite{Hurst2004}. Many higher-order levels of interaction are continuously being discovered and even complex traits, including diseases, have started to be considered from a systems biology perspective~\cite{Ideker2008,Vamathevan2008}.
 
@@ -61,11 +61,117 @@ A summary of the results of the GSSA for mammals and \textit{Drosophilas} is sho
 \includegraphics[width=\textwidth]{tex_source/figures/gssa/table_flies.png}
 \end{figure}
 
+<<<<<<< HEAD
 In addition, most of the GO terms significantly associated to high dN and $\omega$ in  Drosophilas were unevenly distributed within the two clusters of the phylogeny (\fref{fig:tab_gssa}{-B}). GO terms such as sensory perception, defense response, immune response and metabolic process, among others, presented a remarkable divergence in the monophyletic groups of \textit{D. erecta} and \textit{D. yakuba} but they were not observed in \textit{D. sechellia}, \textit{D. melanogaster} and \textit{D. simulans}. Most of GO terms from \textit{Development}, \textit{Transcription} and \textit{Translation} (\fref{fig:tab_gssa}{-A and -B}) were significantly accumulated towards the extremes of the lists corresponding to the lowest rates of substitutions, suggesting they are significantly constrained by strong purifying selection (5\% FDR) in both taxa.
+=======
+In addition, most of the GO terms significantly associated to high dN and $\omega$ in Drosophilas were unevenly distributed within the two clusters of the phylogeny (\fref{fig:tab_gssa}{-B}). GO terms such as sensory perception, defense response, immune response and metabolic process, among others, presented a remarkable divergence in the monophyletic groups of \textit{D. erecta} and \textit{D. yakuba} but they were not observed in \textit{D. sechellia}, \textit{D. melanogaster} and \textit{D. simulans}. Most of GO terms from \textit{Development}, \textit{Transcription} and \textit{Translation} (\fref{fig:tab_gssa}{-A and -B}) were significantly accumulated towards the extremes of the lists corresponding to the lowest rates of substitutions, suggesting they are significantly constrained by strong purifying selection (5\% FDR) in both taxa.
+>>>>>>> 3c532d72b9e9d3ab000c074b1476487348b6bde6
 
 The fact that most of the functional modules under selection (SH$\omega$ and SL$\omega$) correlate with changes in dN, suggests that selective pressures are mainly driven by nonsynonymous rather than by synonymous substitutions during evolution. Moreover, according to the expectation of the nearly neutral theory, a low but still considerable number of significant associations of functional modules to dS were found in \textit{Drosophila} (19.5\%) and rodents (11.3\%), while in primates (6.4\%), where population sizes are known to be smaller, the number of significant modules was smaller \cite{Petit2009}.
 
-The strategy presented here lead to detect significant patterns of increments and decrements modeled by natural selection in evolutionary rates of functional groups of genes. This pattern is consistent with the hypothesis that natural selection acts on phenotypes by the combined action of many functional related genes. Moreover, this functionally based approach identified with statistical significance, and on individual species, all the functional modules previously found significantly enriched by positively selected genes and therefore the main targets of adaptive biological functions in species (Table 2) (see Supplementary Table S3 for a complete list of terms). Although GSSA is not a test for positive selection, it is evident that functional modules containing PSGs can be significantly detected by this method on individual species. In the next section we will analyze the relative contribution of PSGs to the statistical differentiation of functional modules in genomes.
+The strategy presented here lead to detect significant patterns of increments and decrements modeled by natural selection in evolutionary rates of functional groups of genes. This pattern is consistent with the hypothesis that natural selection acts on phenotypes by the combined action of many functional related genes. Moreover, this functionally based approach identified with statistical significance, and on individual species, all the functional modules previously found significantly enriched by positively selected genes and therefore the main targets of adaptive biological functions in species \tref{tab:gssa_compare}. Although GSSA is not a test for positive selection, it is evident that functional modules containing PSGs can be significantly detected by this method on individual species. In the next section we will analyze the relative contribution of PSGs to the statistical differentiation of functional modules in genomes.
+
+
+\rowcolors{2}{white}{gray}
+\begin{FPtable}
+\caption[Functional enrichment results using gene-by-gene and gene-set approaches.]{\textbf{Functional enrichment results using gene-by-gene and gene-set approaches.}\\The table depicts some selected biological functions enriched by PSGs as cited in references 1 to 7, and the corresponding significant result observed after GSSA of $\omega$ values. References 1 to 7 correspond to cites 6, 7, CSAC, 4, 5, 9 and 8 in the manuscript, respectively. Abbreviations: SHv: statistically significant high v values; SLv: statistically significant low v values; H: \textit{H. sapiens}; C: \textit{P. troglodytes}; Pr: primates; M: \textit{M. musculus}; R: \textit{R. norvegicus}; Ro: rodents; mel: \textit{D. melanogaster}; sim: \textit{D. simulans}; sec: \textit{D sechelia}; yak: \textit{D. yakuba}; ere: \textit{D. erecta}; Ds: \textit{Drosophila} species.\\
+*: p=0.05;\\
+** p=0.001. CSAC: Chimpanzee Sequencing and Analysis Consortium, Nature. 2005 vol. \textbf{437} (7055) pp. 69-87.}
+\resizebox{418pt}{!}{%
+  \begin{tabular}{ p{8.5cm} p{0.8cm} p{0.8cm} p{0.5cm} p{0.8cm} p{0.5cm} p{0.85cm} p{0.5cm} p{8cm}}
+  \hline
+  \textbf{Biological process} & \multicolumn{ 7}{c}{\textbf{Enrichment in PSGs}} & \textbf{GSSA: Functional category with significantly} \\ \hline
+   & \textbf{1} & \textbf{2} &  \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \multicolumn{1}{r}{\textbf{HIGH rates of omega}} \\ \hline
+  Olfaction/Sensory perception of smell & H & Pr** &  &  &  & Pr** &  & H**, C**, M**, R**, mel*, sec*, ere**, yak** \\
+  Chemosensory perception & H & Pr** &  &  &  &  &  & H**, C**, M**, R**,  mel**, sec**, ere**, yak** \\
+  G-protein-mediated signaling & H &  &  &  & H & Pr** &  & H**, C**, R* \\
+  DNA/nucleic acid metabolism &  &  &  & C &  &  & Dr & C*, M**, R**, mel**, yak**, ere* \\
+  Amino acid metabolism & H, C &  &  &  &  &  & Dr & M**, R** \\
+  Proteolysis &  &  &  &  &  &  & Dr & M**, R**, mel**, sim*, sec*, yak**, ere** \\
+  Fatty acid/Lipid metabolism &  &  &  &  & H &  & Dr & M**, R** \\
+  Carbohydrate metabolism &  &  &  &  &  &  & Dr & sec*, yak*, ere* \\
+  Adult reproduction and gametogenesis &  &  &  &  &  &  & Dr & sec* \\
+  Spermatogenesis and motility &  & Pr* & Pr &  &  &  &  & H*, M*, mel* \\
+  Immune response &  & Pr** &  & H, C &  & Ro** &  & C*, M**, R**, yak*, ere* \\
+  Inflammatory response &  &  &  &  &  & Ro** &  & H*, C*, M**, R** \\
+  Defense response &  &  &  &  &  & Ro** &  & H*, C*, M**, R**, yak**, ere* \\
+  Response to wounding &  &  &  &  &  & Ro** &  & H*, M**, R** \\
+  Hummoral imm. resp. mediated by circulating Ig &  &  &  &  &  & Ro** &  & M**, R** \\
+  T-cell-mediated immunity &  & Pr** &  &  &  &  &  & M* \\
+  Natural killer-cell-mediated immunity &  & Pr* &  &  &  &  &  & R* \\
+  B-cell- and antibody-mediated immunity &  & Pr* &  &  &  &  &  & M**, R** \\
+  Response to pest, pathogen, or parasite &  &  &  & H &  &  &  & C*, M**, R**, yak*, ere* \\
+  Stress response &  &  &  &  & C & Ro** &  & M**, R** \\
+  Response to external stimulus &  &  &  &  &  & Ro** &  & M**, R* \\
+  Sensory Perception & H & Pr** &  & H &  & Pr** &  & H**, C**, M*, mel**, sec**, yak**. ere** \\
+  Cell surface receptor-mediated signal trasnduction & H &  &  &  &  & Pr** &  & C* \\
+  Cell adhesion & H &  &  &  &  &  &  & R* \\
+  Amino acid transport &  &  & Pr &  &  &  &  & M* \\
+  Protein amino acid glycosylation &  &  & Pr &  &  &  &  & M* \\
+  Amino acid transport & C &  &  &  &  &  &  & M* \\ \hline
+  \multicolumn{9}{r}{\textbf{LOW rates of omega}} \\ \hline
+  Sensory Perception & H & Pr** &  & H &  & Pr** &  & R* \\
+  Cell surface receptor-mediated signal trasnduction & H &  &  &  &  & Pr** &  & mel*, yak*, ere* \\
+  Cell adhesion & H &  &  &  &  &  &  & H**, C**, mel**, ere* \\
+  Amino acid transport &  &  & Pr &  &  &  &  & R* \\
+  Protein amino acid glycosylation &  &  & Pr &  &  &  &  & H* \\
+  Amino acid transport & C &  &  &  &  &  &  & C* \\
+  Hearing / Perception of sound & H &  & Pr &  &  &  &  & M*, R* \\
+  Neurological process &  &  &  &  &  & Pr** &  & M**, R**, yak*, ere* \\
+  Synaptic transmission &  &  & Pr &  &  &  &  & H**, M**, R**, mel**, sec**, ere**, yak** \\
+  Signal transduction/intracellular signaling cascade & H, C &  & Pr &  &  &  & Dr & H**, C**, M**, R**, dmel**, dsec*, dyak**, dere** \\
+  Ion transport & H &  &  &  & H &  & Dr & H*, M**, R**, mel*, sec*, ere* \\
+  Potassium ion transport &  &  & Pr &  &  &  &  & H*, C*, M**, R** \\
+  Inorganic anion transport &  &  & Pr &  &  &  &  & M*, R* \\
+  Intracellular protein traffic & H &  &  &  &  &  &  & H**, C**, M**, R**, mel*, sec**, yak**, ere* \\
+  Transport &  &  &  &  &  &  & Dr & mel**, sec**, ere**, yak** \\
+  Protein transport &  &  &  & H &  &  & Dr & H*, C**, M**, R**, mel**, sim*, sec**, ere**, yak** \\
+  Metabolism of cyclic nucleotides & H &  &  &  &  &  &  & M*, R* \\
+  Protein metabolism \& modification &  &  &  & H, C & C &  & Dr & H**, C**, M**, R**, ere*, yak* \\
+  Phosphate metabolism/phosphorylation &  &  &  & H, C &  &  & Dr & H*, C*, M**, R**, mel*, sec**, yak**, ere* \\
+  Purine metabolism & C &  &  &  &  &  &  & M*, R*, sec** \\
+  Carbohydrate biosynthesis &  &  & Pr &  &  &  &  & M**, R* \\
+  Cation transport & H &  &  &  &  &  &  & H*, M**, R** \\
+  Nervous system development &  &  &  &  &  &  & Dr & H*, M**, R**, mel**, sec*, yak**, ere** \\
+  Skeletal development & C &  &  &  &  &  &  & M**, R** \\
+  Organ development &  &  &  &  &  &  & Dr & H*, M**, R**, mel**, sec*, yak**, ere** \\
+  Post-embryonic development &  &  &  &  &  &  & Dr & M*, mel*, yak**, ere* \\
+  Embryonic development &  &  &  &  &  &  & Dr & H**, C*, M**, R**, yak*, ere* \\
+  Ectoderm development &  &  &  &  & H &  &  & C*, M*, R*, mel*, yak*, ere* \\
+  Cell proliferation and differentiation & C &  &  &  &  &  & Dr & H**, C*, M**, R**, mel**, sec*, yak**, ere** \\
+  Cell cycle &  &  &  &  &  &  & Dr & H*, M*, R*, mel**, sec**, yak**, ere** \\
+  Cell structurre/morphogenesis & C &  &  &  &  &  & Dr & H**, C*, M**, R**, mel**, sec*, yak**, ere** \\
+  Cell structure and motility & C &  &  &  &  &  &  & H*, M**, R**, sec* \\
+  Inhibition of apoptosis &  & Pr* &  &  &  &  &  & H*, yak* \\
+  Cell-cell signalling &  &  &  &  &  &  & Dr & H**, C*, M**, R**, mel**, sec**, ere**, yak** \\
+  Regulation of nucleobase &  &  &  & H, C &  &  &  & H**, C**, M**, R**, ere* \\
+  Translation &  &  &  &  &  &  & Dr & M*, R*, mel**, sim*, sec**, yak**, ere** \\
+  Transcription &  &  &  & H, C & C &  & Dr & H**, C**, M**, R**, ere* \\
+  Protein catabolism &  &  &  & H, C & C &  &  & H**, C**, M**, R** \\
+  Interferon-mediated immunity &  & Pr* &  &  &  &  &  &  \\ \hline
+  \end{tabular}
+}
+\label{tab:gssa_compare}
+\end{FPtable}
+
+\subsection{Positively selected genes and the evolution of functional modules}
+
+GSSA tests for difference in rates over functional related groups of genes. To what extent genes under positive selection contribute to the significance of functional modules in mammals and \textit{Drosophila} species after GSSA? To answer this question, branch-site (the most sensitive) test of positive selection was conducted on terminal branches of phylogenies \ref{fig:phylogeny}{}. We found 715 PSGs in mammals and 626 in \textit{Drosophila}. \fref{fig:gssa_psgs}{-A} shows the distribution of the mean evolutionary rates (dN and dS) of functional modules providing significant and not significant results after GSSA of the $\omega$ ratio. When considering the total number of the functional modules with PSGs, 55\%, 53\%, and 42\% of these original functional categories observed with SH, SL and NS results after GSSA ($\omega$ values) still remained \fref{fig:gssa_psgs}{-B}. This suggests that: \begin{inparaenum}[1\upshape-]\item evolution of many of the functional modules changing at SH$\omega$ ratios in the genome is not driven by a considerable accumulation of PSGs. Functional modules such as \textit{complement and coagulation cascades} in human, \textit{gonad development} in chimpanzee, \textit{regulation of innate immune response} in mouse, \textit{primary immunodeficiency} in rat, and \textit{spermatid differentiation} in \textit{D. melanogaster} are examples of functional modules evolving at significantly elevated $\omega$ ratio without any PSGs; \item molecular adaptation takes place in functional modules under strong selective constraints (see last part of \tref{tab:gssa_compare}). For instance, \textit{apoptosis} in human, \textit{generation of neurons} in chimpanzee, \textit{tissue development} in mouse, \textit{Wnt signaling pathway} in rat, \textit{eye development} in \textit{D. melanogaster}, \textit{wing disc development} in \textit{D. yakuba}, and \textit{generation of neurons} in \textit{D. erecta} are some of the functional modules evolving at SL$\omega$ ratios in the corresponding genomes that contain PSGs; and finally, \item an important number of functional modules without significant differences in $\omega$ ratios (grey dots in \fref{fig:gssa_psgs}{}) still contain genes under positive selection. For instance, \textit{homologous recombination} in humans, brain \textit{development} in chimpanzee, \textit{female or male sex differentiation} in mouse, \textit{regulation of mitotic cell cycle} in rat, \textit{chromatin modification} in \textit{D. sechellia}, and \textit{oogenesis} in \textit{D. melanogaster}.\end{inparaenum} 
+
+These results are in agreement with previous observations in \textit{Drosophila} were it was emphasized that not every mutation under positive selection responds to a change in selection \cite{Images2009}. Beneficial changes could occur at evolutionary equilibrium, repairing previous deleterious changes and restoring existing functions \cite{Images2009}.
+
+\begin{FPfigure}
+\centering 
+\includegraphics[height=\textheight]{tex_source/figures/gssa/gssa_psgs.png}
+\caption[ Positive selection and evolution of functional modules.]{{\bf  Positive selection and evolution of functional modules.} \\Circles and triangles represent the median values of dN and dS for KEGG pathways and GO terms (level 6-7), respectively in mammals, and in the \textit{Drosophila} species. Functional modules with SH$\omega$ and SL$\omega$ results after GSSA are shown in red and blue. Those modules without statistical differences are gray. Yellow dots depict the median dS and dN values for \textit{H. sapiens} (1), \textit{P. troglodytes} (2), \textit{M. musculus} (3), \textit{R. norvegicus} (4), \textit{D. simulans} (5), \textit{D. sechellia} (6), \textit{D. melanogaster} (7), \textit{D. yakuba} (8) and \textit{D. erecta} (9). (B) In this case, circles and triangles represent a subset (of A) with modules containing at least one PSG. Note that they are distributed along a wide range of values of dS and dN and in functional categories with significant (red/blue), and non-significant (gray) results after the GSSA ($\omega$ ratio).} 
+\label{fig:gssa_psgs}
+\end{FPfigure}
+
+Finally, we ask if PSGs preferentially concentrate in functional modules evolving at faster rates in different genomes. For doing that we computed the mean number of PSGs in functional modules with SH$\omega$ and SL$\omega$ results (red and blue dots in \fref{fig:gssa_psgs}{-B}. As expected, functional modules evolving at high $\omega$ ratio contain higher numbers of PSGs in rodents (p$<$0.001), mammals (p$<$0.001), and \textit{Drosophila} (p$<$0.001) species. For primates however, it was not significant (p = 0.47), indicating that PSGs are distributed almost evenly in functional modules evolving at significantly high and low values of $\omega$ in human and chimpanzee.
+
+To contrast these results, PSGs from previous works in mammal and \textit{Drosophila} species were collected \cite{Clark2007}, \cite{Kosiol2008a}. The pattern of distribution of PSGs in functional modules was in agreement with the mentioned results: significantly skewed (p$<$0.001) towards higher numbers of PSGs in mammals, rodents, and \textit{Drosophila} species, but showing no differences in primates (p = 0.73).
+
+In summary, PSGs are frequently observed in functional modules evolving under a wide range of evolutionary scenarios; however, they concentrate more frequently in functional groups of genes changing at elevated rates in rodents and \textit{Drosophila} species. Alternatively, PSGs were evenly distributed in functional modules changing at the extreme rates of evolution in primates. This observation suggests that a more complex scheme than the cumulative differences of PSGs must rely on the observed adaptive differences in human and chimpanzee genomes. The search for integrative factors taking into account the action of multiple genes other than only those which have been targeted by positive selection \cite{He2010}, could provide a more accurate view for the analysis of the integrated framework underlying adaptation in complete genomes.
 
 \section{Material and Methods}
 \label{sec:gssa_mat-met}
