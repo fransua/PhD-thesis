@@ -64,6 +64,8 @@
 
 \pagenumbering{roman}
 
+\phantomsection \label{tableofcontents}
+\addcontentsline{toc}{chapter}{Contents}
 \tableofcontents
 
 \newpage{}
@@ -78,12 +80,19 @@
 \clearpage
 \pagenumbering{Roman}
 %\bibliographystyle{dcbib}
+\clearpage
+\phantomsection \label{thebibliograhy}
+\addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{biblio/fransua} % serra et al 2011
 \bibliography{biblio/bibliography}
-
 %%%%%%%%%   Figs & Tables  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\clearpage
+\phantomsection \label{listoffig}
+\addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
+\clearpage
+\phantomsection \label{listoftables}
+\addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
 
 \printglossaries
