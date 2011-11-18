@@ -79,19 +79,204 @@ Functional elements, as expected deviates expectations If functional elements ar
 
 \subsection{Genomes}
 
-31 genomic sequences were used, all re-used from previous work see Section \ref{sec:complexity-strings}.
+Genomic sequences of 31 species from unicellular eukaryotes to mammals were used, all were extracted from previous work see Section \ref{sec:complexity-strings} and \tref{tab:genome}. The complete list of species used is: \begin{inparaenum}[\itshape 1)]
+\item \textit{Gallus gallus} (Birds)
+\item \textit{Taeniopygia guttata} (Birds)
+\item \textit{Danio rerio} (Fishes)
+\item \textit{Oryzias latipes} (Fishes)
+\item \textit{Tetraodon nigroviridis} (Fishes)
+\item \textit{Saccharomyces cerevisiae} (Fungi)
+\item \textit{Anopheles gambiae} (Invertebrates)
+\item \textit{Caenorhabditis elegans} (Invertebrates)
+\item \textit{Drosophila melanogaster} (Invertebrates)
+\item \textit{Tribolium castaneum} (Invertebrates)
+\item \textit{Bos taurus} (Mammals)
+\item \textit{Canis familiaris} (Mammals)
+\item \textit{Equus caballus} (Mammals)
+\item \textit{Homo sapiens} (Mammals)
+\item \textit{Macaca mulatta} (Mammals)
+\item \textit{Monodelphis domestica} (Mammals)
+\item \textit{Mus musculus} (Mammals)
+\item \textit{Pan troglodytes} (Mammals)
+\item \textit{Pongo abelii} (Mammals)
+\item \textit{Rattus norvegicus} (Mammals)
+\item \textit{Arabidopsis lyrata} (Plants)
+\item \textit{Arabidopsis thaliana} (Plants)
+\item \textit{Brachypodium distachyon} (Plants)
+\item \textit{Oryza sativa} (Plants)
+\item \textit{Populus trichocarpa} (Plants)
+\item \textit{Sorghum bicolor} (Plants)
+\item \textit{Zea mays} (Plants)
+\item \textit{Dictyostelium discoideum} (unicellular Eukaryotes)
+\item \textit{Plasmodium falciparum} (unicellular Eukaryotes)
+\item \textit{Thalassiosira pseudonana} (unicellular Eukaryotes)
+and \item \textit{Ciona intestinalis} (Urochordate)
+\end{inparaenum}.
 
 \subsection{Mining of Genomic Elements}
 
-RepeatMasker.
+For this study, genomic elements were divided into 2 categories, repetitive elements and functional elements.
+
+\subsubsection{Repetitive Elements}
+
+Repetitive elements were retrieved using RepeatMasker tool \cite{Smit2010} with default parameters on whole chromosomes. 
+
+An example of summary file given by RepeatMasker is shown in Appendix \ref{cha:repe-summ-outp}. The definition of species was given by the class of repeats, subclasses were generally too rare. Here the hierarchy of main classes and subclasses detected by the software:
+\begin{itemize}
+\item Transposable Element
+  \begin{itemize}
+  \item DNA transposon:
+    \begin{inparaenum}[\itshape 1-]
+    \item Mariner/Tc1
+    \item hAT
+    \item MuDR
+    \item EnSpm
+    \item piggyBac
+    \item P
+    \item Merlin
+    \item Harbinger
+    \item Transib
+    \item Novosib
+    \item Mirage
+    \item Helitron
+    \item Polinton
+    \item Rehavkus
+    \item Kolobok
+    \item ISL2EU
+    \item Chapaev
+    \item Crypton
+    \item Sola
+    \item Zator
+    \item Ginger1
+    \item Ginger2/TDD
+    \item Academ 
+    \end{inparaenum}
+  \item LTR Retrotransposon:
+    \begin{inparaenum}[\itshape 1-]
+    \item Gypsy
+    \item Copia
+    \item BEL
+    \item DIRS 
+    \end{inparaenum}
+  \item Endogenous Retrovirus:
+    \begin{inparaenum}[\itshape 1-]
+    \item ERV1
+    \item ERV2
+    \item ERV3
+    \item Lentivirus 
+    \end{inparaenum}
+  \item Non-LTR Retrotransposon:
+    \begin{inparaenum}[\itshape 1-]
+    \item SINE:
+      \begin{inparaenum}[\itshape a.]
+      \item SINE1/7SL
+      \item SINE2/tRNA
+      \item SINE3/5S
+      \item SINE4 
+      \end{inparaenum}
+    \item CRE
+    \item NeSL
+    \item R4
+    \item R2
+    \item L1
+    \item RTE
+    \item I
+    \item Jockey
+    \item CR1
+    \item Rex1
+    \item RandI
+    \item Penelope
+    \item Tx1
+    \item RTEX
+    \item Crack
+    \item Nimb
+    \item Proto1
+    \item Proto2
+    \item RTETP
+    \item Hero
+    \item L2
+    \item Tad1
+    \item Loa
+    \item Ingi
+    \item Outcast
+    \item R1
+    \item Daphne
+    \item L2A
+    \item L2B
+    \item Ambal
+    \item Vingi
+    \item Kiri 
+    \end{inparaenum}
+  \end{itemize}
+\item Simple Repeat
+  \begin{itemize}
+  \item Satellite:
+    \begin{inparaenum}[\itshape 1-]
+    \item SAT
+    \item MSAT 
+    \end{inparaenum}
+  \end{itemize}
+\item Pseudogene
+  \begin{itemize}
+  \item rRNA
+  \item tRNA
+  \item snRNA 
+  \end{itemize}
+\item Integrated Virus
+  \begin{itemize}
+  \item DNA Virus
+  \item Caulimoviridae 
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Functional Elements}
+
+Functional elements correspond to the biotype category of the genes according to Ensembl \cite{Flicek2011} nomenclature. They were retrieved using the Biomart API \cite{Kinsella2011}. The non-redundant list of function elements across all species was:
+
+\begin{inparaenum}[\itshape 1-]
+  \item IG C
+  \item IG D
+  \item IG J
+  \item IG V
+  \item IG Z
+  \item MRP RNA
+  \item RNase MRP RNA
+  \item RNase P RNA
+  \item SRP RNA
+  \item TR C
+  \item TR J
+  \item TR V
+  \item class II RNA
+  \item class I RNA
+  \item lincRNA
+  \item miRNA
+  \item misc RNA
+  \item ncRNA
+  \item processed transcript
+  \item protein coding
+  \item rRNA
+  \item retrotransposed
+  \item snRNA
+  \item snlRNA
+  \item snoRNA
+  \item tRNA
+  and \item transposable element
+\end{inparaenum}
+
+Note that pseudogenes were removed from that list, in order to keep the functional aspect of this family of genomic elements.
 
 \subsection{Ecolopy}
+
+Several packages or programs were already developed in order to deal with species abundances data, implementing statistical functions in order to fit data in ecological models and even able to test for neutrality \cite{Jabot2011,Etienne2007,Hankin2007}. However none of those programs were able to deal with genomic data, with abundance around the million of individuals specially in the case of Etienne's model where computation of $K(D,A)$ uses stirling numbers (see Section \ref{sec:etienne-model}). In order to adapt the algorithm to genomic dataset we developed the \textit{Ecolopy} package, that, as a main point, uses the GMP \cite{Granlund2000} and MPFR \cite{Fousse2007} libraries through GMPY biding \cite{Martelli2007}.
+
+Ecolopy is entirely written in Python \cite{VanRossum1991}, a programming language that offers a strong support for integration with other languages and tools, and whose popularity is raising among the bioinformatics community \cite{Bassi2007}. Ecolopy's philosophy is to facilitate the integration with other toolkits as well as to provide a scalable program architecture. Thus, Ecolopy abundance objects can be easily imported and expanded by incorporating custom methods and properties. The
 
 \subsubsection{Ecological models}
 
 \paragraph{Ewens}
 
 \paragraph{Etienne}
+\label{sec:etienne-model}
 
 \paragraph{Log-Normal}
 
@@ -100,7 +285,7 @@ RepeatMasker.
 
 Models where optimized through different optimization strategies depending on the model selected. In the case of the Ewens' formula, $\theta$ is the only parameter to take into account, and its estimation is achieved with the \textit{golden} optimization strategy \cite{Jones2001}. For Etienne's model, two parameters were optimized, $\theta$ and $m$, using the best solution of the \textit{downhill simplex algorithm} \cite{Nelder1965}, \textit{L-BFGS-B algorithm} \cite{Byrd1995}, \textit{truncated Newton algorithm} \cite{Nash1984} and \textit{Sequential Least SQuares Programming} all implemented in \textit{Scipy} \cite{Jones2001}.
 
-Optimization step being critical specially under Etienne model, the likelihood surface of the model given a value of $\theta$ and $m$ was drawn for some of the chromosomes in our dataset. This procedure allows us to find  graphically the best solution for both parameters. The solution found by this methodology was then compared to the optimization result, in order to validate them (see \fref{fig:lnl_chrom}{} as an example of this validation step).
+Optimization step being critical specially under Etienne's model, the likelihood surface of the model given a range of values of $\theta$ and $m$ was drawn for some of the chromosomes in our dataset. This procedure allows us to find graphically the best solution for both parameters. The solution found by this methodology was then compared to the optimization result, in order to validate them (see \fref{fig:lnl_chrom}{} as an example of this validation step). Computation time needed to generate such likelihood contour plots prevents using it for all chromosomes, but, for the 5 chromosomes tested, results were congruent.
 
 \begin{figure}[htpb]
 \centering 
@@ -121,12 +306,11 @@ In the last years two exact tests were developed in order to accept or reject th
 
 The first of these tests \cite{Etienne2007} consists in comparing the distribution of likelihoods of fitting neutral model. This corresponding distribution of random neutral abundances is compared to the likelihood of the observed data. The major problem of this test is technical, the computation time needed to optimize the parameters of each abundance distribution and get the likelihoods is unrealistically too high when dealing with genomic elements.
 
-The second test \cite{Jabot2011} uses, instead of likelihood, the comparison of Shannon's entropy, and is much faster as random neutral abundances do not need to be fitted into a neutral model.
+The second test \cite{Jabot2011} uses, instead of likelihood, the comparison of Shannon's entropy \cite{Shannon1948}, and is much faster as random neutral abundances do not need to be fitted into a neutral model.
 
-Thus, from the neutral parameters obtained for each chromosome, we simulated distribution of abundances of genetic elements 10,000 times. 
+Thus, from the neutral parameters obtained for each chromosome, we simulated 10,000 distributions of abundances of genetic elements and computed, for each,  its Shannon's entropy ($H$). Chromosomes were considered significantly non-neutral when the $H$ of their abundances was below 95\% of the 10,000 random neutral values. As an example \fref{fig:shannon_distrib}{}, shows the distribution of H for 10,000 random neutral abundance generated under Etienne's model with $S$, $J$ fixed to the observed numbers and $\theta$ and $m$ corresponding to optimized values for \textit{Anopheles gambiae's} chromosome 2L. In this figure the empirical value of H is below the 95\% of the random neutral distribution, than this chromosome is considered to be non-neutral.
 
-To test for the UNTB the evenness of each simulated distribution was computed using the Shannon's entropy H \cite{Jabot2011}. The set of H values conform the neutral null distribution to test if the empirical H of chromosomes is beyond the expected by random \fref{fig:shannon_distrib}{}.
-
+Again, given the high number of tests performed, all p-values obtained from this test were corrected by FDR.
 
 \begin{figure}[htpb]
 \centering 
