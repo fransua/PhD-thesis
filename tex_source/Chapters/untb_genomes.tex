@@ -55,7 +55,7 @@ What is the mechanism contributing to this counterbalanced dynamics of genetic e
 
 Similar to the kinetic theory of ideal gases in physics the neutral theory of biodiversity is a stochastic theory assuming equivalence among interacting individuals. The theory assumes that diversity in a local community of individuals is maintained by migration from the metacommunity at a constant rate ($m$). Births and deaths in the local community occur at constant rates during generation regardless the species. The metacommunity dynamics is controlled by speciation at a single constant rate ($\nu$)\cite{Rosindell2011,Alonso2006}.
 
-For genomes, we realized that each chromosome is the physical arena where genetic elements die and are replaced by other elements of the same or different species. These genetic elements could come from the same chromosome, or from any other chromosome of the genome. We assume that each chromosome represents a local community of $J$ elements and $S$ different genetic classes (species) while the rest of chromosomes correspond to the metacommunity of size $J_M$. Thus, given the total number of functional and non-functional elements in each chromosome we optimized by maximum likelihood (ML) the neutral theory's parameters m and $\theta$ ($= 2 J_M\nu$) using Ewens and Etienne's sampling formulas (see example \fref{fig:lnl_chrom}{}).
+For genomes, we realized that each chromosome is the physical arena where genetic elements die and are replaced by other elements of the same or different species. These genetic elements could come from the same chromosome, or from any other chromosome of the genome. We assume that each chromosome represents a local community of $J$ elements and $S$ different genetic classes (species) while the rest of chromosomes correspond to the metacommunity of size $J_M$. Thus, given the total number of functional and non-functional elements in each chromosome we optimized by maximum likelihood (ML) the neutral theory's parameters m and $\theta$ ($= 2 J_M\nu$) using Ewens and Etienne's sampling formula (\ref{eq:ewens}) (see example \fref{fig:lnl_chrom}{}).
 
 Deviations of neutrality were detected in 33 out of 578 (5.7\%) chromosomes. However, deviations vanished at all after multiple testing correction ($FDR< 0.05$, Table). We conclude that Hubbell's neutral model fits abundance and diversity of genetic elements in all the chromosomes of the 31 eukaryotes genomes analyzed. 
 
@@ -119,9 +119,9 @@ For this study, genomic elements were divided into 2 categories, repetitive elem
 
 \subsubsection{Repetitive Elements}
 
-Repetitive elements were retrieved using RepeatMasker tool \cite{Smit2010} with default parameters on whole chromosomes. 
+Repetitive elements were retrieved using RepeatMasker \cite{Smit2010} with default parameters on whole chromosome sequences.
 
-An example of summary file given by RepeatMasker is shown in Appendix \ref{cha:repe-summ-outp}. The definition of species was given by the class of repeats, subclasses were generally too rare. Here the hierarchy of main classes and subclasses detected by the software:
+An example of summary file given by RepeatMasker is shown in Appendix \ref{cha:repe-summ-outp}. The definition of \textit{species}, in the context of genomic elements, was given by the class of repeats (following RepeatMasker nomenclature), subclasses were generally too rare. Here is a listing of the hierarchy of main classes and subclasses annotated by the software:
 \begin{itemize}
 \item Transposable Element
   \begin{itemize}
@@ -263,22 +263,69 @@ Functional elements correspond to the biotype category of the genes according to
   and \item transposable element
 \end{inparaenum}
 
-Note that pseudogenes were removed from that list, in order to keep the functional aspect of this family of genomic elements.
+Note that pseudogenes were removed from that list in order to keep the functional aspect of this family of genomic elements.
 
 \subsection{Ecolopy}
 
-Several packages or programs were already developed in order to deal with species abundances data, implementing statistical functions in order to fit data in ecological models and even able to test for neutrality \cite{Jabot2011,Etienne2007,Hankin2007}. However none of those programs were able to deal with genomic data, with abundance around the million of individuals specially in the case of Etienne's model where computation of $K(D,A)$ uses stirling numbers (see Section \ref{sec:etienne-model}). In order to adapt the algorithm to genomic dataset we developed the \textit{Ecolopy} package, that, as a main point, uses the GMP \cite{Granlund2000} and MPFR \cite{Fousse2007} libraries through GMPY biding \cite{Martelli2007}.
+Several packages or programs were already developed in order to deal with species abundances data, implementing statistical functions in order to fit data in ecological models and even able to test for neutrality \cite{Jabot2011,Etienne2007,Hankin2007}. However none of those programs were able to deal with genomic data, with abundances in the order of the million of individuals specially in the case of Etienne's model where computation of $K(D,A)$ uses stirling numbers (see Section \ref{sec:etienne-model}, equation \ref{eq:kda}). In order to adapt the algorithm to genomic dataset we developed the \textit{Ecolopy} package, that, as a main point, uses the GMP \cite{Granlund2000} and MPFR \cite{Fousse2007} libraries through GMPY biding \cite{Martelli2007}. Other improvements specific to Ecolopy, and needed for dealing with genomic dataset where done.
 
-Ecolopy is entirely written in Python \cite{VanRossum1991}, a programming language that offers a strong support for integration with other languages and tools, and whose popularity is raising among the bioinformatics community \cite{Bassi2007}. Ecolopy's philosophy is to facilitate the integration with other toolkits as well as to provide a scalable program architecture. Thus, Ecolopy abundance objects can be easily imported and expanded by incorporating custom methods and properties. The
+Ecolopy is entirely written in Python \cite{VanRossum1991}, a programming language that offers a strong support for integration with other languages and tools, and whose popularity is raising among the bioinformatics community \cite{Bassi2007}. Ecolopy is still a fully ripened package, but it was designed to provide a scalable program architecture.
 
 \subsubsection{Ecological models}
 
-\paragraph{Ewens}
+\paragraph{Ewens} 
+\label{sec:ewens-model}
+
+Ewens sampling formula \cite{Ewens1972} (\ref{eq:ewens}) was originally designed in order to describe the number of different alleles expected to be observed in a given sample. However Tavar\'e and Ewens suggested that the formula could be applied to ecology \cite{Tavari1997} and Hubbell finally proposed a model defining the Fundamental Biodiversity parameter $\theta$ (\ref{eq:theta}) given the speciation rate $\nu$ and $J_M$ the size of the metacommunity \cite{Hubbell2001}.
+
+\begin{equation} \label{eq:theta}
+\theta = 2J_M\nu
+\end{equation}
+
+By defining $\theta$ it is possible to apply directly Ewens Sampling formula (\ref{eq:ewens}) and to compute its likelihood given a community (\ref{eq:ewens_lnl}).
+
+\begin{equation} \label{eq:ewens}
+Pr\{S,n1,n2,\ldots,n_S|\theta\} = \frac{J_M!\theta^S}{1^{\phi1} 2^{\phi2} \cdots J_M^{\phi J_M} \phi_1! \phi_2! \cdots \phi_{J_M}! \prod_{k=1}^{J_M} (\theta + k - 1)}
+\end{equation}
+
+Here $n_i$ corresponds to the abundance of species $i$ and $\phi_a$ the number of species with abundance $a$.
+
+\begin{equation} \label{eq:ewens_lnl}
+\mathcal{L} = \frac{\theta^S}{\prod_{k=1}^{J_M} (\theta + k - 1)}
+\end{equation}
+
+Given the sampling formula (\ref{eq:ewens}) Ecolopy is able to generate random neutral species abundances distributions given a sample size $J$ and a value of $\theta$. The number of species generated is free according to the formula but can be fixed by keeping only those random abundances generated with the desired number of species. The likelihood function (\ref{eq:ewens_lnl}) is also integrated in the program, and used for optimization of $\theta$ parameter (see section \ref{sec:model-optimization}).
 
 \paragraph{Etienne}
 \label{sec:etienne-model}
 
-\paragraph{Log-Normal}
+The main problem with Hubbell's model using Ewens sampling formula is the assumption that immigration is unlimited ($m=1$). However a new sampling formula was presented recently \cite{Etienne2005} including cases where $m<1$, taking into account the number of immigrants $I$ depending on the sample size $J$:
+
+\begin{equation} \label{eq:m}
+m = \frac{I}{I+J-1}
+\end{equation}
+
+Given this Etienne's sampling formula is postulated as:
+
+\begin{equation} \label{eq:etienne}
+P[D|\theta,m,J] = \frac{J!}{\prod_{i=1}^Sn_i \prod_{j=1}^J\phi_J!} \frac{\theta^S}{(I)_J} \sum_{A=S}^JK(D,A) \frac{I^A}{(\theta)_A}
+\end{equation}
+
+with $K(D,A)$ as:
+
+\begin{equation} \label{eq:kda}
+K(D,A) := \sum_{\{a_1,\ldots,a_s|\sum_{i=1}^Sa_i=A\}}\prod_{i=1}^S\frac{\bar{s}(n_i,a_i)\bar{s}(a_i,1)}{\bar{s}(n_i,1)}
+\end{equation}
+
+Calculation of stirling numbers here are the main computational bottle neck as mentioned in \cite{Etienne2005}. A solution was given by \cite{Jabot2008} and implemented in the Tetame program takes advantage of the recurrence function (\ref{eq:stirling_req}), that allows to build a table of values, given the dispersion of the ranked abundance of species, in stead of computing them directly for each pair of values. On top of this strategy, it was necessary to reduce the precomputed matrix in order to save memory, thus, only stirling numbers necessaries to the computation are kept.
+
+\begin{equation} \label{eq:stirling_req}
+S_{(n,m)} = S_{(n-1, m-1)} - (n-1) \times S_{(n-1, m)}
+\end{equation}
+
+Both solutions together, aiding in lightening the computation of $K(D,A)$, where compulsory in genomic context.
+
+As for Ewens model, Ecolopy proposes a function to calculate the likelihood according to the parameters $\theta$ and $m$ for a given dataset and then allows the optimization of these parameters.
 
 \subsection{Model optimization}
 \label{sec:model-optimization}
@@ -315,7 +362,7 @@ Again, given the high number of tests performed, all p-values obtained from this
 \begin{figure}[htpb]
 \centering 
 \includegraphics[width=\textwidth]{tex_source/figures/untb_genomes/shannon_distrib.png}
-\caption[Comparing simulated and empirical evenness.]{{\bf Comparing simulated and empirical evenness. }\\Neutrality test statistically compares simulated null distribution of H with the empirical H value of the corresponding chromosome. In this case, the null distribution of H values was derived from 10,000 neutral simulations of A. gambiae chromosome 2L, with neutral parameters ($\theta$ and $m$) optimized by ML using Etienne sampling formulae. Yellow and red bars display 5\% and 95\% of the simulated neutral data, respectively. Although in this case neutrality was rejected (p= 0.01), posterior correction by multiple testing favored the null neutral hypothesis (q= 0.21).}
+\caption[Comparing simulated and empirical evenness.]{{\bf Comparing simulated and empirical evenness. }\\Neutrality test statistically compares simulated null distribution of H with the empirical H value of the corresponding chromosome. In this case, the null distribution of H values was derived from 10,000 neutral simulations of A. gambiae chromosome 2L, with neutral parameters ($\theta$ and $m$) optimized by ML using Etienne sampling formula. Yellow and red bars display 5\% and 95\% of the simulated neutral data, respectively. Although in this case neutrality was rejected (p= 0.01), posterior correction by multiple testing favored the null neutral hypothesis (q= 0.21).}
 \label{fig:shannon_distrib}
 \end{figure}
 
