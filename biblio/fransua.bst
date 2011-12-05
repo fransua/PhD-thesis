@@ -1047,10 +1047,10 @@ FUNCTION {format.lab.names}
 
   mode "cite" =
     { numnames #1 =
-      { s #1 "{vv }{ll}" format.name$ }
+      { s #1 "{vv }{ll }" format.name$ }
       { numnames #2 =
-          { s #1 "{vv }{ll }\& " format.name$ s #2 "{vv }{ll}" format.name$ * }
-          { s #1 "{vv }{ll }\bgroup \em et al.\egroup " format.name$ }
+          { s #1 "{vv }{ll }\& " format.name$ s #2 "{vv }{ll }" format.name$ * }
+          { s #1 "{vv }{ll }\bgroup \em et al. \egroup " format.name$ }
         if$
       }
     if$
@@ -1058,8 +1058,8 @@ FUNCTION {format.lab.names}
     { numnames #1 =
       { s #1 "{ll}" format.name$ }
       { numnames #2 =
-          { s #1 "{ll }\& " format.name$ s #2 "{ll}" format.name$ * }
-          { s #1 "{ll }\bgroup \em et al.\egroup " format.name$ }
+          { s #1 "{ll }\& " format.name$ s #2 "{ll }" format.name$ * }
+          { s #1 "{ll }\bgroup \em et al. \egroup " format.name$ }
         if$
       }
     if$

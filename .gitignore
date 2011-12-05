@@ -25,5 +25,7 @@ master.pdf
 *.mtc*
 *.plt
 *.glo
+*.acr
+*.alg
 */*.aux
 */*/*.aux

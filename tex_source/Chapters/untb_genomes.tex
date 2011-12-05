@@ -2,13 +2,15 @@
 
 \section{Background}
 
-Whatever the environment, terrestrial or aquatic, temperate or tropical it is universal the case that some species are very abundant, others are relatively common, and the majority, rare. What mechanisms control this uneven distribution of species abundance in ecological communities?
+When describing ecosystems, ecologists usually focus on living species' natural environment, and their distribution and abundances within it. One common pattern that raises quickly when studying different ecosystems, is that whatever environment studied, at whatever trophic level, it seems to be universal the case where few species are ''dominating'' the ecosystem, comprising the majority of the individuals \cite{Preston1948,Fisher1943}.
 
-Species diversity and their relative abundance have always intriguing ecologists \cite{McGill2007}. Roughly speaking, ecological models of species abundance are of two kinds: descriptive (statistical-based) or mechanistic (niche-based or neutrals). While many mechanistic approaches assume niche differences as the main cause driving community composition, neutral models consider niche differences among species irrelevant \cite{Margurran2004}. The unified neutral theory of biodiversity (UNTB) \cite{Hubbell2001,Rosindell2011} is a neutral-stochastic theory originally inspired in neutral population genetic models \cite{Kimura1985,Wright1931}. UNTB assumes interactions among trophically similar species equivalent on an individual ''per capita'' basis. This provocative assumption means that these individuals, regardless of the species, appear to be controlled by similar birth, death, dispersal, and speciation rates. Since each species follows a random walk, biodiversity composition emerges regardless of specific species differences in the community. The fundamental biodiversity parameter ($\theta$), analogous to $4N\mu$­ of population genetics, governs species richness in spatial and temporal scale. Neutral theory is thus a useful null model against to test alternative biological hypotheses of relative species abundance distribution \cite{Volkov2003,Alonso2006}.
+What mechanisms control this uneven distribution of species abundance in ecological communities?
 
-Likewise ecological communities, eukaryotes genomes contain a variable number of more or less abundant elements of different genetic classes: transposon-derived elements, satellite repetitive sequences, segmental duplications, and their less abundant functional sequences such as RNA or genes. Here, for simplicity we talk of genetic elements of different classes as individuals of different species.
+Species diversity and their relative abundance have always intriguing ecologists \cite{McGill2007}. Roughly speaking, ecological models of species abundance are of two kinds: descriptive (statistical-based) or mechanistic (niche-based or neutrals). While many mechanistic approaches assume \gls{ecological niche} differences as the main cause driving community composition, neutral models consider niche differences among species irrelevant \cite{Margurran2004}. The unified neutral theory of biodiversity (UNTB) \cite{Hubbell2001,Rosindell2011} is a neutral-stochastic theory originally inspired in neutral population genetic models \cite{Kimura1985,Wright1931}. UNTB assumes interactions among \gls{trophic}ally similar species equivalent on an individual ''per capita'' basis. This provocative assumption means that these individuals, regardless of the species, appear to be controlled by similar birth, death, dispersal, and speciation rates. Since each species follows a random walk, biodiversity composition emerges regardless of specific species differences in the community. The fundamental biodiversity parameter ($\theta$), analogous to $4N\mu$ of population genetics, governs species richness in spatial and temporal scale. Neutral theory is thus a useful null model against to test alternative biological hypotheses of relative species abundance distribution \cite{Volkov2003,Alonso2006}.
 
-Dynamical ecological models of genomes were formalized and simulated \cite{Abrusan2006,Leonardo2002,LeRouzic2007}. Some complex models parallel interactions like parasitism, competition and cooperation between different families of transposable elements (TEs). However, ideal models of genomics would consider not only TEs, but also all diversity of genetic elements populating eukaryote genomes: satellites sequences, DNA-transposons, LTR-retrotransposons, LINES, SINES, mi-RNA, rRNA, tRNA, genes, and pseudogenes among the many functional and non-functional elements. Such model does not exist for genomes.
+Likewise ecological communities, eukaryotes genomes contain a variable number of more or less abundant elements of different genetic classes: \gls{transposon}-derived elements, satellite repetitive sequences, segmental duplications, and their less abundant functional sequences such as RNA or genes. Here, for simplicity we talk of genetic elements of different classes as individuals of different species.
+
+Dynamical ecological models of genomes were formalized and simulated \cite{Abrusan2006,Leonardo2002,LeRouzic2007}. Some complex models parallel interactions like parasitism, competition and cooperation between different families of transposable elements (TEs). However, ideal models of genomics would consider not only TEs, but also all diversity of genetic elements populating eukaryote genomes: satellites sequences, DNA-transposons, LTR-\gls{retrotransposon}s, \gls{LINE}S, \gls{SINE}S (\gls{retroposon}s), mi-RNA, rRNA, tRNA, and genes among the many functional and non-functional elements. Such model does not exist for genomes.
 
 Here, taking advantage of the methods and models developed by ecologists we ask: is there a common pattern behind the relative abundance and diversity of genetic elements in genomes? And, in the case that such pattern exists, is it sufficient to explain together diversities of  functional and non-functional components in eukaryote genomes? To what extent abundance and diversity of genome components reflects adaptive or stochastic outcomes? Here we test the statistical adjustment of the UNTB predictions to more than 30 different eukaryote genomes.
 
@@ -64,7 +66,7 @@ Deviations of neutrality were detected in 33 out of 578 (5.7\%) chromosomes. How
 
 \section{Discussion}
 
-Abundance and diversity of selfish genetic elements \cite{Doolittle1980,Orgel1980} results from millions of years of close interaction with their host, the genome. Population dynamics models dealing with transposable elements (TE) has been formalized and reviewed \cite{Charlesworth2009,Charlesworth1994,LeRouzic2005}. Transposition and excision rates, as well as host fitness impact are some of their most significant parameters. While the predicted deleterious effects of transposition have been confirmed repeatedly in Drosophila (citar...), almost a neutral accumulation of TEs is expected in mammals due to the larger genomes and smaller population size18. An important concern with these models is the explicit absence of relationships of TEs with other genetic components of the genome. 
+Abundance and diversity of \gls{selfish DNA}, or selfish genetic elements \cite{Doolittle1980,Orgel1980} results from millions of years of close interaction with their host, the genome. Population dynamics models dealing with transposable elements (TE) has been formalized and reviewed \cite{Charlesworth2009,Charlesworth1994,LeRouzic2005}. Transposition and excision rates, as well as host fitness impact are some of their most significant parameters. While the predicted deleterious effects of transposition have been confirmed repeatedly in Drosophila (citar...), almost a neutral accumulation of TEs is expected in mammals due to the larger genomes and smaller population size\cite{Lynch2003}. An important concern with these models is the explicit absence of relationships of TEs with other genetic components of the genome. 
 
 The general transposition-selection based model predicts an adaptive equilibrium of TE abundance. However, abundances of the same TE differ between population and species (citar). 
 Additionally, models c 9-11. Importantly variation between individuals was observed...\cite{Brookfield2005}
@@ -167,13 +169,7 @@ An example of summary file given by RepeatMasker is shown in Appendix \ref{cha:r
     \end{inparaenum}
   \item Non-LTR Retrotransposon:
     \begin{inparaenum}[\itshape 1-]
-    \item SINE:
-      \begin{inparaenum}[\itshape a.]
-      \item SINE1/7SL
-      \item SINE2/tRNA
-      \item SINE3/5S
-      \item SINE4 
-      \end{inparaenum}
+    \item SINE (SINE1/7SL, SINE2/tRNA, SINE3/5S and SINE4)
     \item CRE
     \item NeSL
     \item R4
@@ -265,15 +261,61 @@ Functional elements correspond to the biotype category of the genes according to
 
 Note that pseudogenes were removed from that list in order to keep the functional aspect of this family of genomic elements.
 
+\subsection{Randomization of genomic elements}
+
+In order to test for the random distribution of genomic elements among chromosomes of each genomes, we generated  1,000 genomes, corresponding to each species, with a random distribution of GEs. Taking only in consideration chromosome length.
+
+In order to discard centromeric regions, chromosome sizes were not directly inferred from sequence length. Here, we define the size of a chromosome as the sum of all 10 kilobase windows containing at least 1 GE (see \tref{tab:example_chrom_size}).
+
+Then GEs of each genome were distributed among chromosomes, according to a probability dependent of the size of the chromosome. As an example, in Human,  it was around 6 times likely for a GE to belong to chromosome 1 than chromosome 22 (respective lengths are 225 megabases and 35 megabases)
+
+\rowcolors{2}{white}{gray}
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{ l r r l }
+\hline
+
+  \textbf{Chr. name} & \textbf{Original length} & \textbf{Corrected length} & \textbf{Percentage left} \\ \hline
+  1  & 249,240,621 & 225,200,000 & 90.35\% \\
+  2  & 243,188,741 & 237,670,000 & 97.73\% \\
+  3  & 197,961,181 & 194,230,000 & 98.12\% \\
+  4  & 191,044,271 & 187,270,000 & 98.02\% \\
+  5  & 180,901,928 & 177,090,000 & 97.89\% \\
+  6  & 171,048,878 & 167,050,000 & 97.66\% \\
+  7  & 159,128,663 & 154,640,000 & 97.18\% \\
+  8  & 146,302,151 & 142,290,000 & 97.26\% \\
+  9  & 141,151,937 & 120,130,000 & 85.11\% \\
+  10 & 135,524,747 & 131,040,000 & 96.69\% \\
+  11 & 134,946,516 & 130,310,000 & 96.56\% \\
+  12 & 133,841,891 & 129,970,000 & 97.11\% \\
+  13 & 115,109,733 &  95,500,000 & 82.96\% \\
+  14 & 107,289,415 &  87,910,000 & 81.94\% \\
+  15 & 102,521,389 &  81,520,000 & 79.52\% \\
+  16 &  90,290,985 &  78,640,000 & 87.10\% \\
+  17 &  81,195,208 &  77,700,000 & 95.70\% \\
+  18 &  78,017,245 &  74,580,000 & 95.59\% \\
+  19 &  59,118,983 &  55,460,000 & 93.81\% \\
+  20 &  62,962,324 &  59,430,000 & 94.39\% \\
+  21 &  48,119,895 &  35,100,000 & 72.94\% \\
+  22 &  51,244,541 &  34,790,000 & 67.89\% \\
+  X  & 155,260,558 & 150,230,000 & 96.76\% \\
+  Y  &  59,033,288 &  22,520,000 & 38.15\% \\ \hline
+
+\end{tabular}
+\end{center}
+\caption[Transformation of Chromosome size.]{\textbf{Transformation of Chromosome size.} Example of changes in estimation of chromosome length after removing regions with no GEs for Human chromosome 1.}
+\label{tab:example_chrom_size}
+\end{table}
+
 \subsection{Ecolopy}
 
 Several packages or programs were already developed in order to deal with species abundances data, implementing statistical functions in order to fit data in ecological models and even able to test for neutrality \cite{Jabot2011,Etienne2007,Hankin2007}. However none of those programs were able to deal with genomic data, with abundances in the order of the million of individuals specially in the case of Etienne's model where computation of $K(D,A)$ uses stirling numbers (see Section \ref{sec:etienne-model}, equation \ref{eq:kda}). In order to adapt the algorithm to genomic dataset we developed the \textit{Ecolopy} package, that, as a main point, uses the GMP \cite{Granlund2000} and MPFR \cite{Fousse2007} libraries through GMPY biding \cite{Martelli2007}. Other improvements specific to Ecolopy, and needed for dealing with genomic dataset where done.
 
 Ecolopy is entirely written in Python \cite{VanRossum1991}, a programming language that offers a strong support for integration with other languages and tools, and whose popularity is raising among the bioinformatics community \cite{Bassi2007}. Ecolopy is still a fully ripened package, but it was designed to provide a scalable program architecture.
 
-\subsubsection{Ecological models}
+\subsection{Ecological models}
 
-\paragraph{Ewens} 
+\subsubsection{Ewens sampling formula}
 \label{sec:ewens-model}
 
 Ewens sampling formula \cite{Ewens1972} (\ref{eq:ewens}) was originally designed in order to describe the number of different alleles expected to be observed in a given sample. However Tavar\'e and Ewens suggested that the formula could be applied to ecology \cite{Tavari1997} and Hubbell finally proposed a model defining the Fundamental Biodiversity parameter $\theta$ (\ref{eq:theta}) given the speciation rate $\nu$ and $J_M$ the size of the metacommunity \cite{Hubbell2001}.
@@ -296,10 +338,10 @@ Here $n_i$ corresponds to the abundance of species $i$ and $\phi_a$ the number o
 
 Given the sampling formula (\ref{eq:ewens}) Ecolopy is able to generate random neutral species abundances distributions given a sample size $J$ and a value of $\theta$. The number of species generated is free according to the formula but can be fixed by keeping only those random abundances generated with the desired number of species. The likelihood function (\ref{eq:ewens_lnl}) is also integrated in the program, and used for optimization of $\theta$ parameter (see section \ref{sec:model-optimization}).
 
-\paragraph{Etienne}
+\subsubsection{Etienne sampling formula}
 \label{sec:etienne-model}
 
-The main problem with Hubbell's model using Ewens sampling formula is the assumption that immigration is unlimited ($m=1$). However a new sampling formula was presented recently \cite{Etienne2005} including cases where $m<1$, taking into account the number of immigrants $I$ depending on the sample size $J$:
+The main problem with Hubbell's model using Ewens sampling formula is the assumption that migration is unlimited ($m=1$). However a new sampling formula was presented recently \cite{Etienne2005} including cases where $m<1$, taking into account the number of immigrants $I$ depending on the sample size $J$:
 
 \begin{equation} \label{eq:m}
 m = \frac{I}{I+J-1}
