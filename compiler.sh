@@ -64,6 +64,8 @@ echo ""
 echo "  ------ MAKEINDEX ------"
 
 makeindex master.nlo -s nomencl.ist -o master.nls
+makeindex -s nomencl.ist -t master.alg -o master.acr master.acn
+
 echo ""
 
 echo "  --- MAKEGLOSSARIES ----"
@@ -73,6 +75,7 @@ echo ""
 echo "  ------ PDFLATEX -------"
 
 # compilation #2
+pdflatex -draftmode -interaction=nonstopmode --src-specials master > /dev/null 2>&1
 pdflatex -draftmode -interaction=nonstopmode --src-specials master > /dev/null 2>&1
 
 # compilation #3
