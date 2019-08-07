@@ -1,0 +1,26 @@
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../../thesis_main"
+%%% End: 
+%%% introduction.tex --- 
+
+%% Author: garamonfok@gros
+%% Version: $Id: introduction.tex,v 0.0 2011/10/09 18:39:32 garamonfok Exp$
+
+\begin{itemize}
+\item In the whole diversity of life, from viruses to mammals, a universal law governs the structure of genomes. Only dramatic changes --like can be polyploidization events or strong biases in nucleotidic contents-- are able to lower genome entropy.
+\item We hypothesise that this law obligates raises in biological complexity to be preceded by genome expansions.
+\item The dynamics of distribution and abundances of genetic elements --either functional or repetitive-- in eukaryotic genomes are following the expectations of a neutral ecological model.
+\item GSSA allows to test for functional biases within fast or slow evolving genes. This methodology successfully identified all previously reported functional categories candidates to be important targets of natural selection. Moreover, given that the GSSA is not limited by the compulsory presence of PSGs, it extended this set of targets to previously undetectable ones.
+\item We present a new argument supporting that the role of PSGs is not only the adaptive evolutionary change of phenotypes.
+\item The implementation of tools and programs that were used to generate the results presented in this thesis, were implemented following specific programming guidelines in order to maximize their contribution to scientific community.
+\end{itemize}
+
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../../thesis_main"
+%%% End: 

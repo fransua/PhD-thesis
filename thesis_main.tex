@@ -1,0 +1,240 @@
+%%% thesis_main.tex --- 
+
+%% Author: garamonfok@gros
+%% Version: $Id: thesis_main.tex,v 0.0 2011/10/09 18:39:32 garamonfok Exp$
+
+%% Author: garamonfok@gros
+%% Version: $Id: style.sty,v 0.0 2011/10/09 18:39:32 garamonfok Exp$
+
+
+%%%%%%%%% Document class declaration  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% really strange... but the only way to load xcolor together with tikz package
+% usually loaded as usepackage[table]{xcolor}
+% this is for defining rowcolors
+\PassOptionsToPackage{table}{xcolor}
+
+% \documentclass[english,b5paper,11pt,draft]{scrbook} % 176x250mm
+\documentclass[english,b5paper,11pt]{scrbook} % 176x250mm
+% add draft in documentclass options to compile faster
+
+%% change margins
+%\addtolength{\oddsidemargin}{-1cm}
+\addtolength{\evensidemargin}{-1.3cm}
+\addtolength{\textwidth}{1.3cm}
+\addtolength{\topmargin}{-0.2cm}
+\addtolength{\textheight}{2.2cm}
+
+
+%%%%%%%%% Load my style  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{style/thesis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% Thesis starts here  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    \includegraphics[width=90pt]{figures/other/escudo.png}\\[.8cm]
+    \textsc{\LARGE Programa de Doctorado de Biotecnología}\\[1.5cm]
+    \textsc{\Large PhD Thesis}\\[0.9cm]
+    
+    { \huge \bfseries Informational, Ecological and System Approaches for Complete Genome Analysis}\\[3.4cm]
+    % Author and supervisor
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        \emph{Author:}\\
+        François \textsc{Serra}
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+        \emph{Supervisor:} \\
+        Dr.~Hernán \textsc{Dopazo} \\[0.4cm]
+        \emph{Tutor:} \\
+        Dr.~Amparo \textsc{Latorre}
+      \end{flushright}
+    \end{minipage}
+    \vfill
+    % Bottom of the page
+    {\large July 2012}
+  \end{center}
+  \newpage
+ \thispagestyle{empty}
+ \mbox{}
+\newpage 
+\end{titlepage}
+%\author{Fran\c cois Serra}
+%\title{Informational, Ecological and System Approaches for Complete Genome Analysis}
+%\subtitle{PhD Thesis}
+% \title{Modularity and Neutrality in Genomes}
+% \subtitle{DNA Structure, Components Dynamics and Functionally Related Proteins}
+%\date{July 2012}
+\pagenumbering{Alph} % needed to avoid warning message
+
+
+%%%%%%%%% Acknowledgements  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
+\thispagestyle{empty}
+\begin{titlepage}
+  \fancyhf{}
+  \newpage
+\end{titlepage}
+\pagestyle{empty}
+\thispagestyle{empty}
+\include{tex_source/Complements/acknowledgments}
+
+\begin{titlepage}
+  \fancyhf{}
+\end{titlepage}
+\newpage
+\pagestyle{plain}
+\pagenumbering{roman}
+%%%%%%%%% Table of Contents  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\phantomsection 
+\addcontentsline{toc}{chapter}{Contents}
+\newpage
+\tableofcontents
+\label{tableofcontents}
+\begin{titlepage}
+  \fancyhf{}
+\end{titlepage}
+%%%%%%%%% Figs & Tables  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% blank page
+\begin{titlepage}
+  \fancyhf{}
+\end{titlepage}
+\phantomsection \label{listoffig}
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+%% blank page
+\begin{titlepage}
+  \fancyhf{}
+\end{titlepage}
+\phantomsection \label{listoftables}
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+%%%%%%%%% README  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{tex_source/Complements/readme}
+%%%%%%%%% Nomenclature  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{tex_source/Complements/nomenclature}
+
+
+%% blank page
+\begin{titlepage}
+  \fancyhf{}
+\end{titlepage}
+
+%%%%%%%%% Main text  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% glossary needs to be loaded at the beginning, even if printed at the end
+\include{tex_source/Complements/glossary}
+
+\pagenumbering{arabic}
+
+\chapter{Introduction} \mythumb{1}
+\label{intro}
+\input{tex_source/Introduction/introduction}
+
+\chapter{Material and Methods} \mythumb{2}
+\label{matmet}
+\input{tex_source/Material_Methods/material_methods}
+
+
+
+%\part{Structure and dynamics of genomes}
+
+\chapter{Random-like structure of DNA} \mythumb{3}
+\label{chap:dna_struct}
+\input{tex_source/Chapters/dna_struct}
+
+\chapter{Ecology of genome elements} \mythumb{4}
+\label{chap:untb_genomes}
+\input{tex_source/Chapters/untb_genomes}
+
+%\part{Detection of selective pressures in genomes}
+
+\chapter{Searching for evolutionary patterns in functionally linked group of genes} \mythumb{5}
+\label{chap:gssa}
+\input{tex_source/Chapters/gssa}
+
+\chapter{Tools and programs} \mythumb{6}
+\label{chap:tools}
+\input{tex_source/Chapters/tools}
+
+\bookmarksetup{startatroot}   % this is to get out of part II
+\addtocontents{toc}{\bigskip} % and add space in toc
+\chapter{Conclusions} \mythumb{7}
+\label{conclusion}
+
+\input{tex_source/Conclusion/conclusion}
+
+%% blank page
+\begin{titlepage}
+  \fancyhf{}
+\end{titlepage}
+
+%%% new page numbering for extras
+
+%%%%%%%%% Bibliography  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mythumb{8}
+\pagestyle{fancy} % removes headings for the picture page
+\begin{figure}[H]
+  \includegraphics[height=\textheight]{figures/citations.pdf} \\
+\end{figure}
+
+% Dawkins, Ziheng Yang, Laurent Keller, Michael Lynch, Hern\'an Dopazo
+% Richard Lewontin, Ford Doolitle, Cavalier-Smith, Tomoko Ohta, Stephen Hubbell
+%                                                            Joseph Felsenstein
+% Ernst Mayr, Motoo Kimura, George C williams, Robert MacArthur
+% R. Fisher, Wright, Haldane
+% Olaf Arrhemius
+% Darwin
+
+\phantomsection \label{thebibliograhy}
+
+%\pagenumbering{Roman}
+\pagestyle{headings} % put back the headings
+
+%\chapterwithpic{hola}{figures/citations.pdf}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+%% style
+\bibliographystyle{biblio/fransua} % serra et al 2011
+%% bibtex file
+\bibliography{biblio/library}
+
+%%%%%%%%% Glossary  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\phantomsection
+\mythumb{9}
+\printglossaries
+\label{theglossary}
+
+%%%%%%%%% Appendix  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+\newpage
+\appendix
+\mythumb{10}
+\input{tex_source/Appendix/appendix}
+
+%%%%%%%%% Resumen  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+  \fancyhf{}
+\end{titlepage}
+\mythumb{11}
+\addcontentsline{toc}{part}{Resumen en castellano}
+\include{tex_source/Complements/resumen}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

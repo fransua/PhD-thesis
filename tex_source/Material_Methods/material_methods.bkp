@@ -1,0 +1,673 @@
+%%% material_methods.tex --- 
+
+%% Author: garamonfok@gros
+%% Version: $Id: material_methods.tex,v 0.0 2011/10/09 18:39:32 garamonfok Exp$
+
+\section{Measuring DNA complexity}
+\label{sec:meas-dna-compl}
+
+\subsection{The complexity ratio and complexity value}
+\label{sec:compl-ratio-compl}
+
+% \lettrine[lines=4, slope=-0.5em, lhang=0.5, findent=2.1em, nindent=-0.9em, loversize=0.25]{C}{omplexity}
+Complexity ratio (CR) is defined by a classical formula used in data compression \cite{Adjeroh2008}. It is the result of three transformation steps of a given sequence. \textbf{First}, the \mygls{Burrows-Wheeler} transform (BWT) \cite{Burrows1994}, \textbf{second} the Move To Front (MTF) \cite{Ryabko1980} algorithm and \textbf{finally} the summarizing of the unexpected dispersion of the values obtained through Shannon's entropy \cite{Shannon1948} (see \autoref{tab:cr_example} for an example of the process). Thus the CR is Shannon's entropy of a transformation or digestion of the sequence. The purpose of this transformation is to reveal the regularities in a sequence. Shannon's entropy is zero --this is the minimum-- only when a sequence consists just of a single repeated symbol, which is the simplest possible combinatorial structure. Conversely, when entropy is equal to one (the maximum entropy), it indicates that the sequence has a random-like combinatorial structure. 
+
+\begin{table}[!ht]
+  \scriptsize
+  \rowcolors{1}{white}{lightgray}
+  Given a sequence, $seq=AACCTTCGTAGCATGG$:
+  \begin{center}
+      \begin{tabular}{clc}
+        \hline
+        \textbf{\#} & \textbf{Rotating sequence} & \textbf{\textit{I.}} \\ \hline
+        0  & AACCTTCGTAGCATG\textbf{G}$|$ & 0  \\
+        1  & ACCTTCGTAGCATGG$|$\textbf{A} & 1  \\
+        2  & CCTTCGTAGCATGG$|$A\textbf{A} & 5  \\
+        3  & CTTCGTAGCATGG$|$AA\textbf{C} & 7  \\
+        4  & TTCGTAGCATGG$|$AAC\textbf{C} & 15 \\
+        5  & TCGTAGCATGG$|$AACC\textbf{T} & 13 \\
+        6  & CGTAGCATGG$|$AACCT\textbf{T} & 6  \\
+        7  & GTAGCATGG$|$AACCTT\textbf{C} & 11 \\
+        8  & TAGCATGG$|$AACCTTC\textbf{G} & 12 \\
+        9  & AGCATGG$|$AACCTTCG\textbf{T} & 2  \\
+        10 & GCATGG$|$AACCTTCGT\textbf{A} & 9  \\
+        11 & CATGG$|$AACCTTCGTA\textbf{G} & 4  \\
+        12 & ATGG$|$AACCTTCGTAG\textbf{C} & 3  \\
+        13 & TGG$|$AACCTTCGTAGC\textbf{A} & 14 \\
+        14 & GG$|$AACCTTCGTAGCA\textbf{T} & 10 \\
+        15 & G$|$AACCTTCGTAGCAT\textbf{G} & 8  \\ \hline
+      \end{tabular}
+    {\Large\pointer}
+      \rowcolors{1}{white}{lightgray}
+      \begin{tabular}{ c }
+        \hline
+        \textbf{BWT} \\ \hline
+        G \\
+        A \\
+        T \\
+        C \\
+        G \\
+        A \\
+        T \\
+        C \\
+        G \\
+        A \\
+        T \\
+        C \\
+        G \\
+        T \\
+        A \\
+        C \\ \hline
+      \end{tabular}
+    {\Large\pointer}
+      \rowcolors{1}{white}{lightgray}
+      \begin{tabular}{ c c c c c }
+        \hline
+        \mc{4}{c}{\textbf{Char. list}} & \textbf{MTF} \\ \hline
+        \textbf{G} & a & t & c & 0 \\
+        G & \textbf{A} & t & c & 1 \\
+        A & g & \textbf{T} & c & 2 \\
+        T & a & g & \textbf{C} & 3 \\
+        C & t & a & \textbf{G} & 3 \\
+        G & c & t & \textbf{A} & 3 \\
+        A & g & c & \textbf{T} & 3 \\
+        T & a & g & \textbf{C} & 3 \\
+        C & t & a & \textbf{G} & 3 \\
+        G & c & t & \textbf{A} & 3 \\
+        A & g & c & \textbf{T} & 3 \\
+        T & a & g & \textbf{C} & 3 \\
+        C & t & a & \textbf{G} & 3 \\
+        G & c & \textbf{T} & a & 2 \\
+        T & g & c & \textbf{A} & 3 \\
+        A & t & g & \textbf{C} & 3 \\ \hline
+      \end{tabular}
+  \end{center}
+  \pointer 
+  $\:\:CR(seq) = E(MTF(BWT(seq))) = E(0, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3) = 0.593$
+  \caption [CR explained by example]{%
+    \textbf{CR explained by example.}\\These 3 tables summarizes the steps followed to obtain the final sequence of number from which we will finally compute Shannon's entropy. 1) The table on the left corresponds to the Burrows-Wheeler transform (BWT). Original sequence is rotated sequentially (so that first character moves to back) resulting in different strings, as many strings as characters in the sequence. The resulting sequences are then sorted in lexicographic order. The ``\textit{I.}'' column corresponds to the Index of this ordering (e.g.: the third sequence here in original order ``\#'' takes the fifth position in lexicographic order). 2) The table in the center corresponds to the result of the BWT, that is the last character of previous sequences ordered. 3) The table on the right corresponds to the application of the MTF algorithm. Starting from a sequence of all characters named here ``Char. list'' (four nucleotides in this case), the Move-to-front (MTF) algorithm will return the index of BWT's nucleotide (upper case bold letter) in the ``Char. list''. In a second step, for the next iteration, MTF will transform the ``Char. list'' bringing to front corresponding BWT character (upper case letter). Finally, we compute the Shannon's entropy of these last values obtained (line below tables) that results in our CR (the CV is obtained by multiplying CR by the length of the sequence).}
+  \label{tab:cr_example}
+\end{table}
+
+Algorithmically, the BWT of a given sequence summarizes all its permutations sorted  lexicographically. The MTF transforms a given sequence into a list of numbers. The higher the number, the less the character was used in the previous part of the sequence of length equal to the number of characters found in the sequence (in the case of DNA, this stack contains 4 characters). The MTF operates from left to right. Each number returned is an index in the stack and denotes an alphabet symbol. Shannon's entropy maps a sequence into a real number between zero and one. It weights the frequency of the alphabet symbols in a given sequence. For each symbol $i$ in the alphabet, let $p_{(i)}$ be the probability of finding $i$ in the sequence $s$; $N_i$ the number occurrences of $i$ in $s$ and $length(s)$ the total length of the sequence $s$: 
+
+\begin{equation} \label{eq:prob_seq}
+p_{(i)} = \frac {N_i}{length(s)}
+\end{equation}
+
+For DNA alphabet entropy is defined as:
+
+\begin{equation} \label{eq:entropy}
+E(s) = -\sum_{i=0}^3p_{(i)} \times log_4(p_{(i)})
+\end{equation}
+
+With $i$ the index of characters used, for nucleotides from 0 to 3. Thus the CR can be factorize as:
+
+\begin{equation} \label{eq:cr}
+CR(s) = E(MTF(BWT(s)))
+\end{equation}
+
+The complexity value (CV) of a sequence is its CR times the number of
+characters in this sequence (here $s$):
+
+\begin{equation} \label{eq:cv}
+CV(s) = E(MTF(BWT(s))) \times length(s)
+\end{equation}
+
+As the CV of a sequence depends on the transformation of the MTF applied to the whole sequence, its computation impede the use of parts of the sequence independently.
+
+\subsection{Complexity in strings}
+\label{sec:complexity-strings}
+
+\subsubsection{Genomic sequences}
+\label{sec:genomic-sequences}
+
+Complete genomes of 54 species were downloaded from NCBI database resource \cite{Sayers2009} and Ensembl Genome Project \cite{Flicek2011}. Fourteen major groups of taxa were selected: virus, phages, bacteria, archaea, fungi, amplicomplexa, heterokonta, amebozoa, urochordates, invertebrates, plants, fishes, birds, and mammals. Species among taxa were chosen to their interest as model species or the presence of particular biological features such as: variation in genome size, ancestral or recent polyploidy, living in extreme environments, living as intracellular parasites, gene expansion, genome reduction, RNA or single-strand DNA genomes, and synthetic genomes \autoref{tab:genome}. Eukaryote genomes with coverage of 6$\times$ or greater were chosen. Sexual chromosomes were excluded from the analysis, and ambiguous ``N'' characters were removed from sequences, and thus, excluded in the measure of chromosome length. Eukaryote's genome complexity was calculated over concatenated chromosomes.
+
+Complexity in biological sequences was computed in the +1 strand. Analysis of -1 strand provided no significant differences in results.
+
+Random sequences with different ploidy levels were also needed for the study, they were generated with Python base function: ``random'' \cite{VanRossum2003}. Complexity value of biological and random sequences was computed with the DNA alphabet of four letters.
+
+\subsubsection{Annotation of repetitive elements}
+\label{sec:annot-repet-elem}
+
+Interspersed repeats and low complexity DNA sequences were screened and mapped in genomes of all our 54 species using RepeatMasker program \cite{Smit2010} (see details of RepeatMasker output for individual species in \autoref{cha:repe-summ-outp}). Libraries of genetic elements were retrieved from RepBase \cite{Jurka2005}, the last version available at time was used (20$^{\textrm{\scriptsize th}}$ of September 2011). An example of summary file given by RepeatMasker is shown in  \autoref{cha:repe-summ-outp}.
+
+Complexity of major families of repetitive elements such as DNA \myglspl{transposon}, \myglspl{LTR}, \myglspl{LINE}, \myglspl{SINE}, \myglspl{satellite} and exons, introns, and complete genes (considering untranslated regions) was computed after concatenation of all elements conserving their original order in chromosomes.
+
+\subsubsection{Human texts}
+\label{sec:human-texts}
+
+Short stories, books and complete works in its original languages were downloaded from Project Gutenberg (\myurl{http://www.gutenberg.org/}). To automatically detect the alphabet size in texts (including mathematical and punctuation symbols) we run COMPL program (\myurl{http://kapow.dc.uba.ar/compl}) with ``auto'' option, that takes into account all characters found, including mathematical symbols, and different punctuation signs. 
+
+\subsubsection{Complexity in windows}
+\label{sec:complexity-windows}
+
+To study complexity along chromosomes, a sliding window method shifting along chromosomes in overlapping units of 1.0 Kb to 100 Mb was performed.
+
+\subsection{Simulations}
+\label{sec:simulations}
+
+We performed four kinds of experiments where CV and CR were computed. \textbf{First}: random polyploid construction of sequences of various sizes and ploidy levels ($1\times$ to $10\times$). \textbf{Second}: the evolution along 40 million generations by constant neutral mutation rate of $1.0e^{-08}$ mutations per site per generation (this value is in between the mutation rate estimated for {\it Homo sapiens}: $2.5e^{-08}$ \cite{Nachman2000} , and \textit{Arabidopsis thaliana}: $7.1e^{-09}$ \cite{Ossowski2010}) over random sequences, and chromosomes of \textit{Zea mays} and \textit{Sorghum bicolor}. \textbf{Third}: the evolution along 50,000 generations of random polyploid genomes of different sizes (100Kb, 1Mb, 10Mb) by 1.0 Kb transpositions between chromosomes. The number of transpositions per generation was set as a constant function of genome size (genome size over 1,000). \textbf{Last}: the concatenation and shuffling (computed with the Python base function: ``shuffle'') of all repetition instances in chromosomes for main repetitive families, and genes were considered. CV and CR were calculated every 100 generations. 
+
+\section{Measuring dynamics of genetic species}
+\label{sec:meas-dynam-genet}
+
+\subsection{Genomes}
+\label{sec:genomes}
+
+For the study of dynamics of genetic elements, genomic sequences of 31 species from unicellular eukaryotes to mammals were used. These genomes correspond to a subset of the 54 genomes presented in previous section (see \autoref{sec:complexity-strings}). References can be found in and \autoref{tab:genome}, page \pageref{tab:genome}. The complete list of species used is: \begin{inparaenum}[\itshape 1)]
+\item \textit{Gallus gallus}            (Birds)
+\item \textit{Taeniopygia guttata}      (Birds)
+\item \textit{Danio rerio}              (Fishes)
+\item \textit{Oryzias latipes}          (Fishes)
+\item \textit{Tetraodon nigroviridis}   (Fishes)
+\item \textit{Saccharomyces cerevisiae} (Fungi)
+\item \textit{Anopheles gambiae}        (Invertebrates)
+\item \textit{Caenorhabditis elegans}   (Invertebrates)
+\item \textit{Drosophila melanogaster}  (Invertebrates)
+\item \textit{Tribolium castaneum}      (Invertebrates)
+\item \textit{Bos taurus}               (Mammals)
+\item \textit{Canis familiaris}         (Mammals)
+\item \textit{Equus caballus}           (Mammals)
+\item \textit{Homo sapiens}             (Mammals)
+\item \textit{Macaca mulatta}           (Mammals)
+\item \textit{Monodelphis domestica}    (Mammals)
+\item \textit{Mus musculus}             (Mammals)
+\item \textit{Pan troglodytes}          (Mammals)
+\item \textit{Pongo abelii}             (Mammals)
+\item \textit{Rattus norvegicus}        (Mammals)
+\item \textit{Arabidopsis lyrata}       (Plants)
+\item \textit{Arabidopsis thaliana}     (Plants)
+\item \textit{Brachypodium distachyon}  (Plants)
+\item \textit{Oryza sativa}             (Plants)
+\item \textit{Populus trichocarpa}      (Plants)
+\item \textit{Sorghum bicolor}          (Plants)
+\item \textit{Zea mays}                 (Plants)
+\item \textit{Dictyostelium discoideum} (unicellular Eukaryotes)
+\item \textit{Plasmodium falciparum}    (unicellular Eukaryotes)
+\item \textit{Thalassiosira pseudonana} (unicellular Eukaryotes)
+and \item \textit{Ciona intestinalis}   (Urochordate)
+\end{inparaenum}.
+
+\subsection{Mining of Genetic Species}
+\label{sec:mining-genet-elem}
+
+For this study, we define genetic species (GSs) as the sum of repetitive elements and functional elements, each of them described below.
+
+\subsubsection{Repetitive Elements}
+\label{sec:repetitive-elements}
+
+Repetitive elements were mapped following the methodology explained in \autoref{sec:annot-repet-elem}.
+
+To measure dynamics of genetic elements we had to define a level to consider as ``species'' in the RepBase ontology (see \nameref{sec:definition-species}: \autoref{sec:definition-species}). We decided to consider ``species'' those class of repeats that can be defined functionally. What would correspond to \myglspl{superfamily} of transposable elements according to \cite{Wicker2007} or, also, to RepBase classification \cite{Kapitonov2008}.
+
+Complete list of \myglspl{superfamily} mapped is shown in \autoref{tab:superfamilies}
+
+\begin{table}
+  \scriptsize
+  \rowcolors{1}{white}{lightgray}
+  \begin{center}
+    \begin{tabular*}{\textwidth}{p{0.1504\hsize} p{0.788\hsize} }
+      \hline
+      \textbf{Family} & \textbf{\myGlspl{superfamily}}                                                                                                                                                                                                                                                                                                                                                \\ \hline
+      ARTEFACT        & ARTEFACT                                                                                                                                                                                                                                                                                                                                                              \\
+      DNA             & DNA, Chapaev, Chapaev-Chap3, Crypton, En-Spm, Ginger, Harbinger, Kolobok-T2, Maverick, Merlin, Mirage, MuDR, NOF, P, PiggyBac, TcMar, TcMar-ISRm11, TcMar-Mariner, TcMar-Pogo, TcMar-Stowaway, TcMar-Tc1, TcMar-Tc2, TcMar-Tc4, TcMar-Tigger, Tourist, Transib, Zator, hAT, hAT-Ac, hAT-Blackjack, hAT-Charlie, hAT-Pegasus, hAT-Tag1, hAT-Tip100, hAT-Tol2, hAT-hobo \\
+      \mygls{LINE}    & \mygls{LINE}, CR1, DRE, Dong-R4, I, Jockey, L1, L1-Tx1, L2, LOA, Penelope, R1, R2, R2-Hero, RTE, RTE-BovB, RTE-X, telomeric                                                                                                                                                                                                                                           \\
+      \mygls{LTR}     & Caulimovirus, Copia, DIRS, ERV, ERV1, ERVK, ERVL, ERVL-MaLR, Gypsy, Pao                                                                                                                                                                                                                                                                                               \\
+      Low complexity  & Low complexity                                                                                                                                                                                                                                                                                                                                                        \\
+      Other           & Other, Composite, centromeric, subtelomeric                                                                                                                                                                                                                                                                                                                           \\
+      RC              & Helitron                                                                                                                                                                                                                                                                                                                                                              \\
+      RNA             & RNA                                                                                                                                                                                                                                                                                                                                                                   \\
+      \mygls{SINE}    & \mygls{SINE}, 5S, Alu, B2, B4, BovA, CORE, Deu, ID, L1, MIR, RTE, RTE-BovB, V, tRNA, tRNA-CR1, tRNA-Glu, tRNA-Lys, tRNA-RTE                                                                                                                                                                                                                                           \\
+      \myGls{satellite}       & Satellite, W-chromosome, Y-chromosome, acro, centr, macro, telo                                                                                                                                                                                                                                                                                                       \\
+      Simple repeat   & Simple repeat                                                                                                                                                                                                                                                                                                                                                         \\
+      Unknown         & Unknown, Y-chromosome                                                                                                                                                                                                                                                                                                                                                 \\
+      rRNA            & rRNA                                                                                                                                                                                                                                                                                                                                                                  \\
+      scRNA           & scRNA                                                                                                                                                                                                                                                                                                                                                                 \\
+      snRNA           & snRNA                                                                                                                                                                                                                                                                                                                                                                 \\
+      srpRNA          & srpRNA                                                                                                                                                                                                                                                                                                                                                                \\
+      tRNA            & tRNA                                                                                                                                                                                                                                                                                                                                                                  \\
+      \hline
+    \end{tabular*}
+    \caption [superfamily of repetitive elements and description]{%
+      \textbf{\myglspl{superfamily} of repetitive elements and description.}                                                                                                                                                                                                                                                                                                                  \\
+      \myglspl{superfamily} mapped by RepeatMasker using RepBase library.}
+    \label{tab:superfamilies}
+  \end{center}
+\end{table}
+
+
+\subsubsection{Functional Elements}
+\label{sec:functional-elements}
+
+Functional elements correspond to biotypes category of the genes according to Ensembl \cite{Flicek2011} nomenclature. They were retrieved using the Biomart API \cite{Kinsella2011}. The non-redundant list of function elements across all species is shown in \autoref{tab:biotypes}.
+
+\begin{table}
+  \scriptsize
+  \rowcolors{1}{white}{lightgray}
+  \begin{center}
+    \begin{tabular*}{\textwidth}{p{0.2004\hsize} p{0.738\hsize} }
+      \hline
+      \textbf{Biotype}     & \textbf{Description}                                                                        \\ \hline
+      IG C gene            & Immunoglobulin constant segment                                                             \\
+      IG D gene            & Immunoglobulin diversity segment                                                            \\
+      IG J gene            & Immunoglobulin joining segment                                                              \\
+      IG V gene            & Immunoglobulin variable segment                                                             \\
+      IG Z gene            & Immunoglobulin gene found in Zebrafish                                                      \\
+      MRP RNA              & mitochondrial RNA-processing RNA                                                            \\
+      RNase MRP RNA        & enzymatically active ribonucleoprotein                                                      \\
+      RNase P RNA          & enzymatically active ribonucleoprotein                                                      \\
+      SRP RNA              & signal recognition particle RNA                                                             \\
+      TR C                 & T cell receptor constant domain                                                             \\
+      TR J                 & T cell receptor joining domain                                                              \\
+      TR V                 & T cell receptor variable domain                                                             \\
+      class I RNA          & class of small non-coding RNA                                                               \\
+      class II RNA         & class of small non-coding RNA                                                               \\
+      lincRNA              & large intervening non-coding RNA (multiexonic non-coding RNA)                               \\
+      miRNA                & micro RNA                                                                                   \\
+      misc RNA             & miscellaneous RNA                                                                           \\
+      ncRNA                & non-coding RNA                                                                              \\
+      processed transcript & Non-coding transcript without open reading frame (ORF).                                     \\
+      protein coding       & Contains an open reading frame (ORF)                                                        \\
+      rRNA                 & Ribosomal RNA                                                                               \\
+      retrotransposed      & non-coding pseudogene produced by integration of a reverse transcribed mRNA into the genome \\
+      snRNA                & small nuclear RNA                                                                           \\
+      snlRNA               & small nuclear like RNA                                                                      \\
+      snoRNA               & small nucleolar RNA, involved in modifications of other RNAs                                \\
+      tRNA                 & transfer RNA                                                                                \\
+      transposable element & transposable element                                                                        \\ \hline
+    \end{tabular*}
+    \caption [Biotypes and description]{%
+      \textbf{Biotype and description.}                                                                                  \\ Summary table of the biotypes used, and short description retrieved from Ensembl glossary \cite{Flicek2011} and from Sequence Ontology browser \cite{Eilbeck2005}.}
+    \label{tab:biotypes}
+  \end{center}
+\end{table}
+
+Note that pseudogenes were not included in that list in order to keep the functional aspect of this family of GSs.
+
+\subsection{Randomization of genetic elements}
+\label{sec:rand-genet-elem}
+
+In order to test for the random distribution of GSs among chromosomes of each genomes, we generated 1,000 genomes, corresponding to each species, with, for each, a random distribution of GSs.
+
+Consequently GSs of each genome were distributed among chromosomes, according to a probability dependent of the size of the chromosome. As an example, in Human,  it was around 6 times likely for a GS to belong to chromosome 1 than chromosome 22 (respective lengths are 225 megabases and 35 megabases)
+
+Measure of chromosome size being critical for the randomization process, we discarded centromeric and not fully sequenced regions, instead of considering directly the sequence length. A way to do this is to consider only regions of the chromosome where GS can be found. We thus defined that chromosome size was the sum of all 10 kilobase windows containing at least one GS (see \autoref{tab:example_chrom_size}).
+
+
+\rowcolors{1}{white}{lightgray}
+\begin{table}[htbp]
+  \scriptsize
+  \begin{center}
+    \begin{tabular}{ r r r r }
+      \hline
+      \textbf{Chr} & \textbf{Chr length} & \textbf{Corrected length} & \textbf{Percentage left} \\ \hline
+      1            & 249,240,621         & 225,200,000               & 90.35\%                  \\
+      2            & 243,188,741         & 237,670,000               & 97.73\%                  \\
+%      3            & 197,961,181         & 194,230,000               & 98.12\%                  \\
+%      4            & 191,044,271         & 187,270,000               & 98.02\%                  \\
+%      5            & 180,901,928         & 177,090,000               & 97.89\%                  \\
+      6            & 171,048,878         & 167,050,000               & 97.66\%                  \\
+%      7            & 159,128,663         & 154,640,000               & 97.18\%                  \\
+%      8            & 146,302,151         & 142,290,000               & 97.26\%                  \\
+%      9            & 141,151,937         & 120,130,000               & 85.11\%                  \\
+      10           & 135,524,747         & 131,040,000               & 96.69\%                  \\
+%      11           & 134,946,516         & 130,310,000               & 96.56\%                  \\
+      12           & 133,841,891         & 129,970,000               & 97.11\%                  \\
+%      13           & 115,109,733         & 95,500,000                & 82.96\%                  \\
+%      14           & 107,289,415         & 87,910,000                & 81.94\%                  \\
+      15           & 102,521,389         & 81,520,000                & 79.52\%                  \\
+%      16           & 90,290,985          & 78,640,000                & 87.10\%                  \\
+%      17           & 81,195,208          & 77,700,000                & 95.70\%                  \\
+%      18           & 78,017,245          & 74,580,000                & 95.59\%                  \\
+%      19           & 59,118,983          & 55,460,000                & 93.81\%                  \\
+      20           & 62,962,324          & 59,430,000                & 94.39\%                  \\
+%      21           & 48,119,895          & 35,100,000                & 72.94\%                  \\
+      22           & 51,244,541          & 34,790,000                & 67.89\%                  \\
+      X            & 155,260,558         & 150,230,000               & 96.76\%                  \\
+      Y            & 59,033,288          & 22,520,000                & 38.15\%                  \\ \hline
+    \end{tabular}
+  \end{center}
+  \caption[Transformation of Chromosome size.]{\textbf{Transformation of Chromosome size.}\\
+    Example of changes in estimation of chromosome length after removing regions with no GSs for some human chromosomes.}
+  \label{tab:example_chrom_size}
+\end{table}
+
+
+\subsection{Ecolopy}
+\label{sec:ecolopy}
+
+Since the definition of neutral models in ecology \cite{Hubbell2001,Volkov2003} computational tools were developed in order to manipulate data collected by ecological sampling, and to apply specific statistical test over them. The main tools developed in this sense are three.
+\begin{itemize}
+\item The more complete tool takes its name directly from the neutral model it allows to test, the package untb \cite{Hankin2007}. This package is implemented in R language \cite{Team2008} and stands ahead of other R packages allowing to deal with ecological data and to execute most classical statistical analysis that ecologist have been developing \cite{Borcard2011}. The main restriction of the package being related to the language used that may lacks of computational efficiency.
+\item Another suite of \myglspl{script} has been implemented by Rampal S. Etienne in the context of its publication \cite{Etienne2005}. These \myglspl{script} were implemented in PARI/GP language, in the unique context of testing the UNTB and are actually mainly taken up by the untb R package. The main advantage of this tool comes down to its simplicity of use and its speed.
+\item Finally the programs that allows to compute the fit of neutral models with more efficiency are Tetame and Parthy implemented by Franck Jabot and J\'er\^ome Chave \cite{Jabot2011,Jabot2008}. Those programs are implemented in C++ language and are very fast, the only criticism that we could brought is about their lack of flexibility, as a counterpart of their computational efficiency.
+\end{itemize}
+
+All these packages allow to get the fit of sampling data to the UNTB plus, in some cases, the possibility to dwell on most classical ecological statistics. But at the time to test for the UNTB in genomic data, none was able to deal with the high numbers corresponding to the sampling of genomes and chromosomes. And this was the main reason why we started developing a new package ``Ecolopy'' in order to be able to deal with genomic data.
+
+Ecolopy is a fully functional package in the context of testing for the UNTB, but still lacks of the whole set statistical tools available in R. However its design and the use of python \cite{VanRossum2003} were though in order to provide scalable program architecture, and also the integration, if needed of some algorithms developed in R (through the RPy \cite{Moreira2004} module for example). Alternatively Ecolopy takes advantage of the GNU Multiple Precision (GMP) \cite{Granlund2000} library, and the Multiple-Precision Binary Floating-Point (MPFR)\cite{Fousse2007} library, through the fast multiprecision GMPY module.
+
+%Ecolopy implements some very basic functions and statistics allowing to get a quick overview of the distribution of species. Among them, the most relevant are:
+%\begin{itemize}
+%\item the relative species abundance curve (RSA), can be drawn as a first step in the analysis.% (see \autoref{fig:example-rsa}).
+%\item a summary including the number of species, the community and estimated metacommunity size, the Shannon entropy of the distribution, the models fitted to the distribution, and if computed, the values of some optimized parameters relevant to the model.
+%\end{itemize}
+
+%In order to avoid redundancy, in the next sections, together with the description of the steps leading to the test of the UNTB, we are going to present the little improvements and modifications that we brought through this package in order to deal with genomic data.
+
+%\begin{figure}
+%  \centering
+%  \includegraphics[width=0.8\textwidth]{figures/tools/example_bci_rsa.pdf}
+%  \caption[Example of RSA with BCI-like dataset]{
+%    \textbf{Example of RSA with BCI-like dataset}\\ This is a representation of the relative species abundance (RSA) of the BCI dataset \cite{Hubbell2005}-- an output file of Ecolopy. The abscissa represents the rank of the species sorted by their abundance while the ordinate is the percentage of representation of each species according to the total number of individuals in the ecosystem (the first species on the left includes around 60\% of the individuals sampled).}
+%  \label{fig:example-rsa}
+%\end{figure}
+
+\subsubsection{Usage and source}
+\label{sec:usage}
+
+A complete description of the functionalities as well as a quick tutorial can be found at \myurl{http://bioinfo.cipf.es/ecolopy/tutorial/load_abundance.html}. The source can be downloaded from \myurl{https://gitorious.org/ecolopy}.
+
+\subsection{Fitting Neutral Ecological models}
+\label{sec:neutr-ecol-models}
+
+\subsubsection{Ewens sampling formula}
+\label{sec:ewens-model}
+
+Ewens sampling formula \cite{Ewens1972} (\autoref{eq:ewens}) was originally designed in order to describe the number of different alleles expected to be observed in a given sample. However, the formula can be applied to other fields. In the context of the study of ecological communities its application was first suggested  by Tavar\'e and Ewens \cite{Tavari1997} and finally implemented by Hubbell \cite{Hubbell2001}. Hubbell proposed a model defining the fundamental biodiversity parameter $\theta$ (\autoref{eq:theta}) given the speciation rate $\nu$ and $J_M$ the size of the metacommunity.
+
+\begin{equation} \label{eq:theta}
+\theta = 2J_M\nu
+\end{equation}
+
+The estimation of $\theta$ alone is sufficient to apply directly Ewens sampling formula (\autoref{eq:ewens}), and to compute its likelihood for given a community (\autoref{eq:ewens_lnl}).
+
+\begin{equation} \label{eq:ewens}
+Pr\{S,n1,n2,\ldots,n_S|\theta\} = \frac{J_M!\theta^S}{1^{\phi1} 2^{\phi2} \cdots J_M^{\phi J_M} \phi_1! \phi_2! \cdots \phi_{J_M}! \prod_{k=1}^{J_M} (\theta + k - 1)}
+\end{equation}
+
+Here $n_i$ corresponds to the abundance of species $i$ and $\phi_a$ the number of species with abundance $a$.
+
+\begin{equation} \label{eq:ewens_lnl}
+\mathcal{L} = \frac{\theta^S}{\prod_{k=1}^{J_M} (\theta + k - 1)}
+\end{equation}
+
+\subsubsection{Etienne sampling formula}
+\label{sec:etienne-model}
+
+The main problem with Hubbell's model using Ewens sampling formula is the assumption that migration is unlimited ($m=1$). However a new sampling formula was presented recently \cite{Etienne2005} including cases where $m<1$, taking into account the number of immigrants $I$ depending on the sample size $J$:
+
+\begin{equation} \label{eq:m}
+m = \frac{I}{I+J-1}
+\end{equation}
+
+Etienne's sampling formula is then postulated as:
+
+\begin{equation} \label{eq:etienne_lnl}
+P[D|\theta,m,J] = \frac{J!}{\prod_{i=1}^Sn_i \prod_{j=1}^J\phi_J!} \frac{\theta^S}{(I)_J} \sum_{A=S}^JK(D,A) \frac{I^A}{(\theta)_A}
+\end{equation}
+
+with $K(D,A)$ as:
+
+\begin{equation} \label{eq:kda}
+K(D,A) := \sum_{\{a_1,\ldots,a_s|\sum_{i=1}^Sa_i=A\}}\prod_{i=1}^S\frac{\bar{s}(n_i,a_i)\bar{s}(a_i,1)}{\bar{s}(n_i,1)}
+\end{equation}
+
+Once computed $K(D,A)$ we are able to optimize the likelihood of the model (\autoref{eq:etienne_lnl}) by varying the values of the parameters $\theta$ and $m$ (see \nameref{sec:model-optimization} \autoref{sec:model-optimization}) for a given dataset.
+
+This last step is actually the main computational bottle neck in the resolution of Etienne's formula (\autoref{eq:etienne_lnl}), and in particular the calculation the stirling numbers \cite{Etienne2005} in $K(D,A)$'s equation (see \autoref{eq:kda}). A solution was given by Franck Jabot and J\'er\^ome Chave \cite{Jabot2008} and implemented in the Tetame program. It consists in taking advantage of the recurrence function (\autoref{eq:stirling_req}), that allows to build a table of values, given the dispersion of the ranked abundance of species, instead of computing them directly for each pair of values.
+
+\begin{equation} \label{eq:stirling_req}
+S_{(n,m)} = S_{(n-1, m-1)} - (n-1) \times S_{(n-1, m)}
+\end{equation}
+
+However, at the expense of the amelioration in computation time, the size of the table of values created using this methodology was excessive in the case of genomic data. A solution, implemented in Ecolopy, was to recursively remove the stirling numbers not needed for the estimation of the $K(D,A)$.
+
+Finally, given the order of magnitude that can reach the values of stirling numbers ($>1e^{+1000}$ for medium size chromosomes), we needed to discard mathematics operations provided in Python. To be able to deal with this kind of data Ecolopy uses the GMP \cite{Granlund2000} and MPFR \cite{Fousse2007} libraries through GMPY biding \cite{Martelli2007}.
+
+\subsection{Model optimization}
+\label{sec:model-optimization}
+
+In Ecolopy models can be optimized through different strategies depending on the model selected. In the case of the Ewens' formula, $\theta$ is the only parameter to take into account, and this one-dimensional optimization is achieved with the ``golden'' optimization strategy \cite{Jones2001}. For Etienne's model, two parameters are optimized, $\theta$ and $m$. Optimization step being more complicated here, several different optimization strategies (all implemented in SciPy \cite{Jones2001}), are proposed:
+\begin{itemize}
+\item ``fmin'': the downhill simplex algorithm \cite{Nelder1965}
+\item ``l-bfgs-b'': a limited version of the Broyden, Fletcher, Goldfarb, and Shanno  method for unconstrained optimization \cite{Byrd1995,Zhu1994}.
+\item ``tnc'': minimize using gradient information in a Truncated Newton Conjugate-gradient \cite{Nocedal2000}.
+\item ``slsqp'': Sequential Least SQuares Programming \cite{Kraft1988}.
+\end{itemize}
+
+Obviously, the best methodology consists in verifying that all strategies converge. However the use of the downhill simplex algorithm plus one of the other methodologies (that uses bounds) can be sufficient if both maximum likelihoods found converge. This last strategy was thus used in \autoref{chap:untb_genomes}.
+
+Alternatively, different starting values of $\theta$ and $m$ can also be passed to the algorithm in order to ensure the finding of the global maximum.
+
+A last step can be performed if computation time is not critical. It consist in drawing a surface of likelihood for a range of values of $\theta$ and $m$ (see \autoref{fig:lnl_chrom} for an example of likelihood surface).
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=0.85\textwidth]{figures/material_methods/lnl_chrom.png}
+\caption[Maximum likelihood inference of neutral parameters.]{{\bf Maximum likelihood inference of neutral parameters.}\\ Log likelihood surface as a function of migration rate ($m$), and the fundamental biodiversity number ($\theta$) for \textit{D. rerio} chromosome 19. Dark red color shows regions of the surface where parameters maximize the probability to explain abundances and diversity of genetic elements in the chromosome. Likelihood ratio tests favored Etienne in contrast to Ewens sampling formula to explain the observed data in the chromosome.}
+\label{fig:lnl_chrom}
+\end{figure}
+
+Optimization step being critical specially under Etienne's model, the likelihood surface of the model given a range of values of $\theta$ and $m$ was drawn for some of the chromosomes in our dataset. This procedure allows us to estimate graphically the best solution for both parameters. The solution found by this methodology was then compared to the optimization result, in order to validate them (see \autoref{fig:lnl_chrom} as an example of this validation step). Computation time needed to generate such likelihood contour plots prevents using it for all chromosomes, but, for the 5 chromosomes tested, results were congruent.
+
+\subsection{Model testing -- Likelihood ratio test}
+\label{sec:model-test-likel}
+
+In order to compare and test the fit of a given distribution in the two models computed, a likelihood ratio test \cite{Wilks1938} can be conducted between them. Etienne's model has 2 free parameters ($FP$) while Ewens' only one, thus the number of degrees of freedom for the chi-squared distribution is 1 ($df=FP_{Etienne}-FP_{Ewens}=1$).
+
+\subsection{Testing UNTB}
+\label{sec:testing-untb}
+
+In the last years at least two tests were developed in order to accept or reject the neutrality of a given community. Both tests are based on the comparison of a given number of random neutral communities (or replicates) to the observed distribution of abundances. Replicates being generated using the parameters estimated (see \autoref{sec:model-optimization}) for the real data under a given neutral model (either Ewens or Etienne model), we expect that they would be very close to the original distribution of abundances. Distances between replicates and original data being thus a measure of how well our data fits in a neutral model.
+
+The first of these tests \cite{Etienne2007} consists in comparing the values of likelihood to fit neutral model. Random neutral abundances are fitted to the neutral model, and their likelihood is used to build a distribution of likelihoods. Then, this distribution is compared to the likelihood of the observed data. The major problem of this test is technical, the computation time needed to optimize the parameters of each abundance distribution and get the likelihoods is unrealistically too high when dealing with GSs.
+
+The second test \cite{Jabot2011} uses, instead of likelihood, the comparison of Shannon's entropy \cite{Shannon1948} of each distribution of abundances, and is much faster as replicates do not need to be fitted into a neutral model.
+
+Both of these methodologies were implemented in Ecolopy, however results presented here belong from the comparison of entropies.
+
+\begin{figure}[htpb]
+  \centering
+\includegraphics[width=0.75\textwidth]{figures/material_methods/shannon_distr_hsap_chr1_agam_chr2L.pdf}
+  \caption[Comparing simulated and empirical evenness]{{\bf Comparing simulated and empirical evenness. }\\Neutrality test statistically compares simulated null distribution of $H$ with the empirical value. Here, the null distribution of $H$ values were derived from 10,000 neutral simulations of (A) \textit{H. sapiens} chromosome 1 and (B) \textit{A. gambiae} chromosome 2L, with parameters ($\theta$ and $m$) optimized by ML using Etienne sampling formula. Light and dark gray bars display 5\% and 95\% of the simulated data, respectively. Although neutrality was not rejected in \textbf{B} (p= 0.291 and p= 0.041 for \textbf{A} and \textbf{B} respectively), posterior correction by multiple testing favored the neutral hypothesis in both cases (q= 0.609 and q= 0.159 for \textbf{A} and \textbf{B} respectively).}
+  \label{fig:shannon_distrib}
+\end{figure}
+
+From the neutral parameters obtained for each chromosome, we simulated 10,000 replicates and computed, for each, their Shannon's entropy ($H$). Chromosomes were considered significantly non-neutral when the $H$ of their abundances was below 95\% of the 10,000 random neutral $H$ values. As an example, \autoref{fig:shannon_distrib} shows the distribution of $H$ for 10,000 random neutral communities generated under Etienne's model with $S$, $J$ fixed to the observed numbers and $\theta$ and $m$ corresponding to optimized values for 2 chromosomes.
+
+Additionally, given the large number of test performed (one for each of the 548 chromosome), statistical significances were corrected by false discovery rate (FDR) \cite{Benjamini2001}. For example, in \fref{fig:shannon_distrib}{B}, \textit{Anopheles gambiae's} chromosome 2L is brought back to neutrality after correction by FDR.
+
+Given the lack of differences among results presented in the section: \textbf{\nameref{sec:neutrality-sad}} (page \pageref{sec:neutrality-sad}), we replicated this test by fixing the number of species (S) according to the observed value of each chromosome. No differences were observed in relation to the number of chromosomes fitting in neutral models.
+
+\subsubsection{Power and specificity of neutral test}
+\label{sec:power-spec-neutr}
+
+\begin{figure}[htpb]
+  \centering
+\includegraphics[height=0.78\textheight]{figures/material_methods/power_and_sensitivity_test.pdf}
+\caption[Type I and Type II errors of neutral test in ranges of \textit{S} and \textit{J}]{
+  {\bf Type I and Type II errors of neutral test in ranges of \textit{S} and \textit{J}.}\\
+  Panels describe the proportion of times the test (\textbf{A}) rejected null hypothesis being true (red regions being dangerous areas to test), and (\textbf{B}) failed to reject null hypothesis being false. Numbers in both panels are chromosomes: \textbf{1}-\textit{A. thaliana} chr1 \textbf{2}-\textit{D.rerio} chr1 \textbf{3}-\textit{D.discoideum} chr2 \textbf{4}-\textit{C.elegans} chrI \textbf{5}-\textit{D.melanogaster} chr2L \textbf{6}-\textit{G.gallus} chr8 \textbf{7}-\textit{G.gallus} chr2 \textbf{8}-\textit{H.sapiens} chr1 \textbf{9}-\textit{H.sapiens} chr1 \textbf{10}-\textit{Z.mays} chr1 \textbf{11}-\textit{Z.mays} chr3 \textbf{12}-\textit{M.musculus} chr0 \textbf{13}-\textit{M.domesticus} chr1 \textbf{14}-\textit{M.domesticus} chr3 \textbf{15}-\textit{M.domesticus} chr5 \textbf{16}-\textit{P.falciparum} chr3 \textbf{17}-\textit{R.norvegicus} chr1 \textbf{18}-\textit{S.bicolor} chr7 \textbf{19}-\textit{T.nigroviridis} chr9 \textbf{20}-\textit{T.castaneum} chr8; and ecosystems \cite{Jabot2011}: \textbf{21}-BCI \textbf{22}-Edoro \textbf{23}-La Planada \textbf{24}-Lambir \textbf{25}-Lenda \textbf{26}-Mudamalai \textbf{27}-Pasoh \textbf{28}-Sinharaja \textbf{29}-Yasuni.}
+  \label{fig:power-spec-neutr}
+\end{figure}
+
+In order to validate the test of neutrality, we computed the proportion of false and true positives generating respectively random log-normal distributions and random neutral distributions. The results of the test of neutrality applied over log-normal or neutral random distributions are shown in \autoref{fig:power-spec-neutr}, respectively.
+
+According to this result, we validate the power given that in the whole range of $S$ and $J$, the proportion of true positives was very high (\fref{fig:power-spec-neutr}{B}. Nevertheless these simulations pointed out some difficulties to differentiate log-normal distributions from neutral distributions. Specifically, when $J<100,000$ individuals, the proportion of false positives is higher than 50\%. However we decided to get through as this raise in false positive rate only affect the smallest chromosomes, and also because lognormal distributions used here as alternative, are ardly distinguishable from neutral distributions \cite{McGill2006}.
+
+\section{Detection of selective pressure at molecular level}
+\label{sec:gssa_mat-met}
+
+\subsection{Orthology prediction}
+\label{sec:orthology-prediction}
+
+Complete genomes of 5 mammals species (\textit{Homo sapiens}, \textit{Pan troglodytes}, \textit{Mus musculus}, \textit{Rattus norvegicus} and \textit{Canis familiaris}) where retrieved from Ensembl \cite{Flicek2011}. Orthology predictions between \mygls{seed} genes and genes from other species species (\mygls{seed} species was \textit{H. sapiens} in the case of mammals)  was retrieved from Ensembl Compara \cite{Vilella2009} using Biomart \cite{Kinsella2011} (see \autoref{fig:phylogeny} to have an insight of the phylogenies and distances). From the 23,438 seed genes, only groups of orthologs annotated as ``one-to-one'' --with only one representative of each species-- where kept in the final dataset.
+
+\begin{figure}[H] 
+\centering 
+\includegraphics[width=0.8\textwidth]{figures/material_methods/phylogenies.pdf}
+\caption[Mammals and \textit{Drosophila} phylogeny]{
+  {\bf Mammals and \textit{melanogaster} group phylogeny.}\\
+  Straight numbers represent the median rates of non-synonymous and synonymous substitutions ($dN$/$dS$) estimated from all coding sequences compared in mammals (\textbf{A}) and \textit{Drosophila} (\textbf{B}). Branch lengths and rates were multiplied by 100. Ancestral estimations were done in primates (P), rodents (R), \textit{D. yakuba} and \textit{D. erecta} (Aye), \textit{D. simulans} and \textit{D. sechellia} (Ass), and \textit{D. melanogaster}, \textit{D. simulans} and \textit{D. sechellia} (Amss). \textit{C. familiaris} in (\textbf{A}), and \textit{D. ananassae} in (\textbf{B}), were chosen as outgroup species.} 
+\label{fig:phylogeny}
+\end{figure}
+
+The same procedure was applied in \textit{Drosophila}, including 6 species namely, \textit{D. melanogaster} as \mygls{seed}-species, \textit{D. sechellia}, \textit{D. simulans}, \textit{D. yakuba}, \textit{D. erecta} and, \textit{D. ananassae} as outgroup (see \fref{fig:phylogeny}{-B}). Here, the starting number of \mygls{seed} genes was 14,076.
+
+\subsection{Alignments refinement and filters}
+\label{sec:alignm-refin-filt}
+
+DNA coding sequences (CDS) were aligned according to protein translation pattern using Muscle version 3.7 \cite{Edgar2004} embedded into the CDS-Protal utility in Phylemon 2.0 \cite{Sanchez2011} (see section: \textbf{\nameref{sec:alignment}} at page \pageref{sec:alignment}). Poorly aligned regions were removed using TrimAl \cite{Capella-Gutierrez2009} keeping all sequences but checking the quality of alignment columns with the heuristic method ``-automated-1''. Additionally, alignments smaller than 100 bp were excluded from the analysis. 
+
+In mammals, the upper limit for $dN$ and $dS$ considered was those of the human interferon $\gamma$ ($dN = 3.06$) and the relaxin protein \cite{Graur2000} ($dS = 6.39$ substitutions per site per $1e^{+09}$ years). Assuming the human-mouse, mouse-rat and human-chimp speciation times to be about 80, 70 and 5 million years \cite{BlairHedges2003} respectively, ortholog comparisons between primates and rodents with $dS\ge$1 and $dN\ge$0.5, rodents with $dS\ge$0.256, $dN\ge$0.122, and primates with $dS\ge$0.064 and $dN\ge$0.030 substitutions per site were excluded.
+
+In \textit{Drosophila} genes were also filtered by high $dN$ and $dS$ values using as relaxed reference the fast evolving gene \textit{1G5} for both $dN$ and $dS$ \cite{Schmid1997}.
+
+The final number of orthologs kept was 12,453 for mammals and 9,240 for flies.
+
+\subsection{Evolutionary analysis}
+\label{sec:evol-analys}
+
+Maximum likelihood estimations of $dN$, $dS$, and $\omega$ and tests of positive selection were computed using CodeML program from PAML package \cite{Yang2007} through the ETE program \cite{Huerta-Cepas2010} (see section:  \textbf{\nameref{sec:etes-evol-extension}}, page \pageref{sec:etes-evol-extension} for a description of this specific methodology). Evolutionary rates were computed in orthologous sequences according to the free-ratio branch model that assumes independent $\omega$ ratio for each branch in the trees of mammals and \textit{Drosophila} species. Evolutionary rates ($dN$, $dS$), their ratio ($\omega$), and the difference between ancestral and descendant species ($\Delta\omega$) were ranked along all genes of genomes and further analyzed by the gene set selection analysis (GSSA).
+
+External branches in \autoref{fig:phylogeny} were marked as foreground to test for positive selection and relaxation using branch-site models in Test I and Test II \cite{Zhang2005} (see section: \textbf{\nameref{sec:test-evol-scen}}, page \pageref{sec:test-best-evol}, for more complete overview of these tests). Positive results of relaxation of selective constraints (or weak signals of positive selection) were discarded \cite{Arbiza2006}. To quantify the relative contribution of positively selected genes (PSGs) in functional modules showing significantly high values of $\omega$ (SH$\omega$) and significantly low values of $\omega$ (SL$\omega$), a t-test (from R package \cite{Ihaka1996}) with the mean number of PSGs per functional modules was computed in primates, rodents, mammals and \textit{Drosophila} species. An independent set of PSGs was collected to test the robustness of our results in mammals \cite{Kosiol2008a}, and \textit{Drosophila} species \cite{Clark2007}.
+
+\subsection{GSSA, evolutionary and statistical simulations}
+\label{sec:gssa-evol-stat}
+
+Gene-set selection analysis works over lists of genes ranked by different evolutionary rate parameters (in this case $dS$, $dN$, $\omega$ and $\Delta\omega$). Internally it uses the FatiScan tool \cite{Al-Shahrour2007}. FatiScan is a version of gene set enrichment analysis (GSEA) \cite{Al-Shahrour2005a} which can be applied to any list of ranked genes regardless of the initial experimental design \cite{Dopazo,Huang2009}. The aim of the test is to find functional classes, namely blocks of genes that share some functional property, showing a significant asymmetric distribution towards the extremes of a list of ranked genes. This is achieved by means of a segmentation test, which consists on the sequential application of a Fisher's exact test over the contingency tables formed with the two sides of different partitions (A and B in \autoref{fig:gssa_met}) made on an ordered list of genes.
+
+\begin{FPfigure}
+\centering 
+\includegraphics[width=\textwidth]{figures/material_methods/gssa_met.pdf}
+\caption[Summary of the steps developed by the GSSA.]{
+  {\bf Summary of the steps developed by the GSSA.} \\
+  GSSA can be described in a series of five steps (S1 to S5). S1: rank genes of a genome according to an evolutionary variable (e.g.: $\omega$), S2: assign functional categories, S3: partition the ranked list, S4: proceeds with a Fisher exact test for each partition, S5: adjust p-values by FDR. Colored boxes represent the final result: functional categories found to have values of $\omega$ a) significantly high (SH) appear in red or orange (0.1\% and 5\% FDR respectively), b) significantly low (SL) in blue and cyan (0.1\% and 5\% FDR respectively) c) not significant (NS) in white. Example shows five GO terms with significantly and NS biased distributions of $\omega$. In brackets, the number of genes annotated with the GO term. GO:0007517 was NS although, in partition 16 in human (not shown in the picture) its p-value was low, it was NS after FDR correction (q = 0.065). Upper (A) and lower (B) sides of the list (S3) represent both sides of the specified partition number. Remainder GO terms (GO$_2$ to GO$_5$) show the association of dark dots with values located at the top (SH$\omega$), and at the bottom (SL$\omega$) of the list (for GO$_2$-GO$_3$ and GO$_4$-GO$_5$, respectively). In examples, Fisher exact tests found the most significant p-value for partitions 8, 14, 22 and 27 for GO:0007186, GO:0009566, GO:0050658 and GO:0022618 in chimpanzee, human, mouse and rat genome, respectively.}
+\label{fig:gssa_met}
+\end{FPfigure}
+
+The two-tailed Fisher's exact test (FET) finds significantly over or under represented functional classes (GO and KEGG) when comparing the two sides of the list ranked by an evolutionary variable (in \autoref{fig:gssa_met}, 4 of the 5 partitions show significant differences). Previous results showed that a number between 20 and 50 partitions gives optimal results in terms of sensitivity and results recovered \cite{Al-Shahrour2005a}. Here we applied 30 partitions along all the GSSA performed. Given that multiple functional classes ($C$) are tested in multiple partitions ($P$), the unadjusted p-values for a total of $C \times P$ tests were corrected by FDR \cite{Benjamini2001}. 
+
+Originally, 1,394/1,331 GO terms, and 199/116 KEGG pathways were analyzed in mammals and \textit{Drosophila} species respectively. The global GO directed acyclic graph was processed with Blast2GO \cite{Conesa2005} to extend the annotation at missing parental nodes, keeping only GO terms between levels 2 and 8 for mammals, and between levels 2 and 12 for \textit{Drosophila}. The final set of GO and KEGG terms used was also reduced to those containing at least 15 genes.
+
+\subsubsection{Partitioning}
+\label{sec:partitioning}
+
+Some evolutionary rates presented discontinuous distributions, in particular the $\omega$ ratio. Partitioning a list by values can be non-sense if this list scales from 0 to infinite. In order to partition more accurately we decided to use the rank order instead of the direct value (see \autoref{tab:example_rank}).
+
+\begin{table}[ht]
+  \rowcolors{1}{white}{white}
+  \scriptsize
+  \begin{center}
+    \begin{tabular}{| c | c | c || c | c |}
+      \mc{1}{c}{}     & \mc{2}{c}{\textbf{Direct partitioning}} & \mc{2}{c}{\textbf{Partitioning by rank}}                                                          \\ \hline
+      \textbf{Gene}   & \textbf{$\omega$ rate}                  & \textbf{Partition}                      & \textbf{rank} & \textbf{Partition}                      \\ \hline
+      ENSG00000211454 & 999.0000                                & \cellcolor{black} {\color{white} A}     & 1             & \cellcolor{black} {\color{white} A}     \\ \hline
+      ENSG00000169084 & 999.0000                                & \cellcolor{black} {\color{white} A}     & 1             & \cellcolor{black} {\color{white} A}     \\ \hline
+      ENSG00000159433 & 999.0000                                & \cellcolor{black} {\color{white} A}     & 1             & \cellcolor{black} {\color{white} A}     \\ \hline
+      ENSG00000162430 & 200.2600                                & \cellcolor{gray}  {\color{black} B}     & 4             & \cellcolor{gray}  {\color{black} B}     \\ \hline
+      ENSG00000176390 & 0.2520                                  & \cellcolor{lightgray} {\color{black} C} & 5             & \cellcolor{gray}  {\color{black} B}     \\ \hline
+      ENSG00000156291 & 0.0520                                  & \cellcolor{lightgray} {\color{black} C} & 6             & \cellcolor{gray}  {\color{black} C}     \\ \hline
+      ENSG00000176711 & 0.0259                                  & \cellcolor{lightgray} {\color{black} C} & 7             & \cellcolor{lightgray} {\color{black} C} \\ \hline
+      ENSG00000166287 & 0.0123                                  & \cellcolor{lightgray} {\color{black} C} & 8             & \cellcolor{lightgray} {\color{black} C} \\ \hline
+      ENSG00000174788 & 0.0067                                  & \cellcolor{lightgray} {\color{black} C} & 9             & \cellcolor{lightgray} {\color{black} C} \\ \hline
+    \end{tabular}
+  \end{center}
+  \caption[Comparison of partitioning strategies.]{
+    \textbf{Comparison of partitioning strategies.}\\
+    Given a list of genes ranked by $\omega$, we want to divide this list in 3 partitions (A, B and C). When values are scaled from 999 to 0, ``Direct partitioning'' would group genes within ranges of 300 resulting in few genes with $\omega$ between 300 and 600, while``Partitioning by rank'' would lead to a more continuous distribution.}
+  \label{tab:example_rank}
+\end{table}
+
+\subsubsection{Randomization of functional categories}
+\label{sec:rand-funct-categ}
+
+To test possible biases attributed to the size of the functional category or the magnitude of change in evolutionary rate, we randomized the values ($\omega$, $\Delta\omega$, $dN$ and $dS$) assigned to the list of genes. Functional categories would point to the same set of genes, conserving thus all structural characteristic of the data, but suppressing the biological relevance of evolutionary rates (see  \autoref{fig:gssa_rand}).
+
+\begin{figure}[h!]
+\centering
+ \includegraphics[width=0.95\textwidth]{figures/material_methods/random_met.pdf}
+ \caption[Randomization experiment diagram.]{
+   {\bf Randomization experiment diagram.}\\
+   The diagram shows the steps followed to tests possible biases attributed to the size of functional categories. Genes are randomly rearranged according their evolutionary statistics. Finally genes are ranked according to their newly randomly assigned values. Results of the enrichment analysis over this dataset are considered false positives.}
+\label{fig:gssa_rand}
+\end{figure}
+
+This methodology allows us to test the effect of functional categories sizes, and to ensure that the distribution of evolutionary rates is not affecting our experiment. Each evolutionary variable was randomized 10,000 times for each species. Proportion of false positives (GSSA significant results) were plotted along the size of functional categories (from 0 to 1,500 with intervals of 20). As these proportions never reached values higher than 0.05\% FDR, we rejected the possibility that either, group sizes or rate distributions, biased GSSA results in our data set (see \autoref{fig:rand_result}).
+
+\begin{figure}
+  \centering 
+  \includegraphics[height=0.81\textheight]{figures/material_methods/simulations.pdf}
+  \caption[Randomization experiment results.]{
+    {\bf Randomization experiment results.}\\
+    These graphics show the proportion of false positives within the results of an enrichment analysis conducted over list of genes ranked by a shuffled evolutionary variable (see main text for details). Results are segregated in i) ranges of number of genes belonging to a functional category, in order to discard the effect of size on the proportion of false positives, and ii) evolutionary variables (red, green blue and yellow) and species to discard biases due to the specific distribution of one of the variable in a given species. Randomization was conducted in mammals (\textbf{A}) and flies (\textbf{B}).
+  }
+  \label{fig:rand_result}
+\end{figure}
+
+\subsubsection{Simulating evolutionary scenarios}
+\label{sec:simul-evol-scen}
+
+In order to understand better the results of the GSSA, a last experiment was necessary. Indeed, at this point, we were unable to discard that results with significant high $\omega$ were brought only by positively selected or relaxed genes.
+
+Thus, to validate the independence of the GSSA from the effects of alternative evolutionary constraints we simulated different selective regimes (purifying selection, positive selection and relaxation) using branch-site models. Here we addressed the possibility of a variation in the representation of significant results after GSSA. The pipeline described in \autoref{fig:gssa_simul_pipe}, shows three different areas:
+\begin{figure}[H]
+\centering 
+\includegraphics[width=\textwidth]{figures/material_methods/simulations_met.png}
+\caption[Evolutionary and statistical simulation of GSSA.]{
+  {\bf Evolutionary and statistical simulation of GSSA.}\\
+  The pipeline shows the steps taken along three different spaces of analysis, the real data, the simulated data and the testing block. See main text for a complete explanation.}
+\label{fig:gssa_simul_pipe}
+\end{figure}
+\begin{itemize}
+\item \textbf{Real Data}: the light yellow area (\textbf{A}) describes the steps of the GSSA. The orange area (\textbf{B}) describes the use of the CodeML program from PAML package \cite{Yang2007} to extract --from original set of sequences-- all evolutionary parameters needed to simulate new sequences under purifying selection (PF), positive selection (PS) or relaxation of the selective constraints (RX) according to branch-site models. Human, mouse, \textit{D. erecta} and \textit{D. melanogaster} were used as foreground species in the corresponding models.
+  
+\item \textbf{Simulated Data}: in the light blue area (\textbf{C}), Evolver (also from PAML package \cite{Yang2007}) simulates sequences evolving under the given parameters (codon frequencies and branch lengths) estimated from the empirical data. We checked the desired characteristics of PS and RX on the set of the simulated sequences \autoref{tab:psg_simul}. Evolutionary variables ($dS$, $dN$, $\omega$ and $\Delta\omega$) were estimated from simulated sequences using a free-ratio branch model. The complete pipeline of the GSSA was applied over the simulated data.
+  
+\item \textbf{Testing simulation}: the last part of the diagram represents the calculation of the odd-ratios corresponding to a classification of the GSSA results over all dataset. On the contingency tables are counted significant categories with either SH or SL $\omega$ and belonging to 2 of the 3 simulated selective regimes (PS, RX and PF). Odd-ratios values represents the association between different selective regime simulated according to their proportions of SH and SL functional categories. Statistical contribution of the simulated regimes (PS, RX and PF) to the GSSA results were tested by comparing log odd-ratios with a t-test (results in \autoref{tab:prop_signif}).
+\end{itemize}
+
+\rowcolors{1}{lightgray}{white}
+\begin{table}[htbp]
+  \scriptsize
+  \centering
+    \begin{tabular}{l r r r r r r}
+      \mc{1}{l}{}              & \mc{ 2}{c}{PS}    & \mc{ 2}{c}{RX}    & \mc{ 2}{c}{PF}                                                                \\ \hline
+      \mc{1}{l}{}              & \mc{1}{c}{ PSG} & \mc{1}{c}{ RXG} & \mc{1}{c}{ PSG} & \mc{1}{c}{ RXG} & \mc{1}{c}{ PSG} & \mc{1}{c}{ RXG} \\ \hline
+      \textit{H. sapiens}      & 658               & 1640              & 11                & 1939              & 0                 & 1                 \\
+      \textit{M. musculus}     & 1500              & 954               & 14                & 1565              & 1                 & 0                 \\
+      \textit{D. melanogaster} & 736               & 630               & 25                & 1104              & 0                 & 0                 \\
+      \textit{D. erecta}       & 778               & 1292              & 26                & 1713              & 2                 & 1                 \\ \hline
+    \end{tabular}
+    \caption[Number of positively selected and relaxed genes in each of the simulated evolutionary scenarios]{
+      \textbf{Number of positively selected and relaxed genes in each of the simulated evolutionary scenarios.}}
+  \label{tab:psg_simul}
+\end{table}
+
+Our results showed that in spite of the alternative evolutionary scenarios, no significant differences were observed between log odd-ratios distributions (p$<$0.05). The average effect of PF, and RX/PS is the proportional decrease and increase of the mean value of $\omega$ on sequences, respectively. This change has minor effects (if any) in the relative position of genes in the ranked list of genes of a genome. Accordingly, since no net differences were produced after ranking genes, no significant differences are expected after the t-test (PS-RX: p= 0.99, PS-PF: p= 0.45, and RX-PF: p= 0.46). The fact that basically the same number of significant results was observed in each evolutionary scenario confirmed this prediction \autoref{tab:prop_signif}. We conclude that neither of the selective regimes simulated produce significant differences or biases in the GSSA of $\omega$ values.
+
+
+\begin{table}[htbp]
+  \begin{center}
+    \scriptsize
+    \begin{tabular}{l c c c}
+                     & \textbf{PS} & \textbf{RX} & \textbf{PF} \\ \hline
+         \textbf{PS} & ---         & 92.50\%     & 98.50\%     \\
+         \textbf{RX} & 91.10\%     & ---         & 99.00\%     \\
+         \textbf{PF} & 88.90\%     & 90.60\%     & ---         \\ \hline
+    \end{tabular}
+  \end{center}
+  \caption[Proportion of significant functional categories that are still significant.]{
+    \textbf{Proportion of significant functional categories that are still significant.}\\
+    Or keeping an identical signs of odd-ratios under a different evolutionary scenario.}
+  \label{tab:prop_signif}
+\end{table}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../../thesis_main"
+%%% End: 

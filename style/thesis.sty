@@ -1,0 +1,244 @@
+%%% thesis.sty ---
+
+%% Author: garamonfok@gros
+%% Version: $Id: style.sty,v 0.0 2011/10/09 18:39:32 garamonfok Exp$
+
+%%%%%%%%%   Style  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% removes warning related to the insertion of pdfs of version 1.5
+\pdfminorversion=5
+
+% crop marks
+%\usepackage[centering,includeheadfoot]{geometry}
+\usepackage[cam,a4,center,noinfo]{crop}
+
+
+% to remove a strange warning "float@addtolists detected!"
+\usepackage{scrhack}
+
+% to place nicely figures
+\usepackage {float}
+
+% for el resumen
+\usepackage[utf8]{inputenc}
+
+% for thumb-index
+\usepackage{watermark}
+\usepackage{tikz}
+% for braces in tikz
+\usetikzlibrary{decorations.pathreplacing,shapes,backgrounds,patterns,trees}
+\newcommand{\nullbox}[1]{\makebox[0mm][l]{#1}}
+
+% for dropped capitals (first letter of paragraphs bigger)
+\usepackage{lettrine}
+\renewcommand{\LettrineFontHook}{\fontfamily{pzc}\color[gray]{0.5}}
+
+% for 2 bibliographies
+\usepackage[resetlabels]{multibib}
+\newcites{A}{Appendix A -- Bibliography}
+% for boxes
+\usepackage{fancybox}
+
+% for appendix name in toc
+\usepackage[titletoc]{appendix}
+
+% nicer bullets
+%\usepackage{textcomp}
+%\usepackage{pifont}
+%\usepackage{marvosym}
+%\renewcommand{\labelitemi}{\textleaf}
+%\renewcommand{\labelitemi}{\Womanface}
+%\renewcommand{\labelitemi}{\ding{220}}
+
+\usepackage{amssymb}
+
+% for images
+%\usepackage[pdftex]{graphicx} 
+
+% Less detailed TOC
+\setcounter{tocdepth}{2}
+% for all characters
+%\usepackage[T1]{fontenc}
+
+% inline enumeration
+\usepackage{paralist}
+% to get rid of Underfull \hbox (badness ...) Error message
+\usepackage{etoolbox}
+%\apptocmd{\thebibliography}{\raggedright}{}{} % this also works but not perfet squared
+\apptocmd{\thebibliography}{\hbadness 3503\relax}{}{}
+% link outs in PDF
+\usepackage{cite} % allows line breaking inside citations
+% for url href... backref is for puting page number links in bibliography
+% colorlinks,
+\usepackage[pdftex,pagebackref=true,linkcolor=gray,urlcolor=gray,citecolor=gray]{hyperref}
+\usepackage{bookmark}
+
+% multiple column text
+\usepackage{multicol}
+
+% table color
+%\usepackage[table]{xcolor}
+\rowcolors{1}{white}{lightgray}
+
+% list of abbreviations
+\usepackage[intoc]{nomencl}
+\makenomenclature
+\setlength{\nomlabelwidth}{.20\hsize}
+
+% make caption font tinier
+\usepackage{ccaption}
+\usepackage[small, bf]{caption}
+\setcapindent{10pt}
+
+\usepackage[leftFloats]{style/my_fltpage}
+\usepackage{fltpage}
+
+% for the fancyhf function
+\usepackage{fancyhdr}
+
+% special tables
+\usepackage{tabularx}
+\usepackage{multirow}
+
+% for arrows
+\usepackage{wasysym}
+% rotate text
+\usepackage{rotating}
+
+\usepackage[final]{pdfpages}
+
+%glossary
+\usepackage[toc,acronym]{glossaries}
+\makeglossaries
+
+%special underline (dotted etc...)
+\usepackage[normalem]{ulem}
+
+\usepackage{style/pythonlisting}
+
+
+%% SPECIAL FUNCTIONS
+% this part is to define fancy headings, the only way i found
+% to remove heading and page numbering from a given page
+%\pagestyle{fancy}                       % Sets fancy header and footer
+\fancyfoot{}                            % Delete current footer settings
+\renewcommand{\chaptermark}[1]{         % Lower Case Chapter marker style
+  \markboth{\chaptername\ \thechapter.\ #1}{}} %
+\renewcommand{\sectionmark}[1]{        % Lower case Section marker style
+  \markright{\thesection.\ #1}}         %
+\fancyhead[R]{\iffloatpage{}{\bfseries\thepage}}    % Page number (boldface) in left
+\fancyhead[L]{\iffloatpage{}{\bfseries\rightmark}}     % Section in the left on odd pages
+\renewcommand{\headrulewidth}{\iffloatpage{0pt}{0.pt}}    % Width of head rule
+\addtolength{\headheight}{2pt}          % stop headheight from being too small
+
+
+% simple backref command redefinition (not sure if it is necessary)
+\renewcommand*{\backref}[1]{}% redefinition of the actually used \backrefalt
+\renewcommand*{\backrefalt}[4]{%
+  \ifcase #1 %
+  % case: not cited
+  \or
+  % case: cited on exactly one page
+  \footnotesize $\hookrightarrow$ \textit{page~#2}%
+  \else
+  % case: cited on multiple pages
+  \footnotesize $\hookrightarrow$ \textit{pages~#2}
+  \fi
+}
+
+%% shortcuts
+\newcommand{\mc}[3] {\multicolumn {#1}{#2}{#3}}
+\newcommand{\myurl}[1] {{\scriptsize \url{#1}}}
+%\newcommand{\tref}[1] {\hyperref[#1]{Table \ref*{#1}}}
+%\newcommand{\eref}[1] {\hyperref[#1]{Equation \ref*{#1}}}
+\newcommand{\fref}[2] {\hyperref[#1]{Figure \ref*{#1}#2}}
+
+\newcommand{\mygls}[1]   {\dotuline{\gls  {#1}}}
+\newcommand{\myGls}[1]   {\dotuline{\Gls  {#1}}}
+\newcommand{\myglspl}[1] {\dotuline{\glspl{#1}}}
+\newcommand{\myGlspl}[1] {\dotuline{\Glspl{#1}}}
+%\newcommand{\tref}[1] {\hyperref[#1]{Table \ref*{#1} on page \pageref*{#1}}}
+%\newcommand{\fref}[2] {\hyperref[#1]{Figure \ref*{#1}#2 on page \pageref*{#1}}}
+
+% teach latex how to cut strange words
+\hyphenation{
+  po-pu-lus tri-cho-car-pa po-ly-ploi-dy En-do-ge-nous 
+  Fi-nal-ly stru-ctu-re in-dis-tin-gui-sha-ble Re-tro-vi-rus 
+  re-tro-trans-po-son Len-ti-vi-rus to-ge-ther ge-no-me
+  ce-re-vi-sae ze-bra-fish mus-cu-lus ge-no-mes sat-el-lite
+  Sat-el-lite trans-po-sons trans-po-son Sor-ghum map-ped
+  Dro-so-phi-la Wer-ne-green tha-lia-na py-ri-mi-di-ne
+  le-xi-co-gra-phi-cal-ly me-la-no-ga-ster
+}
+
+%% thumb-index
+\newcommand{\mythumb}[1]{
+  % this is a big rectangle
+  \ifthenelse{\equal{#1}{0} }{\myboxes{#1}{white}{white}{white}{white}}{}
+  \ifthenelse{\equal{#1}{1} }{\myboxes{#1}{gray }{gray }{gray }{black}}{}
+  \ifthenelse{\equal{#1}{2} }{\myboxes{#1}{gray }{gray }{black}{gray }}{}
+  \ifthenelse{\equal{#1}{3} }{\myboxes{#1}{gray }{gray }{black}{black}}{}
+  \ifthenelse{\equal{#1}{4} }{\myboxes{#1}{gray }{black}{gray }{gray }}{}
+  \ifthenelse{\equal{#1}{5} }{\myboxes{#1}{gray }{black}{gray }{black}}{}
+  \ifthenelse{\equal{#1}{6} }{\myboxes{#1}{gray }{black}{black}{gray }}{}
+  \ifthenelse{\equal{#1}{7} }{\myboxes{#1}{gray }{black}{black}{black}}{}
+  \ifthenelse{\equal{#1}{8} }{\myboxes{#1}{black}{gray }{gray }{gray }}{}
+  \ifthenelse{\equal{#1}{9} }{\myboxes{#1}{black}{gray }{gray }{black}}{}
+  \ifthenelse{\equal{#1}{10}}{\myboxes{#1}{black}{gray }{black}{gray }}{}
+  \ifthenelse{\equal{#1}{11}}{\myboxes{#1}{black}{gray }{black}{black}}{}
+  \ifthenelse{\equal{#1}{12}}{\myboxes{#1}{black}{black}{gray }{gray }}{}
+  \ifthenelse{\equal{#1}{13}}{\myboxes{#1}{black}{black}{gray }{black}}{}
+  \ifthenelse{\equal{#1}{14}}{\myboxes{#1}{black}{black}{black}{gray }}{}
+  \ifthenelse{\equal{#1}{15}}{\myboxes{#1}{black}{black}{black}{black}}{}
+}
+
+\newcommand{\myboxes}[5]{
+  \def\h{0.45} % height of each little band
+  \def\w{0.9 }  % width of thumb-index
+  \def\ypos{#1*\h*4+1} % define the height of the thumb-index in the page
+  \def\ls{-2.53} % define starting pos for left page |
+  \def\rs{15.9} % define starting pos for right page   | this may change with paper size
+  \rightwatermark{
+    \begin{tikzpicture}[remember picture,overlay,draw=black,ultra thick]
+      \draw[white,fill=#2] (\rs-\w,-\h*0-\ypos) rectangle (\rs,-\h*1-\ypos);
+      \draw[white,fill=#3] (\rs-\w,-\h*1-\ypos) rectangle (\rs,-\h*2-\ypos);
+      \draw[white,fill=#4] (\rs-\w,-\h*2-\ypos) rectangle (\rs,-\h*3-\ypos);
+      \draw[white,fill=#5] (\rs-\w,-\h*3-\ypos) rectangle (\rs,-\h*4-\ypos);
+    \end{tikzpicture}
+  }
+  \leftwatermark{
+    \begin{tikzpicture}[remember picture,overlay,draw=black,ultra thick]
+      \draw[white,fill=#2] (\ls,-\h*0-\ypos) rectangle (\ls+\w,-\h*1-\ypos);
+      \draw[white,fill=#3] (\ls,-\h*1-\ypos) rectangle (\ls+\w,-\h*2-\ypos);
+      \draw[white,fill=#4] (\ls,-\h*2-\ypos) rectangle (\ls+\w,-\h*3-\ypos);
+      \draw[white,fill=#5] (\ls,-\h*3-\ypos) rectangle (\ls+\w,-\h*4-\ypos);
+    \end{tikzpicture}
+  }
+}
+\usepackage{lipsum}
+
+
+\makeatletter
+
+% this to remove page number from parts
+\renewcommand\part{%
+  \if@openright
+  \cleardoublepage
+  \else
+  \clearpage
+  \fi
+  \thispagestyle{empty}%
+  \if@twocolumn
+  \onecolumn
+  \@tempswatrue
+  \else
+  \@tempswafalse
+  \fi
+  \null\vfil
+  \secdef\@part\@spart}
+\makeatother
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../thesis_main"
+%%% End:

@@ -1,0 +1,166 @@
+%%% untb_genomes.tex --- 
+
+In previous chapter we have shown that the intrinsic structure of genomes is random in informational terms. Or, in other words, that whatever aleatory combination of the four nucleotides would have (nearly) the same properties as a real genome. At some point in the study of the combinatorial structure of genetic elements (GEs) (see \textbf{\nameref{sec:compl-repet-elem}} in \autoref{sec:compl-repet-elem}), we also demonstrated that the complexity of some families of GEs were slightly lower when taken alone. However, given that the complexity ratio is almost identical for all chromosomes of a given genomes, we could expect that GEs are, in some way, homogeneously distributed in chromosomes.
+
+This hypothesis, however, would stand in contradiction with the observed proportion of GEs, in close relative species. For example, we have seen in the introduction (\textbf{\nameref{sec:dynam-genet-elem}}) how the dynamic of TEs that led them to present diametrically opposed proportions of DNA transposons and retrotransposons in Eukaryotes (\autoref{fig:prop_transposons}).
+
+As first results, in order to get a wider view of the differences in proportions of GEs in eukaryotes, we wanted to report the proportions identified repetitive elements and genic regions found in our 31 eukaryotic species (see \textbf{\nameref{sec:mining-genet-elem}}, page \pageref{sec:mining-genet-elem}). The resulting proportions are summarized in the introductory \autoref{fig:prop_gen_spe}. Also some clade specific trend can be observed in mammals for example, important differences between species were substantial.
+
+In this context, we will start to analyze the diversity and abundance of GEs -- referred to as genetic species (GSs) in this chapter -- with simple statistical tests against the hypothesis of their random distribution.
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=\textwidth] {figures/untb_genomes/prop_genetic_species.pdf}
+\caption[Proportion of major genetic species (GSs) in 31 eukaryotes.]{
+  {\bf Proportion of major genetic species (GSs) in 31 eukaryotes.} \\ The phylogeny is adapted from [Jaime et al 201?], with a correction for amoeba \textit{D. discoideum} \cite{Roger2009}. Pie charts represent the proportion of GSs in each genome. Terms in the legend correspond to:
+  \begin{inparaenum}[1)]
+  \item \textbf{Protein coding} sequences,
+  \item \textbf{Intronic} sequences and also untranslated regions of genes,
+  \item \textbf{\mygls{LINE}},
+  \item \textbf{\mygls{SINE}} and
+  \item \textbf{\myglspl{LTR}} all 3 \myglspl{retrotransposon},
+  \item \textbf{DNA transposon},
+  \item \textbf{\myGls{satellite}} long \myglspl{tandem repeat},
+  \item \textbf{Small RNA} mostly tRNA or snRNA pseudogenes,
+  \item \textbf{Simple repeat} or microsatellites,
+  \item \textbf{Low complexity} poly-purine or poly-pyrimidine (AT or GC rich),
+  \item \textbf{Unclassified repeat} not yet characterized repetitive elements,
+  \item \textbf{Miscellaneous unique} basically what remains after the identification of all previous elements.
+  \end{inparaenum}}
+\label{fig:prop_gen_spe}
+\end{figure}
+
+\section{Non-random distribution of genetic species}
+\label{sec:non-rand-distr}
+
+The most simple hypothesis in relation to the distribution of the GSs, is that they are stochastically distributed in the genomes. In order to test this hypothesis, we simulated a thousand random distributions of GSs of each genome among their chromosomes, and tested if these proportions were conserved in each chromosome through a one sample t-test.
+
+The number of t-test computed here was important, for each of the 548 chromosomes among our set of 31 genomes we compared their observed abundance of each of the GSs to the distribution of the corresponding simulated data. After a necessary correction for multiple testing, less than 4\% of all GSs among each chromosomes tested showed abundances according to their genomic mean (assuming that the result of the simulation is tending to genomic mean).
+
+This result, yet negative, was expected according to the fast dynamic that seems to underlie the distribution of GSs in eukaryotic genomes (\autoref{fig:prop_gen_spe}). Moreover, random distributions are the exception in nature even in the case that species dispersion and abundance are governed by stochastic processes. In the following steps, we are going to use statistical tools developed by ecologists in order to decipher the dynamics underlying the diversity and abundance of GSs.
+
+\section{Counterbalanced species abundances in genomes}
+\label{sec:count-spec-abund}
+
+\subsection{Genetic species, dispersion and abundance}
+\label{sec:genet-elem-disp}
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=0.95\textwidth]{figures/untb_genomes/SAD_genomes.pdf}
+\caption[RSA curves.]{{\bf RSA curves.} \\ Relative species abundances for some selected genomes \textbf{(A)} and their corresponding largest chromosomes \textbf{(B)}} 
+\label{fig:rsa_genomes}
+\end{figure}
+
+Ecologists frequently use relative species abundance (RSA) curves to compare the richness, the degree of dominance, and the number of rare species among communities. The raw data used in these plots is the total number of individuals per species sampled in the ecosystem. The most interesting property of RSA curves is that species are unlabeled in the ranking order; hence ecosystems can be compared whatever the species they contain.
+
+RSA curves were build using our full set of GSs for each of our 548 chromosomes, and also for the corresponding 31 complete genomes. These numbers, our raw data, represent censuses of GSs analogous to the one realized by ecologists in ecosystems.
+
+\autoref{fig:rsa_genomes} display RSA curves for a selected group of genomes and their largest chromosome respectively. Curves differ in many ways although two patterns are evident:
+\begin{inparaenum} [ 1-] \item RSA curves of genomes and chromosomes are very similar -- the only noticeable difference being a reduction in the number of GSs in chromosomes, \item all RSA curves (from genomes and chromosomes) display the universal S-shape also observed in ecological environments \cite{McGill2007,Hubbell2001} \end{inparaenum}. Both observations suggest a common mechanism of distribution of GSs in genomes and chromosomes.
+
+\subsection{Randomization of genetic species in genomes}
+\label{sec:rand-genet-spec}
+
+To what extent chromosome's RSA curves represent the random distribution of the complete set of elements of the genome? To answer, we used the same simulated data used in section \textbf{\nameref{sec:non-rand-distr}}. The mean expected abundance and  standard deviation of this simulated data, were used to plot random expected RSA curves for chromosomes.
+
+According to \textbf{\nameref{sec:non-rand-distr}} and to results just pointed out for TE’s in \textit{D. melanogaster} \cite{Bartolome2002,Marais2002}, an homogeneous random process, cannot account for the observed abundances of genetic species in chromosomes. However, if observed and simulated chromosomic RSA curves are superimposed, a notable agreement is detected. \autoref{fig:rsa_chromosomes} shows this fit for two chromosomes. This remarkable concurrence is permitted by the loss of species' labels in the RSA plots, and hence by the allowed compensation by shift in the ranking order of abundances. For instance, the classes of functional tRNA and \mygls{satellite} elements are respectively at position 43 and 23 of the overall ranking of abundances in human genome \fref{fig:rsa_chromosomes}{-A}. However, in chromosome 1, their ranking are 33 and 42 respectively. That is, tRNA and \myglspl{satellite} elements show higher and lower abundances than the expected by random distribution.
+
+\begin{figure}[htpb]
+  \centering 
+  \includegraphics[width=\textwidth]{figures/untb_genomes/ra_chroms.pdf}
+  \caption[Relative species abundance curves for human chromosome 1 and chromosome 19]{
+    {\bf Relative species abundance curves for human chromosome 1 (\textbf{A}) and chromosome 19 (\textbf{B}).} \\ Red and grey lines display respectively observed and simulated values for all genetic species in chromosomes. Dotted lines are 2 standard deviations around the mean simulated values. Numbers in parenthesis depict the observed (red) and the expected value (grey) in the ranking of abundances for few genetic classes in both chromosomes. Note the higher than the expected number of SINE/Alu elements in human chromosome 19.} 
+  \label{fig:rsa_chromosomes}
+\end{figure}
+
+In order to test the adjustment of the superimposition of simulated and observed data (red and grey curves in \autoref{fig:rsa_chromosomes}), a Kolmogorov-Smirnov test was conducted. Overall, and after the corresponding correction for multiple testing, statistical differences between observed and simulated data were detected for only 76 out of 548 chromosomes tested (KS-test, $P < 0.05$). This result obtained with the same data but summarizing species identity to a local rank, contrasts greatly with previous finding that only 4\% of the GSs were found in the proportions expected by chance.
+
+Thus, given the 86\% agreement of chromosomes tested here, GSs distribution finally appears to be governed by some kind of stochastic process. 
+
+\section{Diversity and chromosome length}
+\label{sec:divers-chrom-length}
+
+If a purely stochastic process controls the abundance and diversity of genetic elements in chromosomes -- as suggested by previous results--, it is expected that $S$, the number of GSs present in a given chromosome, will increase with chromosome length. In ecology, it is universally observed that larger areas contain more species. Does this pattern hold true for chromosomes?
+
+\begin{figure}[htpb]
+  \centering  \includegraphics[width=\textwidth]{figures/untb_genomes/species_area_loglog.pdf}
+  \caption[Species chromosome size relationship]{
+    \textbf{Species chromosome size relationship}\\
+    This plot represents the correlation between the number of genetic species (GSs) and the chromosome size in a log-log transformation. As complementary information, the size of the dots is a function of the number of individuals belonging to a given species.
+  }
+  \label{fig:species_by_chrom}
+\end{figure}
+
+The standard species-area relationship in ecology is the Arrhenius power law \cite{Arrhenius1921} $S = cAz$, where $S$ is the species number, $A$ is the area and $c$ and $z$ are constants. Following with our simile, species areas would be  analogous to chromosome length. \autoref{fig:species_by_chrom} displays the correlation between the number of GSs and the chromosome size in a log-log transformation for both, polyploids and all chromosomes.
+
+Also the correlation between the number of GSs and chromosome length was good, the first deficiency in the analogy we have being using between genomes and ecosystems appears. Polyploid chromosomes plotted seem to follow a slower increase in GSs along the axis of chromosome length. As this observation is completely predictable given that genomes subjected polyploidization would contain theoretically the same amount of GSs for larger size, we decided to also compute the statistical fit to the species-area relationship for non-polyploid eukaryotic species.
+
+After least square fit of the power function, we effectively observed $c$ = 0.28, $z$ = 0.27 ($R^2$ = 0.64 $n$ = 548) for all chromosomes studied (including fishes and plant species -- as polyploids), and $c$ = 0.50, $z$ = 0.25 ($R^2$ = 0.81, $n$ = 412) (excluding them as mentioned above).
+
+In both cases, the adjustment was statistically significant to a lineal regression model ($P << 0.001$). Thus, and likewise in community ecology, eukaryote chromosomes display the universal species-area relationship with $z$ values corresponding to regional spatial scales \cite{Rosenzweig1995}.
+
+At this point, we believe to have strong evidences that the distribution of GSs among chromosome is characterized by a strong stochastic component able to explain
+\begin{inparaenum}[ 1-]
+\item the observations raised by the comparison of RSA curves of simulated and observed distributions of GSs (see previous section \textbf{\nameref{sec:rand-genet-spec}})
+\item and this last result showing how the number of GSs present in a chromosome is highly correlated to its length.
+\end{inparaenum}In order to improve and test more accurately this observation, we finally ask if a neutral dynamic model can predict this shared demographic pattern of genomes.
+
+\section{Neutrality of species abundances and diversity}
+\label{sec:neutrality-sad}
+
+Similar to the kinetic theory of ideal gases in physics the unified neutral theory of biodiversity (UNTB \cite{Hubbell2001}) is a stochastic theory assuming equivalence among interacting individuals. The theory assumes that diversity in a local community of individuals is maintained by migration from the metacommunity at a constant rate ($m$). Births and deaths in the local community occur at constant rates during generation regardless the species. The metacommunity dynamics is controlled by speciation at a single constant rate ($\nu$)\cite{Rosindell2011,Alonso2006}.
+
+For genomes, we realized that each chromosome is the physical arena where GSs die and are replaced by other elements of the same or different species. These GSs could come from the same chromosome, or from any other chromosome of the genome. We assume that each chromosome represents a local community of $J$ elements and $S$ different genetic classes (species) while the rest of the genome corresponds to the metacommunity of size $J_M$. Thus, we used the sample of the total number of functional and non-functional elements in each chromosome as raw-data to optimize by maximum likelihood (ML) neutral model's parameters $m$ and $\theta$ ($= 2 J_M\nu$) using Ewens and Etienne's sampling formula (\autoref{eq:ewens}).
+
+Deviations from neutrality were detected in 33 out of 548 (6.0\%) chromosomes. However, these deviations vanished at all after multiple testing correction ($FDR< 0.05$, see \autoref{tab:untb_res} for a summary of the results). We conclude that Hubbell's neutral model fits abundance and diversity of GSs in all the chromosomes of the 31 eukaryotes genomes analyzed. 
+
+\begin{table}
+  \centering
+  \scriptsize
+  \rowcolors{1}{white}{lightgray}
+  \begin{tabular}{l r r r r c c c l }
+    \textbf{Species}                  & \textbf{Ch} & \textbf{J}       & \textbf{S}  & \textbf{$\Delta$H} & $\theta$    & \textbf{\emph{m}}     & \textbf{P (Q)-val}  & \textbf{Model}\\\hline
+    \textit{Tribolium castaneum      }& 7  & 7,865   & 18 & - 0.97    & 2.12 & ----- & 0.01 (0.66) & Ewens     \\
+    \textit{Anopheles gambiae        }& X  & 21,215  & 42 & - 0.58    & 6.97 & 0.037 & 0.03 (0.66) & Etienne   \\
+    \textit{Gallus gallus            }& 9  & 6,621   & 32 & - 0.56    & 4.28 & ----- & 0.05 (0.66) & Ewens     \\
+    \textit{Drosophila melanogaster  }& X  & 20,787  & 26 & - 0.51    & 2.86 & ----- & 0.09 (0.66) & Ewens     \\
+    \textit{Tetraodon nigroviridis   }& 3  & 8,505   & 17 & - 0.49    & 1.96 & ----- & 0.11 (0.66) & Ewens     \\
+    \textit{Mus musculus             }& 14 & 143,018 & 59 & - 0.27    & 6.58 & 0.149 & 0.15 (0.66) & Etienne   \\
+    \textit{Populus trichocarpa      }& 2  & 32,946  & 15 & -0.37     & 2.23 & 0.009 & 0.16 (0.66) & Etienne   \\
+    \textit{Oryzias latipes          }& 19 & 7,223   & 21 & -0.35     & 2.57 & ----- & 0.17 (0.66) & Ewens     \\
+    \textit{Homo sapiens             }& 17 & 93,105  & 52 & - 0.24    & 6.51 & 0.065 & 0.18 (0.66) & Etienne   \\
+    \textit{Macaca mulatta           }& 16 & 84,626  & 50 & - 0.19    & 5.95 & 0.119 & 0.23 (0.66) & Etienne   \\
+    \textit{Saccharomyces cerevisiae }& II & 640     & 9  & - 0.25    & 1.37 & ----- & 0.26 (0.66) & Ewens     \\
+    \textit{Dictyostelium discoideum }& 1  & 26,650  & 14 & - 0.24    & 1.36 & ----- & 0.27 (0.66) & Ewens     \\
+    \textit{Danio rerio              }& 1  & 105,305 & 56 & - 0.11    & 8.17 & 0.016 & 0.29 (0.66) & Etienne   \\
+    \textit{Canis familiaris         }& 1  & 144,103 & 47 & -0.10     & 5.28 & 0.093 & 0.32 (0.66) & Etienne   \\
+    \textit{Plasmodium falciparum    }& 13 & 18,738  & 10 & -0.11     & 0.95 & ----- & 0.38 (0.66) & Ewens     \\
+    \textit{Monodelphis domestica    }& 2  & 675,788 & 44 & -0.02     & 4.46 & 0.031 & 0.43 (0.66) & Etienne   \\
+    \textit{Sorghum bicolor          }& 1  & 37,626  & 23 & 0.19      & 2.86 & 0.067 & 0.68 (0.79) & Ewens     \\
+  \end{tabular}
+  \caption[Result of the fit to UNTB and test of neutrality for selected chromosomes]{
+    \textbf{Result of the fit to UNTB and test of neutrality for selected chromosomes}\\
+    The table depicts parameters and statistics estimated for a selection of chromosomes of different species. Chromosomes are arranged according to p-value from the less to the most neutral. J the total number of genetic elements; S is the number of genetic species; $\Delta$H the difference between the observed and the expected evenness (Shannon's diversity index); $\theta$ the fundamental diversity number; $m$ the migration rate; P and Q-val are statistical significances of the neutral test before and after false-discovery rate correction. The last column shows the model (Ewens or Etienne) that best fitted the empirical distribution of genetic elements in the chromosome after likelihood-ratio test (p $<$ 0.05, df = 1). None of the 548 chromosomes over the 31 eukaryotes genomes showed significant deviations from neutrality (Q-val$<$0.05).}
+  \label{tab:untb_res}
+\end{table}
+
+\section{Discussion}
+\label{sec:discussion-1}
+
+Almost one hundred years ago ecologists recognized the universal uneven distribution of species abundance, and the species increment in larger areas \cite{Margurran2004}. Just a decade ago however, neutral demographic processes emerged as the simplest mechanical explanation behind both patterns in communities \cite{Hubbell2001}. More recently, Michael Lynch and John S. Conery \cite{Lynch2003} hypothesized that complexity of eukaryote genomes emerged passively during evolution as a consequence of population size reduction. Here we demonstrated that a simple stochastic process associated to a few number of parameters fits the pattern of abundance and diversity of genetic species along a great diversity of eukaryote genomes.
+
+An example of implementation of a neutral model to explain the distribution of genetic elements in genomes can be found very recently in the work conducted by Bart Haegeman and Joshua S. Weitz with 6 bacterial genomes \cite{Haegeman2012}. In this work authors defined a neutral model for the evolution of the genomes able to predict the proportions of
+\begin{inparaenum}[ 1-]
+\item genes shared by all the genomes,
+\item genes absent from some genomes,
+\item and species-specific genes
+\end{inparaenum}. This model, that combines birth and death process among individuals of the same species, and gene transfer between species, was able to reproduce the observation that most genes are either specific to one genome or shared by all species. Also the model proposed by the authors of this work is only applicable to bacterias, we do think that their results are in the same lines as ours, as the apparition and conservation of genes in genomes are following a neutral process.
+
+We are certainly aware that the fit of a neutral pattern does not necessarily imply the existence of a neutral process behind the pattern (see \textbf{\nameref{sec:power-spec-neutr}} \autoref{sec:power-spec-neutr}), but the excellent, taxonomically broad fit of neural theory to genomic element diversity and abundance raises the unavoidable question: why is there not a stronger signature of natural selection in ecological communities or in genomes at large scales? Ecologists have recognized the existence of many kinds of trade-offs, for instance species with high dispersal rates are not good competitors. However, it is not yet known to what extent such trade-offs maintain diversity or are consistent with, and permit, neutral dynamics. For genomes, the mechanisms that maintain element diversity, and whether these involve trade-offs, are not yet understood.  Which mechanisms operate will also depend on whether genome size is under strong or weak selection \cite{Cavalier-Smith2005}. More likely, element diversity of genomes results from some combination of neutral drift and selection on different genetic species \cite{Images2009}. Independent of the answer, the model tested here should be the null hypothesis to test for alternative mechanisms explaining species abundance and diversity in eukaryote genomes.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../../thesis_main"
+%%% End: 
