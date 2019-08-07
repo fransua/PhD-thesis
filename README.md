@@ -1,6 +1,7 @@
 # Informational, Ecological and System Approaches for Complete Genome Analysis
 ### François Serra
 #### Supervisor: Hernán Dopazo
+[![DOI](https://zenodo.org/badge/201129259.svg)](https://zenodo.org/badge/latestdoi/201129259)
 
 <p align="center"><img src=Dissertation/figures/untb_genomes/prop_genetic_species.png height="600"/></p>
 
