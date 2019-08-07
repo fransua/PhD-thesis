@@ -1,0 +1,19 @@
+%%% readme.tex --- 
+
+%% Author: garamonfok@gros
+%% Version: $Id: readme.tex,v 0.0 2011/10/09 18:39:32 garamonfok Exp$
+
+
+\chapter*{Read this thesis}
+\addcontentsline{toc}{chapter}{Read this thesis}
+Some particularities about this thesis:
+\begin{itemize}
+\item \textbf{The glossary}: some words are underline with dotted lines like  \dotuline{this}. A short definition of these words can be found in the \hyperref[theglossary]{Glossary}. At the end of each definition, appears the page number of all occurrences of the word defined.
+\item \textbf{The bibliography}: the bibliography is quite standard. In the text references appears between square brackets [like this]. In the \hyperref[thebibliograhy]{Bibliography} the number of authors is limited to 15. At the end of each reference appear the page numbers corresponding to their citation in the main text (for example, [Alonso \textit{et al.} 2006] cited 3 times: {\footnotesize $\hookrightarrow$ \textit{pages 10, 66 and 69}}).
+\end{itemize}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../thesis_main"
+%%% End:

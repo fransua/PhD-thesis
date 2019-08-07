@@ -1,0 +1,691 @@
+% $Header: /home/vedranm/bitbucket/beamer/solutions/conference-talks/conference-ornate-20min.de.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass[hyperref={pagebackref=true},table]{beamer}
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\mode<presentation>
+{
+  \usetheme{CambridgeUS}
+
+  \setbeamercovered{transparent}
+  %gets rid of bottom navigation bars
+  \setbeamertemplate{footline}{}
+  % gets rid of navigation symbols
+  \setbeamertemplate{navigation symbols}{}
+}
+
+\usepackage[english]{babel}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{wrapfig}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\newcommand{\mc}[3] {\multicolumn {#1}{#2}{#3}}
+\usepackage{wasysym}
+
+%\usepackage{cite}
+%
+%\renewcommand{\citeleft}{(}
+%\renewcommand{\citeright}{)}
+
+\title[Informational, Ecological \& System Approaches]%
+{Informational, Ecological and System Approaches for Complete Genome Analysis}
+
+%\subtitle{Thesis Presentation}
+
+\author[F.~Serra]{Fran\c cois~Serra\inst{1}\\
+  {\small Supervised by: Hern\'{a}n Dopazo\inst{1}}}
+
+\institute[CIPF]{\inst{1} Evolutionary Genomic Laboratory,\\
+  Centro de Investigaci\'{o}n Pr\'{i}ncipe Felipe}
+
+\date[THESIS 2012]{12\textsuperscript{th} December 2012}
+
+\subject{Thesis presentation}
+
+% \pgfdeclareimage[height=0.5cm]{cnag-logo}{pictures/logos/cnag.jpeg}
+% \logo{\pgfuseimage{cnag-logo}}
+
+
+\AtBeginSubsection[]
+{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}<beamer>{Index}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \titlepage
+  % \rule{2cm}{1cm}% use the \includegraphics command here
+  \vfill
+  \includegraphics[height=1.0cm]{pictures/logos/CIPF.png}
+  \hfill\includegraphics[height=1.6cm]{pictures/logos/Escudo01.png}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Index}
+  \tableofcontents
+\end{frame}
+
+
+\section{Introduction}
+
+\subsection{Evolution only makes sense in light of neutrality}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Classification of evolutionary changes}
+
+  \begin{itemize}
+  \item<1-> Evolutionary changes affect the inherited characteristics of a biological population%, they can be reflected in DNA sequence, in phenotypes (fitness), in the distribution of species in ecosystems
+  \item<2-> \textbf{Changes are not directional}, evolution may accept or reject them through the elimination of individuals
+  \item<3-> According to the influence of natural selection, we can classify \textbf{changes} in three categories:
+    \begin{itemize}
+    \item<4-> \textbf{advantageous}: individuals carrying them may improve their fitness and thus their chances to produce offspring
+    \item<5-> \textbf{deleterious}: result in a loss of fitness, and may be removed from populations
+    \item<6-> \textbf{neutral}: they represents the narrow area that segregates advantageous and deleterious changes, they may not affect the fitness, and thus, may escape natural selection
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Importance of neutral changes in molecular evolution}
+
+  \begin{itemize}
+  \item <1-> Since their definition by Charles Darwin, neutral changes were though to be \textbf{minor actors} in the process of evolution.
+    %\includegraphics<1>[width=.45\textwidth]{pictures/Intro/selection-neutrality-1.png}
+    %\alt<1>{{\tiny\cite{Bromham2003}}}{}
+    %\begin{itemize}
+      % \item <2> Opposition: Sewall Wright emphasized the importance of random moves in the race bringing species to states of higher fitness
+    %\end{itemize}
+  \item <2-> First molecular data and the estimation of mutation rate much higher than expected
+    \begin{itemize}
+    %\item <4-5> Sanderson Haldane defined that adaptive changes may be at most 1 substitution per 300 generations%. It was thus unbearable to endure this mutation rate
+    \item <3> Jack Lester King and Thomas H. Jukes, and independently Motoo Kimura to propose the \textit{neutral theory of molecular evolution}.
+    %  \includegraphics<2>[width=.45\textwidth]{pictures/Intro/selection-neutrality-2.png}
+    %  \alt<2>{{\tiny\cite{Bromham2003}}}{}
+    %\item <3> Tomoko Ohta proposed the \textit{nearly neutral theory of molecular evolution}
+    %  \includegraphics<3>[width=.45\textwidth]{pictures/Intro/selection-neutrality-3.png}
+    %  \alt<3>{{\tiny\cite{Bromham2003}}}{}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Neutrality in Ecology}
+  \framesubtitle{neutral distribution of species' abundances in ecosystems}
+  \begin{columns}
+    \begin{column}{.50\textwidth}
+      \begin{minipage}[c][.9\textheight][c]{\linewidth}
+        \begin{itemize}
+        \item <1-> Models used were based on the concept of ecological
+          niches. Differences observed between species were though to
+          be mostly adaptive
+        \item <2-> Statistical models able to reproduce the pattern of
+          distribution of species' abundances in ecosystems (Motomura,
+          Fisher, Preston)
+        \item <4> \textbf{neutral models} had to wait for the late
+          20\textsuperscript{th} century (Hubbell)
+        \end{itemize}
+      \end{minipage}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      %\alt<2->{\begin{block}{}
+        %\includegraphics<1>[width=1\textwidth]{pictures/Intro/ecological_niches.jpeg}
+        %\alt<1>{\\\hfill{\tiny\textit{\cite{Foster2012}}}}{}
+      \includegraphics<2>[width=1\textwidth]{pictures/Intro/Common_descr_stats.jpg}
+      \alt<2>{\\\hfill{\tiny adapted from \textit{\cite{Magurran1988}}}}{}
+      \includegraphics<3->[width=1\textwidth]{pictures/Intro/hubbell_rsa.png}
+      \alt<3->{\\\hfill{\tiny\textit{\cite{Hubbell2001}}}}{}
+      %\end{block}}{}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Neutrality in Ecology}
+  \framesubtitle{Unified Neutral Theory of Biodiversity and Biogeography (UNTB)}
+  %\pause
+  Assumes that diversity in a local community of individuals is maintained by migration from the metacommunity at a constant rate ($m$). Births and deaths in the local community occur at constant rates per generation, \textbf{regardless of the species}
+  \begin{center}
+    %\phantom{\includegraphics<1>[width=1\textwidth]{pictures/Intro/schema_untb.png}}
+    \includegraphics[width=1\textwidth]{pictures/Intro/schema_untb.png}\\
+    \hfill{\tiny\textit{\cite{Rosindell2011}}}
+  \end{center}
+\end{frame}
+
+\subsection{Overview}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Objectives -- Overview}
+  The work presented here consists in three different approximations in the analysis of genomes, each expressing a neutral model and its corresponding deviations.
+  \pause
+  \begin{itemize}
+  \item \textbf{Informational}: where genomes are viewed as simple sequences with a given informational content. We will define a common structure of genomes and show how they are characterized by a universal quasi-random structure.
+  \pause
+  \item \textbf{Ecological}: here a genetic elements populating genomes are assimilated to biological species in ecosystems. We will apply ecological models on genomes in order to expose the neutral pattern behind their composition.
+  \pause
+  \item \textbf{System}: focusing on proteins working together to complete a function we present a new strategy to find natural selection fingerprint at this level of study.
+  \end{itemize}
+\end{frame}
+
+\section{Random-like structure of DNA}
+\subsection{Background}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Adaptive raise in organism complexity}
+  \begin{columns}
+    \begin{column}{.47\textwidth}
+      \begin{itemize}
+      \item<1->Darwinian evolution does not encompass directional change nor global adaptive advance
+      \item<2->Not easy to define biological complexity
+      \item<3> At genomic level we would expect that the quantity of hereditary information is proportional to the level of complexity
+      \end{itemize}
+    \end{column}
+    \begin{column}{.53\textwidth}
+      \begin{block}{}
+        \begin{center}
+          \includegraphics<1->[width=\textwidth]{pictures/Intro/tol.png}\\
+          \hfill \textit{\scriptsize adapted from \cite{Maddison2007}}
+        \end{center}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Challenging the C-value paradox}
+
+  \begin{columns}
+    \begin{column}{0.38\textwidth}
+      \begin{itemize}
+      \item <1-> DNA content (C-value) do not correlate with biological complexity
+      %\item <2-> Raises questions around non-coding DNA:
+      %\begin{itemize}
+      %\item kind and proportion
+      %\item origin and dynamics
+      %\item effect or function in genomes
+      %\item different amounts when similar biological complexity
+      %\end{itemize}
+      \item <2> What can be summarized as:
+        \begin{itemize}
+        \item the search of patterns in the informational content of genomes
+        \item the dynamics underlying the distribution and appearance of non-coding DNA
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.62\textwidth}
+      \begin{block}{}
+        \includegraphics<1->[width=\textwidth]{pictures/Intro/c-values.pdf}
+        \\\hfill\textit{\scriptsize \cite{Gregory2005}}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Informational content}
+  \begin{itemize}
+  \item In order to normalize genomes DNA content, instead of working with direct measures of genome size, we work with informational content.
+  \item Informational content corresponds to DNA complexity and may be related to the compressed genome size
+  \item Indeed the complexity value we use is based on classical algorithms of data compression
+  %\item We computed the complexity value of genomes and chromosomes in 54 species covering the whole diversity of life    
+  \end{itemize}
+\end{frame}
+
+\subsection{Methodology}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{The Genome/Chromosome Complexity Value}
+\begin{table}[!ht]
+  \scriptsize
+  \rowcolors{1}{white}{lightgray}
+  Given a sequence, $seq=AACCTTCGTAGCATGG$:
+  \begin{center}
+      \begin{tabular}{clc}
+        \hline
+        \textbf{\#} & \textbf{Rotating sequence} & \textbf{\textit{I.}} \\ \hline
+        0  & AACCTTCGTAGCATG\textbf{G}$|$ & 0  \\
+        1  & ACCTTCGTAGCATGG$|$\textbf{A} & 1  \\
+        2  & CCTTCGTAGCATGG$|$A\textbf{A} & 5  \\
+        3  & CTTCGTAGCATGG$|$AA\textbf{C} & 7  \\
+        4  & TTCGTAGCATGG$|$AAC\textbf{C} & 15 \\
+        5  & TCGTAGCATGG$|$AACC\textbf{T} & 13 \\
+        6  & CGTAGCATGG$|$AACCT\textbf{T} & 6  \\
+        7  & GTAGCATGG$|$AACCTT\textbf{C} & 11 \\
+        8  & TAGCATGG$|$AACCTTC\textbf{G} & 12 \\
+        9  & AGCATGG$|$AACCTTCG\textbf{T} & 2  \\
+        10 & GCATGG$|$AACCTTCGT\textbf{A} & 9  \\
+        11 & CATGG$|$AACCTTCGTA\textbf{G} & 4  \\
+        12 & ATGG$|$AACCTTCGTAG\textbf{C} & 3  \\
+        13 & TGG$|$AACCTTCGTAGC\textbf{A} & 14 \\
+        14 & GG$|$AACCTTCGTAGCA\textbf{T} & 10 \\
+        15 & G$|$AACCTTCGTAGCAT\textbf{G} & 8  \\ \hline
+      \end{tabular}
+    {\Large\pointer}
+      \rowcolors{1}{white}{lightgray}
+      \begin{tabular}{ c }
+        \hline
+        \textbf{BWT}                             \\ \hline
+        \textcolor{darkred}{\textbf{G}}          \\
+        \textcolor{green!90!black}  {\textbf{A}} \\
+        \textcolor{blue}   {\textbf{T}}          \\
+        \textcolor{orange} {\textbf{C}}          \\
+        G                                        \\
+        A                                        \\
+        T                                        \\
+        C                                        \\
+        G                                        \\
+        A                                        \\
+        T                                        \\
+        C                                        \\
+        G                                        \\
+        T                                        \\
+        A                                        \\
+        C                                        \\ \hline
+      \end{tabular}
+    {\Large\pointer}
+      \rowcolors{1}{white}{lightgray}
+      \begin{tabular}{ c c c c c }
+        \hline
+        \mc{4}{c}{\textbf{Char. list}} & \textbf{MTF} \\ \hline
+        \textcolor{darkred}{\textbf{G}} & a & t & c & 0 \\
+        \textcolor{darkred}{G} & \textcolor{green!90!black}{\textbf{A}} & t & c & 1 \\
+        \textcolor{green!90!black}{A} & g & \textcolor{blue}{\textbf{T}} & c & 2 \\
+        \textcolor{blue}{T} & a & g & \textcolor{orange}{\textbf{C}} & 3 \\
+        C & t & a & \textbf{G} & 3 \\
+        G & c & t & \textbf{A} & 3 \\
+        A & g & c & \textbf{T} & 3 \\
+        T & a & g & \textbf{C} & 3 \\
+        C & t & a & \textbf{G} & 3 \\
+        G & c & t & \textbf{A} & 3 \\
+        A & g & c & \textbf{T} & 3 \\
+        T & a & g & \textbf{C} & 3 \\
+        C & t & a & \textbf{G} & 3 \\
+        G & c & \textbf{T} & a & 2 \\
+        T & g & c & \textbf{A} & 3 \\
+        A & t & g & \textbf{C} & 3 \\ \hline
+      \end{tabular}
+  \end{center}
+  \pointer 
+  $\:\:CR(seq) = E(MTF(BWT(seq))) = E(0, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3) = 0.593$
+\end{table}
+\begin{itemize}
+\item <2> 54 species (virus to mammals) with genomes from 1.6Kb to 3.4Gb
+\end{itemize}
+\end{frame}
+
+\subsection{Results}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Complexity Value of genomes}
+  \begin{center}
+    \includegraphics[width=.635\textwidth]{pictures/dna-struct/cv-genomes.png}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Complexity Ratio of genomes}
+  \begin{center}
+    \includegraphics<1>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-0.png}
+    \includegraphics<2>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-1.png}
+    \includegraphics<3>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-3.png}
+    \includegraphics<4>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-2.png}
+    \includegraphics<5>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-4.png}
+    \includegraphics<6>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-4-1.png}
+    \includegraphics<7>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-4-1-5.png}
+    \includegraphics<8>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-4-2.png}
+%    \includegraphics<9>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-5.png}
+%    \includegraphics<10>[width=.635\textwidth]{pictures/dna-struct/cr-genomes-6.png}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Complexity Ratio of chromosomes}
+  \begin{center}
+    \includegraphics[width=\textwidth]{pictures/dna-struct/chroms_norm.pdf}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Hypotheses}
+  \begin{itemize}
+  \item<1-> These observations led us to hypothesize that:
+    \begin{itemize}
+    \item<2-> A quasi-random combinatorial structure of DNA is a universal feature of non-polyploid genomes
+    \item<3-> The fate of polyploid genomes is to reach almost maximal CR. Increases in CR occur as a function of time
+    \item<4-> Genome complexity only increases through rounds of duplications followed by the divergence of duplicates during evolution
+    \end{itemize}
+  \item<5-> These hypotheses can be nullified in some specific cases:
+    \begin{itemize}
+    \item<6-> Genomes of recent polyploid species evidencing high CR, e.g.: species that have undergone significant genome reduction
+    \item<7-> Genomes evidencing a non-random DNA structure (low CR), due to a very strong GC content bias
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Ecology of genetic elements}
+\subsection{Background}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Variation of families of genetic elements in eukaryote}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \begin{minipage}[c][.75\textheight][c]{\linewidth}
+        \begin{itemize}
+        \item<1-> Genomes are populated with genetic elements, coding
+          or non-coding
+        \item<2> Proportions of these families of genetic elements
+          vary greatly between species
+        \end{itemize}
+      \end{minipage}
+  \end{column}
+    \begin{column}{0.68\textwidth}
+      \begin{block}{}
+        \includegraphics<1>[width=\textwidth]{pictures/Intro/prop_rep.pdf}
+        \alt<1>{\\\hfill{\tiny adapted from \textit{\cite{Lander2001}}}}{}
+        \includegraphics<2->[width=\textwidth]{pictures/Intro/prop_transposons.pdf}
+        \alt<2->{\\\hfill{\tiny adapted from \textit{\cite{Pritham2009}}}}{}
+      \end{block}
+    \end{column}
+    
+  \end{columns}
+  
+\end{frame}
+
+
+\subsection{Results}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Distribution of genetic species within biological species}
+  \begin{center}
+   \includegraphics[width=.92\textwidth]{pictures/untbgen/prop_genetic_species.pdf}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Non-random distribution of genetic species}
+  \begin{itemize}
+  \item Test for the simplest hypotheses: \textbf{each of the genetic species (GSs) are found in equal proportions in each chromosome of a given genome}
+  \item<2-> We generated 1,000 random genomes for each of the 31 biological species
+  \item<3-> Test the differences between the GSs in the 1,000 shuffling and the observed value in 548 chromosomes
+  \item<4-> In less than \textbf{4\% of the cases GS were found in the expected proportion}
+  %\item<5> Negative result, but expected given the dynamic that seems to underlie the distribution of GSs in eukaryote genomes.
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Counterbalanced GSs abundances in genomes}
+  \begin{center}
+   \includegraphics[height=.8\textheight]{pictures/untbgen/SAD_genomes.pdf}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Counterbalanced GSs abundances in Chromosomes}
+  \begin{center}
+   \includegraphics[height=.8\textheight]{pictures/untbgen/SAD_chromosomes.pdf}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Relative species abundance: observed vs expected}
+  \begin{center}
+    \includegraphics<1>[width=.97\textwidth]{pictures/untbgen/ra_chroms-1.png}
+    \includegraphics<2>[width=.97\textwidth]{pictures/untbgen/ra_chroms-2.png}
+    \includegraphics<3>[width=.97\textwidth]{pictures/untbgen/ra_chroms-3.png}
+    %\includegraphics<4>[width=.97\textwidth]{pictures/untbgen/ra_chroms-4.png}
+    \includegraphics<4->[width=.97\textwidth]{pictures/untbgen/ra_chroms-5.png}
+  \end{center}
+  \begin{itemize}
+  \item<5> Kolmogorov test \textcolor{red}{red} vs \textcolor{gray}{grey} lines. 76 out of 548 chromosomes showing different distributions $\rightarrow$ \textbf{86\% of chromosomes fitting}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{frame}
+%  \frametitle{Genetic species: diversity and chromosome length}
+%  \begin{center}
+%    \includegraphics[width=.73\textwidth]{pictures/untbgen/species_area_loglog.pdf}
+%  \end{center}
+% \begin{itemize}
+% \item<2> Arrhenius power law $S=cA^z$, $c=0.28$ and $z=0.27$, corresponds to classical values in ecology ($0.15<z<0.40$)
+% \end{itemize}
+%\end{frame}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{Neutrality of GSs distribution in chromosomes}
+  \framesubtitle{Unified Neutral Theory of Biodiversity and Biogeography for genetic species}
+  \begin{itemize}
+  \item We test the fit of GSs' distributions in the UNTB
+  \end{itemize}
+  \begin{table}[!ht]
+    \centering
+    \scriptsize
+    \rowcolors{1}{white}{lightgray}
+    \begin{tabular}{l r r r c c c }
+    \action<2->{\textbf{Species}        } & \action<2->{\textbf{Chr}} & \action<3->{\textbf{\emph{J}}} & \action<3->{\textbf{\emph{S}}} & \action<4->{$\theta$} & \action<4->{\textbf{\emph{m}}} & \action<5->{\textbf{P-val}} \\\hline
+    \action<2->{\textit{T. castaneum   }} & \action<2->{7           } & \action<3->{7,865            } & \action<3->{18               } & \action<4->{2.12    } & \action<4->{-----            } & \action<5->{\textbf{0.01} } \\
+    \action<2->{\textit{A. gambiae     }} & \action<2->{X           } & \action<3->{21,215           } & \action<3->{42               } & \action<4->{6.97    } & \action<4->{0.037            } & \action<5->{\textbf{0.03} } \\
+    \action<2->{\textit{G. gallus      }} & \action<2->{9           } & \action<3->{6,621            } & \action<3->{32               } & \action<4->{4.28    } & \action<4->{-----            } & \action<5->{\textbf{0.05} } \\
+    \action<2->{\textit{D. melanogaster}} & \action<2->{X           } & \action<3->{20,787           } & \action<3->{26               } & \action<4->{2.86    } & \action<4->{-----            } & \action<5->{\textbf{0.09} } \\
+    \action<2->{\textit{T. nigroviridis}} & \action<2->{3           } & \action<3->{8,505            } & \action<3->{17               } & \action<4->{1.96    } & \action<4->{-----            } & \action<5->{\textbf{0.11} } \\
+    \action<2->{\textit{M. musculus    }} & \action<2->{14          } & \action<3->{143,018          } & \action<3->{59               } & \action<4->{6.58    } & \action<4->{0.149            } & \action<5->{\textbf{0.15} } \\
+    \action<2->{\textit{P. trichocarpa }} & \action<2->{2           } & \action<3->{32,946           } & \action<3->{15               } & \action<4->{2.23    } & \action<4->{0.009            } & \action<5->{\textbf{0.16} } \\
+    \action<2->{\textit{O. latipes     }} & \action<2->{19          } & \action<3->{7,223            } & \action<3->{21               } & \action<4->{2.57    } & \action<4->{-----            } & \action<5->{\textbf{0.17} } \\
+    \action<2->{\textit{H. sapiens     }} & \action<2->{17          } & \action<3->{93,105           } & \action<3->{52               } & \action<4->{6.51    } & \action<4->{0.065            } & \action<5->{\textbf{0.18} } \\
+    \action<2->{\textit{M. mulatta     }} & \action<2->{16          } & \action<3->{84,626           } & \action<3->{50               } & \action<4->{5.95    } & \action<4->{0.119            } & \action<5->{\textbf{0.23} } \\
+    \action<2->{\textit{S. cerevisiae  }} & \action<2->{II          } & \action<3->{640              } & \action<3->{9                } & \action<4->{1.37    } & \action<4->{-----            } & \action<5->{\textbf{0.26} } \\
+    \action<2->{\textit{D. discoideum  }} & \action<2->{1           } & \action<3->{26,650           } & \action<3->{14               } & \action<4->{1.36    } & \action<4->{-----            } & \action<5->{\textbf{0.27} } \\
+    \action<2->{\textit{D. rerio       }} & \action<2->{1           } & \action<3->{105,305          } & \action<3->{56               } & \action<4->{8.17    } & \action<4->{0.016            } & \action<5->{\textbf{0.29} } \\
+    \action<2->{\textit{C. familiaris  }} & \action<2->{1           } & \action<3->{144,103          } & \action<3->{47               } & \action<4->{5.28    } & \action<4->{0.093            } & \action<5->{\textbf{0.32} } \\
+    \action<2->{\textit{P. falciparum  }} & \action<2->{13          } & \action<3->{18,738           } & \action<3->{10               } & \action<4->{0.95    } & \action<4->{-----            } & \action<5->{\textbf{0.38} } \\
+    \action<2->{\textit{M. domestica   }} & \action<2->{2           } & \action<3->{675,788          } & \action<3->{44               } & \action<4->{4.46    } & \action<4->{0.031            } & \action<5->{\textbf{0.43} } \\
+    \action<2->{\textit{S. bicolor     }} & \action<2->{1           } & \action<3->{37,626           } & \action<3->{23               } & \action<4->{2.86    } & \action<4->{0.067            } & \action<5->{\textbf{0.68} } \\
+  \end{tabular}
+%  \caption[Result of the fit to the UNTB and the test of neutrality for selected chromosomes]{
+%    \textbf{Result of the fit to the UNTB and the test of neutrality for selected chromosomes}                                                                                              \\
+%    The table depicts the parameters and statistics estimated for a selection of chromosomes of different species. Chromosomes are arranged according to p-value, from the least to the most neutral. $J$ = the total number of genetic elements; $S$ = the number of genetic species; $\Delta H$ = the difference between the observed and the expected evenness (Shannon's diversity index); $\theta$ = the fundamental diversity number; $m$ = the migration rate; P and Q-val = statistical significances of the neutral test before and after a false-discovery rate correction. The last column shows the model (Ewens or Etienne's) that best fitted the empirical distribution of genetic elements in the chromosome after likelihood-ratio test (p $<$ 0.05, df = 1). None of the 548 chromosomes from the 31 eukaryote genomes showed significant deviations from neutrality (Q-val$<$0.05).}
+\end{table}
+\begin{itemize}
+\item <6> Neutrality can not be rejected for any of the chromosome studied
+\end{itemize}
+
+\end{frame}
+
+\section{Genomic study of selective pressures in group of genes}
+\subsection{Background}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{The single gene approach}
+  \begin{minipage}[c][.1\textheight][c]{\linewidth}
+    \begin{itemize}
+    \item <1-> Functional categories enriched in \textbf{PSGs} ($\omega
+      = \frac{dN}{dS} > 1$)
+    \item <2-> No set of PSGs were find to be significantly enriched
+    \end{itemize}
+  \end{minipage}
+  \begin{minipage}[c][.65\textheight][c]{\linewidth}
+    \begin{center}
+      \includegraphics<3->[width=.8\textwidth]{pictures/Intro/function_cloud.png}
+      \alt<3->{\\\tiny\textit{\cite{Arbiza2006,Clark2003,Nielsen2005}}}{}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}[c][.07\textheight][c]{\linewidth}
+    %\begin{itemize}
+    %\item <4-> Alternative methods based in grouping PSGs of several species
+    %\end{itemize}
+  \end{minipage}
+\end{frame}
+
+\subsection{Methodology}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Gene-Set Selection Analysis (GSSA)}
+  \hspace{1.8cm}
+  \includegraphics<1>[height=.89\textheight]{pictures/gssa/gssa_met-1.png}
+  \includegraphics<2>[height=.89\textheight]{pictures/gssa/gssa_met-2.png}
+  \includegraphics<3>[height=.89\textheight]{pictures/gssa/gssa_met-2-5.png}
+  \includegraphics<4>[height=.89\textheight]{pictures/gssa/gssa_met-3.png}
+  \includegraphics<5>[height=.89\textheight]{pictures/gssa/gssa_met-3-5.png}
+  \includegraphics<6>[height=.89\textheight]{pictures/gssa/gssa_met-4.png}
+  \includegraphics<7>[height=.89\textheight]{pictures/gssa/gssa_met-5.png}
+  % \includegraphics<7>[width=.6\textwidth]{pictures/gssa/gssa_met-6.png}
+\end{frame}
+
+\subsection{Results}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{GSSA -- Summary results}
+  \begin{center}
+    \includegraphics<1>[width=.95\textwidth]{pictures/gssa/both_tables.png}
+    \includegraphics<2>[width=.95\textwidth]{pictures/gssa/both_tables-2.png}
+    \includegraphics<3>[width=.95\textwidth]{pictures/gssa/both_tables-3.png}
+    \includegraphics<4>[width=.95\textwidth]{pictures/gssa/both_tables-4.png}
+    \includegraphics<5>[width=.95\textwidth]{pictures/gssa/both_tables-5.png}
+    \includegraphics<6>[width=.95\textwidth]{pictures/gssa/both_tables-6.png}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{PSGS within GSSA results}
+  \begin{columns}
+    \begin{column}{0.53\textwidth}
+      \includegraphics<1>[width=1.0\textwidth]{pictures/gssa/gssa_psgs-1.png}
+      \includegraphics<2->[width=1.0\textwidth]{pictures/gssa/gssa_psgs-2.png}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \begin{minipage}[c][.7\textheight][c]{\linewidth}
+        \begin{itemize}
+        \item<3-> PSGs are largely present in categories with SH$\omega$, SL$\omega$ and NS$\omega$.
+        \item<4-> PSGs where enriched in SH$\omega$ categories
+        \item<5> However not significant for primates
+        \end{itemize}
+      \end{minipage}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Conclusions}
+  \begin{enumerate}
+    \scriptsize
+    \setlength{\itemsep}{10pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+
+  % \parskip 0pt
+  %1
+\item In the whole diversity of life, from viruses to mammals, informational content of the genomes exhibits quasi-maximum values. Only dramatic changes such as polyploidization events, or strong biases in nucleotide contents, are able to lower genome entropy.
+  %2
+\item According to the observed universal adjustment of genomes to maximum complexity, we hypothesize that increases in biological complexity are the consequence of genome expansions events through duplications or polyploidization.
+  %3
+\item Similarly to the biological species in ecosystems, eukaryotic genomes present an heterogeneous distribution of families or ``species'' of genetic elements: a few are very abundant, others quite frequent, and the majority rare.
+  %4
+\item  Likewise for ecological species-area correlation graph, we observe that, along a great diversity of eukaryote genomes, the total number of genetic species in chromosomes is proportional to chromosome length.
+  %5
+\item The distributions and abundances of families of genetic elements in eukaryotic genomes, either functional or repetitive, follow the expectations of the unified neutral theory of biodiversity (UNTB).
+\end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Conclusions}
+  \begin{enumerate}
+    \scriptsize
+    \setlength{\itemsep}{10pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+    \setcounter{enumi}{5}
+    %6
+\item GSSA allows testing for functional biases within fast or slowly-evolving genes. This methodology successfully identified all previously reported candidate functional categories as important targets of natural selection. Moreover, given that the GSSA is not limited by the compulsory presence of positively-selected genes, it extended the list of phenotypical targets to previously undetectable ones.
+  %7
+\item Genes under positive selection were found to be present in functional categories evolving rapidly, slowly or without a significant trend ($\omega$). However a significant bias towards fast evolving categories was found in rodents and \textit{Drosophila}. Regarding to the even distribution found in primates, we hypothesize that it may be the result of small population sizes limiting the influence of natural selection; just as suggested by the theory of slightly deleterious mutations.
+  %8
+\item  We believe that the role of genes under positive selection not only consists of the adaptive evolutionary changes of phenotypes but may also be related to other processes such as the adjustment to the deleterious mutations of other genes in a given network.
+  %9
+\item Throughout this thesis three primary bioinformatics tools were implemented with the idea of facilitating and extending future researches of the scientific community. These software are in line with the fields of ecology (of genomes), phylogeny, phylogenomics and the testing of evolutionary hypotheses.
+%\item Thanks to these implementation guidelines, the tools presented in this thesis already generated modest outcomes in the advance of biological knowledge.
+\end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Merci!}
+\subsection*{¡Gracias!}
+\begin{frame}
+  \begin{center}
+    Thank you :)
+  \end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{Bibliography}{thebibliography}
+
+    %% style
+    \bibliographystyle{fransua} % serra et al 2011
+    %% bibtex file
+    \bibliography{library}
+
+    %\beamertemplatebookbibitems
+    % Anfangen sollte man mit Übersichtswerken.
+    
+  %\end{thebibliography}
+
+\end{frame}
+
+\end{document}
+
+

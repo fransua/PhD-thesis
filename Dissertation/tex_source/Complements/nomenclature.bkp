@@ -1,0 +1,43 @@
+%%% nomenclature.tex --- 
+
+%% Author: francisco@evolution
+%% Version: $Id: nomenclature.tex,v 0.0 2011/10/27 13:42:37 francisco Exp$
+
+%\twocolumn
+\renewcommand*\nompreamble{\begin{multicols}{2}}
+  \renewcommand*\nompostamble{\end{multicols}}
+\printnomenclature[3pt]
+
+\nomenclature{BWT}{Burrows-Wheeler transform}
+\nomenclature{CDS}{DNA coding sequence}
+\nomenclature{CNE}{Constructive neutral evolution}
+\nomenclature{CR}{Complexity Ratio}
+\nomenclature{CV}{Complexity Value}
+\nomenclature{FDR}{False Discovery Rate}
+\nomenclature{FET}{Fisher Exact Test}
+\nomenclature{GE}{Genetic Element}
+\nomenclature{GS}{Genetic Species}
+\nomenclature{GSA}{Gene-Set Analysis}
+\nomenclature{GSEA}{Gene-Set Enrichment Analysis}
+\nomenclature{GSSA}{Gene-Set Selection Analysis}
+\nomenclature{H}{Shannon's Entropy}
+\nomenclature{LRT}{Likelihood Ratio Test}
+\nomenclature{LTR}{Long Terminal Repeat}
+\nomenclature{MTF}{Move To Front}
+\nomenclature{My}{Million years}
+\nomenclature{PSG}{Positively selected genes}
+\nomenclature{RSA}{Relative Species Abundance}
+\nomenclature{SH}{Significantly High}
+\nomenclature{SL}{Significantly Low}
+\nomenclature{TE}{Transposable Element}
+\nomenclature{UNTB}{Unified Neutral Theory of Biodiversity}
+\nomenclature{WGD}{Whole Genome Duplication}
+\nomenclature{bp}{DNA base-pair}
+\nomenclature{chr}{chromosome}
+\nomenclature{dN}{Rate of non-synonymous substitutions}
+\nomenclature{dS}{Rate of synonymous substitutions}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../../thesis_main"
+%%% End: 
