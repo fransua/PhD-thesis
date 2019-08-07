@@ -2,7 +2,7 @@
 ### François Serra
 #### Supervisor: Hernán Dopazo
 
-<p align="center"><img src=figures/untb_genomes/prop_genetic_species.png height="600"/></p>
+<p align="center"><img src=Dissertation/figures/untb_genomes/prop_genetic_species.png height="600"/></p>
 
 ## Abstract
 
